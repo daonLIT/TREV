@@ -115,6 +115,56 @@ def _fallback_nei(claim: Claim, why: str) -> Verdict:
     )
 
 
+class _Continue:
+    """종료 도구가 무효일 때 에이전트에 회신할 오류를 담아 루프를 계속하게 하는 신호."""
+
+    def __init__(self, error: str):
+        self.error = error
+
+
+def run_tool_loop(
+    ctx: AgentContext,
+    llm,
+    *,
+    system_prompt: str,
+    user_prompt: str,
+    tools: list[Tool],
+    terminal_specs: list[dict],
+    on_terminal,
+    nudge: str,
+    max_steps: int = DEFAULT_MAX_STEPS,
+):
+    """일반 tool-calling 루프(단일 에이전트·searcher가 공유).
+
+    tool_calls를 리스트로 실행하고, 종료 도구(`terminal_specs`)는 `on_terminal(name, args)`로
+    처리한다. 반환값이 `_Continue`면 오류를 회신하고 계속, 아니면 그 값으로 종료. step 상한 시 None.
+    """
+    toolbox = Toolbox(tools)
+    specs = toolbox.specs() + terminal_specs
+    terminal_names = {s["function"]["name"] for s in terminal_specs}
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+    ]
+    for _ in range(max_steps):
+        turn = llm.complete_with_tools(messages, specs)
+        if not turn.tool_calls:
+            messages.append({"role": "assistant", "content": turn.content or ""})
+            messages.append({"role": "user", "content": nudge})
+            continue
+        messages.append(_assistant_msg(turn))
+        for tc in turn.tool_calls:
+            if tc.name in terminal_names:
+                out = on_terminal(tc.name, tc.arguments)
+                if isinstance(out, _Continue):
+                    messages.append(_tool_msg(tc.id, out.error))
+                else:
+                    return out
+            else:
+                messages.append(_tool_msg(tc.id, toolbox.call(tc.name, tc.arguments)))
+    return None
+
+
 def run_agent(
     ctx: AgentContext,
     llm,
@@ -123,33 +173,22 @@ def run_agent(
     tools: list[Tool],
     max_steps: int = DEFAULT_MAX_STEPS,
 ) -> Verdict:
-    """base 에이전트 루프: 도구 호출 ↔ 관찰 반복, submit_verdict로 종료(step 상한 시 NEI)."""
-    toolbox = Toolbox(tools)
-    specs = toolbox.specs() + [SUBMIT_TOOL_SPEC]
-    messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": f"CLAIM: {ctx.claim.text}"},
-    ]
-    for _ in range(max_steps):
-        turn = llm.complete_with_tools(messages, specs)
-        if not turn.tool_calls:
-            messages.append({"role": "assistant", "content": turn.content or ""})
-            messages.append({"role": "user",
-                             "content": "Call search_evidence to gather evidence, "
-                                        "or submit_verdict to finish."})
-            continue
-        messages.append(_assistant_msg(turn))
-        for tc in turn.tool_calls:
-            if tc.name == "submit_verdict":
-                verdict = _build_verdict(ctx.claim, tc.arguments)
-                if verdict is not None:
-                    return verdict
-                messages.append(_tool_msg(
-                    tc.id, "error: invalid verdict — need label, confidence 0-1, "
-                           "justification, and non-empty cited"))
-            else:
-                messages.append(_tool_msg(tc.id, toolbox.call(tc.name, tc.arguments)))
-    return _fallback_nei(ctx.claim, "step budget exhausted without a verdict")
+    """단일 검증 에이전트 루프: submit_verdict로 종료(step 상한 시 NEI)."""
+
+    def on_terminal(name, args):
+        verdict = _build_verdict(ctx.claim, args)
+        return verdict if verdict is not None else _Continue(
+            "error: invalid verdict — need label, confidence 0-1, "
+            "justification, and non-empty cited")
+
+    result = run_tool_loop(
+        ctx, llm, system_prompt=system_prompt, user_prompt=f"CLAIM: {ctx.claim.text}",
+        tools=tools, terminal_specs=[SUBMIT_TOOL_SPEC], on_terminal=on_terminal,
+        nudge="Call search_evidence to gather evidence, or submit_verdict to finish.",
+        max_steps=max_steps,
+    )
+    return result if result is not None else _fallback_nei(
+        ctx.claim, "step budget exhausted without a verdict")
 
 
 def verify_with_agent(
