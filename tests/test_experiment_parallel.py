@@ -53,3 +53,24 @@ def test_locked_embedder_delegates():
     le = LockedEmbedder(FakeEmbedder(dim=8))
     out = le.encode(["a b", "c"], is_query=True)
     assert out.shape == (2, 8)
+
+
+def test_failure_in_one_claim_does_not_kill_step():
+    """한 claim이 에러를 내도 단계는 완료되고 그 claim만 NEI 폴백."""
+    from trev.schemas import Label5
+
+    class FlakyLLM:
+        def complete_json(self, messages, schema=None):
+            # claim 2의 verify에서만 폭발.
+            if "claim 2" in messages[-1]["content"]:
+                raise RuntimeError("boom")
+            import json
+            return schema.model_validate(json.loads(_verifier_json()))
+
+    claims = _claims(4)
+    res = run_experiments(claims, FakeEmbedder(), FlakyLLM(), index_provider=_index,
+                          tier_config=TIER_CFG, modes=("proposed",), max_workers=1, verbose=False)
+    labels = {p["verdict"].claim_id: p["verdict"].label5 for p in res["proposed"]}
+    assert len(labels) == 4                      # 4개 다 결과 있음(단계 완료)
+    assert labels[2] is Label5.NEI               # 실패한 claim만 NEI 폴백
+    assert labels[0] is not Label5.NEI           # 나머진 정상

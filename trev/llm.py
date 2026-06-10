@@ -140,7 +140,7 @@ class LLM:
 
     @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, max=10))
     def _call(self, messages: list[dict[str, str]]) -> str:
-        kwargs: dict[str, Any] = {"model": self.model, "messages": messages}
+        kwargs: dict[str, Any] = {"model": self.model, "messages": messages, "timeout": 120}
         if self.temperature is not None:
             kwargs["temperature"] = self.temperature
         resp = self.client.chat.completions.create(**kwargs)

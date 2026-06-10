@@ -17,9 +17,9 @@ from trev.data.knowledge_store import load_claim_urls
 from trev.agent.orchestrator import orchestrate
 from trev.eval.recall import classify_retrieval
 from trev.pipeline.retriever import retrieve
-from trev.schemas import Claim, Verdict
+from trev.schemas import Claim, Label5, Verdict
 from trev.pipeline.tier import rank_evidence
-from trev.pipeline.verifier import gpt_only_verdict, run_verifier
+from trev.pipeline.verifier import gpt_only_verdict, run_verifier, to_averitec_label
 
 DEFAULT_MODES = ("gpt_only", "naive_rag", "unweighted_rag", "proposed")
 
@@ -102,32 +102,47 @@ def run_experiments(
         if verbose:
             print(msg, flush=True)
 
+    def _nei_record(claim: Claim, why: str) -> dict:
+        v = Verdict(claim_id=claim.claim_id, label5=Label5.NEI,
+                    averitec_label=to_averitec_label(Label5.NEI), confidence=0.0,
+                    justification=why, cited=[])
+        return {"verdict": v, "retrieved_urls": [], "cost": {}}
+
     def process(item) -> dict:
         i, claim = item
         log(f"[{i}/{total}] claim {claim.claim_id} ({method}) — 처리 시작…")
-        index = index_provider(claim)
+        try:
+            index = index_provider(claim)
+        except Exception as e:  # 인덱스 실패 → 전 조건 NEI(무인 실행 중 한 claim이 단계를 죽이지 않게)
+            log(f"  [{i}/{total}] claim {claim.claim_id} 인덱스 실패: {type(e).__name__}: {e} → NEI")
+            return {mode: _nei_record(claim, f"index error: {e}") for mode in modes}
+
         out: dict[str, dict] = {}
         for mode in modes:
-            if mode in ("agentic", "agentic_no_tier"):
-                verdict, trace = orchestrate(
-                    claim, index, embedder, llm, tier_config=tier_config,
-                    method=method, k=k, candidate_n=candidate_n,
-                    use_tier=(mode == "agentic"))   # ablation: tier 도구·가중 on/off
-                out[mode] = {
-                    "verdict": verdict, "retrieved_urls": trace.retrieved_urls,
-                    "cost": {"steps": trace.steps_used, "tool_calls": trace.tool_calls_used},
-                }
-                log(f"  [{i}/{total}] {mode:16} → {verdict.averitec_label.value} "
-                    f"(tools {trace.tool_calls_used})")
-            else:
-                verdict = predict_claim(claim, index, embedder, llm, mode=mode, method=method,
-                                        tier_config=tier_config, k=k, candidate_n=candidate_n,
-                                        config=config)
-                urls = ranked_topk_urls(claim, index, embedder, mode=mode, method=method,
-                                        tier_config=tier_config, k=k, candidate_n=candidate_n)
-                out[mode] = {"verdict": verdict, "retrieved_urls": urls, "cost": {}}
-                log(f"  [{i}/{total}] {mode:16} → {verdict.averitec_label.value} "
-                    f"(cited {len(verdict.cited)})")
+            try:
+                if mode in ("agentic", "agentic_no_tier"):
+                    verdict, trace = orchestrate(
+                        claim, index, embedder, llm, tier_config=tier_config,
+                        method=method, k=k, candidate_n=candidate_n,
+                        use_tier=(mode == "agentic"))
+                    out[mode] = {
+                        "verdict": verdict, "retrieved_urls": trace.retrieved_urls,
+                        "cost": {"steps": trace.steps_used, "tool_calls": trace.tool_calls_used},
+                    }
+                    log(f"  [{i}/{total}] {mode:16} → {verdict.averitec_label.value} "
+                        f"(tools {trace.tool_calls_used})")
+                else:
+                    verdict = predict_claim(claim, index, embedder, llm, mode=mode, method=method,
+                                            tier_config=tier_config, k=k, candidate_n=candidate_n,
+                                            config=config)
+                    urls = ranked_topk_urls(claim, index, embedder, mode=mode, method=method,
+                                            tier_config=tier_config, k=k, candidate_n=candidate_n)
+                    out[mode] = {"verdict": verdict, "retrieved_urls": urls, "cost": {}}
+                    log(f"  [{i}/{total}] {mode:16} → {verdict.averitec_label.value} "
+                        f"(cited {len(verdict.cited)})")
+            except Exception as e:  # 조건 1개 실패해도 나머지·다른 claim은 계속
+                log(f"  [{i}/{total}] {mode:16} 실패: {type(e).__name__}: {e} → NEI")
+                out[mode] = _nei_record(claim, f"error: {e}")
         return out
 
     items = list(enumerate(claims, 1))

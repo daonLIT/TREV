@@ -3,9 +3,13 @@
 #
 # 사용법:
 #   bash run_all.sh                         # 기본(WORKERS=8 병렬)으로 전체 실행
-#   WORKERS=10 bash run_all.sh              # GPT-5 호출 10개 동시 (rate limit 걸리면 줄이기)
-#   AGENTIC_LIMIT=394 bash run_all.sh       # agentic도 전체
-#   LIMIT=20 AGENTIC_LIMIT=10 bash run_all.sh   # 빠른 스모크
+#   WORKERS=10 bash run_all.sh              # 호출 10개 동시 (rate limit 걸리면 줄이기)
+#   # 추천(mini 등 저비용 모델): baseline·agentic은 394 전체, ablation/N=3만 50 표본
+#   AGENTIC_LIMIT=394 ABLATION_LIMIT=50 N=3 WORKERS=10 bash run_all.sh
+#   LIMIT=20 AGENTIC_LIMIT=10 ABLATION_LIMIT=5 bash run_all.sh   # 빠른 스모크
+#
+# 변수: LIMIT=baseline claim수(빈값=394) · AGENTIC_LIMIT=step3 agentic 표본 ·
+#       ABLATION_LIMIT=step4 ablation/N회 표본(비싸니 작게) · N=반복수 · WORKERS=동시호출수
 #
 # WORKERS = GPT-5 호출 동시 처리 수(claim 병렬). 병목이 API 지연이라 이게 가장 큰 가속.
 # 기본 8 → 전체 실행이 ~하루에서 ~2-3시간으로. 로그에 429/재시도 많으면 줄이기.
@@ -20,7 +24,8 @@ set -uo pipefail
 
 # ── 설정 (환경변수로 덮어쓰기 가능) ─────────────────────────────
 LIMIT="${LIMIT:-}"                    # baseline claim 수 (빈값 = 전체 394)
-AGENTIC_LIMIT="${AGENTIC_LIMIT:-20}"  # agentic 표본 (전체=394는 매우 비쌈)
+AGENTIC_LIMIT="${AGENTIC_LIMIT:-20}"  # step3 agentic 조건 표본
+ABLATION_LIMIT="${ABLATION_LIMIT:-$AGENTIC_LIMIT}"  # step4 ablation(tier on/off·N회) 표본 — 작게 두면 비용↓
 N="${N:-3}"                           # N회 반복 일치율(재현성)
 PY="${PY:-python}"
 # ────────────────────────────────────────────────────────────
@@ -37,7 +42,7 @@ step() { echo; echo "===== [$(date +%H:%M:%S)] $* ====="; }
 limit_arg() { [ -n "$1" ] && printf -- "--limit %s" "$1"; }
 
 echo "TREV 전체 실험 시작 — $TS"
-echo "  baseline claim: ${LIMIT:-전체(394)} | agentic 표본: $AGENTIC_LIMIT | N=$N"
+echo "  baseline: ${LIMIT:-전체(394)} | agentic: $AGENTIC_LIMIT | ablation: $ABLATION_LIMIT | N=$N | workers=${WORKERS:-8}"
 echo "  결과 폴더: $RUN"
 
 step "0) 환경·데이터 점검"
@@ -56,8 +61,8 @@ step "3) agentic 조건 (표본 $AGENTIC_LIMIT)"
 $PY -m scripts.run_experiments --agentic $(limit_arg "$AGENTIC_LIMIT")
 $PY -m scripts.run_eval --method agentic
 
-step "4) 종합 ablation (tier on/off · agentic vs deterministic · N=$N 일치율)"
-$PY -m scripts.agentic_ablation --limit "$AGENTIC_LIMIT" --n "$N"
+step "4) 종합 ablation (tier on/off · agentic vs deterministic · N=$N 일치율, 표본 $ABLATION_LIMIT)"
+$PY -m scripts.agentic_ablation --limit "$ABLATION_LIMIT" --n "$N"
 
 step "5) 산출물 정리 → $RUN"
 cp -f outputs/predictions_*.json outputs/metrics_*.json outputs/agentic_ablation.json "$RUN/" 2>/dev/null || true
