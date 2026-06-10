@@ -22,8 +22,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from trev.schemas import Claim, Evidence, Label5, Stance, Verdict
-from trev.tier import rank_evidence
-from trev.verifier import VerifierOutput, _TO_LABEL5, to_averitec_label
+from trev.pipeline.tier import rank_evidence
+from trev.pipeline.verifier import VerifierOutput, _TO_LABEL5, to_averitec_label
 
 RAG_MODES = ("naive_rag", "unweighted_rag", "proposed")
 

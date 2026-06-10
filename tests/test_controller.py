@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from trev.controller import ControllerConfig, run
+from trev.pipeline.controller import ControllerConfig, run
 from trev.schemas import (
     AveritecLabel,
     Claim,
@@ -14,7 +14,7 @@ from trev.schemas import (
     Stance,
     Verdict,
 )
-from trev.verifier import EvidenceStance, VerifierOutput, to_averitec_label
+from trev.pipeline.verifier import EvidenceStance, VerifierOutput, to_averitec_label
 
 TIER_CFG = {
     "weights": {1: 1.0, 2: 0.7, 3: 0.4, 4: 0.1},

@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from trev.dataset import (
+from trev.data.dataset import (
     conflicting_count,
     load_averitec,
     normalize_claim_type,

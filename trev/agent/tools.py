@@ -12,11 +12,11 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Callable
 
-from trev.indexing import ClaimIndex, Embedder
-from trev.retriever import retrieve_for_queries
+from trev.data.indexing import ClaimIndex, Embedder
+from trev.pipeline.retriever import retrieve_for_queries
 from trev.schemas import Claim, Evidence, Role
-from trev.tier import assign_tier, rank_evidence
-from trev.verifier import run_verifier
+from trev.pipeline.tier import assign_tier, rank_evidence
+from trev.pipeline.verifier import run_verifier
 
 
 @dataclass

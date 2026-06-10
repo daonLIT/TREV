@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from urllib.parse import urlsplit
 
-from trev.knowledge_store import recover_archive_url
+from trev.data.knowledge_store import recover_archive_url
 from trev.schemas import AveritecLabel
 
 

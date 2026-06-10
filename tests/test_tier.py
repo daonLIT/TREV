@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from trev.knowledge_store import claim_source_domains
+from trev.data.knowledge_store import claim_source_domains
 from trev.schemas import Claim, ClaimType
-from trev.tier import classify_domain, is_self_source, subset_domain_frequency
+from trev.pipeline.tier import classify_domain, is_self_source, subset_domain_frequency
 
 KS_DIR = Path(__file__).parent / "fixtures" / "knowledge_store" / "dev"
 

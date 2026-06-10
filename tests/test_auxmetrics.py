@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 
-from trev.auxmetrics import (
+from trev.eval.auxmetrics import (
     approx_averitec_score,
     generate_cited_qa,
     geval_faithfulness,

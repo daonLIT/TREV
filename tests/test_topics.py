@@ -6,7 +6,7 @@ import json
 
 from trev.llm import LLM
 from trev.schemas import Claim, ClaimType
-from trev.topics import (
+from trev.eval.topics import (
     LLMTopicClassifier,
     Topic,
     tag_claims,

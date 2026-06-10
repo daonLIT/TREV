@@ -14,10 +14,10 @@ import pytest
 from dotenv import load_dotenv
 
 from trev.config import load_config
-from trev.dataset import load_averitec, load_gold_evidence
+from trev.data.dataset import load_averitec, load_gold_evidence
 from trev.llm import LLM
 from trev.schemas import AveritecLabel, Label5
-from trev.verifier import verify
+from trev.pipeline.verifier import verify
 
 load_dotenv()
 

@@ -14,7 +14,7 @@ import random
 from collections import Counter
 from pathlib import Path
 
-from trev.dataset import CONFLICTING_QUANT_THRESHOLD
+from trev.data.dataset import CONFLICTING_QUANT_THRESHOLD
 from trev.schemas import AveritecLabel, Claim
 
 VALID_LABEL5 = {"PARTIAL", "CONFLICT"}  # Conflicting 세분 라벨

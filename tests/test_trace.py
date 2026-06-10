@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from trev.indexing import ClaimIndex
+from trev.data.indexing import ClaimIndex
 from trev.llm import AssistantTurn, ToolCallRequest
-from trev.orchestrator import orchestrate
+from trev.agent.orchestrator import orchestrate
 from trev.schemas import AgentTrace, Claim, ClaimType, Passage
 from tests.test_indexing import FakeEmbedder
 

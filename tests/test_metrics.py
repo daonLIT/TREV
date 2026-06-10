@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from trev.metrics import (
+from trev.eval.metrics import (
     accuracy,
     citation_rate,
     evaluate,

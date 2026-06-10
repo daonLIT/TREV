@@ -17,7 +17,7 @@ from collections import Counter
 
 from pydantic import BaseModel, Field
 
-from trev.knowledge_store import DEFAULT_KS_DIR, extract_domain, load_claim_urls
+from trev.data.knowledge_store import DEFAULT_KS_DIR, extract_domain, load_claim_urls
 from trev.schemas import Claim, ClaimType, Evidence, Role
 
 DEFAULT_TIER = 4

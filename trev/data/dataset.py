@@ -13,7 +13,7 @@ from datetime import datetime
 from pathlib import Path
 
 from trev.guards import assert_data_file_allowed
-from trev.knowledge_store import (
+from trev.data.knowledge_store import (
     claim_source_domains,
     derive_published_at,
     extract_domain,

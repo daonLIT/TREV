@@ -19,7 +19,7 @@ from pathlib import Path
 
 import numpy as np
 
-from trev.knowledge_store import (
+from trev.data.knowledge_store import (
     DEFAULT_KS_DIR,
     derive_published_at,
     extract_domain,

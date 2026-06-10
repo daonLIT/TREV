@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from trev.annotation import (
+from trev.eval.annotation import (
     cohens_kappa,
     export_conflicting_for_refinement,
     export_topic_sample,

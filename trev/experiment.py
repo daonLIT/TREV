@@ -9,17 +9,17 @@ per-claim 인덱스는 claim당 1회 빌드해 4조건이 공유한다(불필요
 
 from __future__ import annotations
 
-from trev import controller
-from trev.controller import ControllerConfig
-from trev.dataset import gold_source_urls
-from trev.indexing import ClaimIndex, Embedder
-from trev.knowledge_store import load_claim_urls
-from trev.orchestrator import orchestrate
-from trev.recall import classify_retrieval
-from trev.retriever import retrieve
+from trev.pipeline import controller
+from trev.pipeline.controller import ControllerConfig
+from trev.data.dataset import gold_source_urls
+from trev.data.indexing import ClaimIndex, Embedder
+from trev.data.knowledge_store import load_claim_urls
+from trev.agent.orchestrator import orchestrate
+from trev.eval.recall import classify_retrieval
+from trev.pipeline.retriever import retrieve
 from trev.schemas import Claim, Verdict
-from trev.tier import rank_evidence
-from trev.verifier import gpt_only_verdict, run_verifier
+from trev.pipeline.tier import rank_evidence
+from trev.pipeline.verifier import gpt_only_verdict, run_verifier
 
 DEFAULT_MODES = ("gpt_only", "naive_rag", "unweighted_rag", "proposed")
 

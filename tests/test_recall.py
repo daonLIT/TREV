@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from trev.recall import (
+from trev.eval.recall import (
     classify_retrieval,
     normalize_url,
     precision_at_k,

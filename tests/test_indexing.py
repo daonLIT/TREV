@@ -7,13 +7,13 @@ from pathlib import Path
 
 import numpy as np
 
-from trev.indexing import (
+from trev.data.indexing import (
     ClaimIndex,
     build_claim_chunks,
     build_claim_index,
     chunk_passages,
 )
-from trev.knowledge_store import load_claim_passages
+from trev.data.knowledge_store import load_claim_passages
 from trev.schemas import Passage
 
 KS_DIR = Path(__file__).parent / "fixtures" / "knowledge_store" / "dev"

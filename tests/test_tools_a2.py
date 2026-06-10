@@ -4,11 +4,11 @@ from __future__ import annotations
 
 import json
 
-from trev.agent import VERIFIER_SYSTEM, run_agent
-from trev.indexing import ClaimIndex
+from trev.agent.agent import VERIFIER_SYSTEM, run_agent
+from trev.data.indexing import ClaimIndex
 from trev.llm import LLM, AssistantTurn, ToolCallRequest
 from trev.schemas import AveritecLabel, Claim, ClaimType, Label5, Passage, Role
-from trev.tools import (
+from trev.agent.tools import (
     AgentContext,
     make_assess_source_tier_tool,
     make_rank_by_tier_tool,

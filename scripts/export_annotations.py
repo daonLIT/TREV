@@ -3,7 +3,7 @@
 - 토픽 검수 표본 200건 → outputs/annotations/topic_sample.csv (human_topic 채우기)
 - Conflicting 5라벨 세분 → outputs/annotations/conflicting_5label.csv (PARTIAL/CONFLICT)
 
-사람이 CSV를 채운 뒤 trev.annotation.topic_agreement / ingest_5label로 취합한다.
+사람이 CSV를 채운 뒤 trev.eval.annotation.topic_agreement / ingest_5label로 취합한다.
 실행: python -m scripts.export_annotations
 """
 
@@ -11,15 +11,15 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from trev.annotation import (
+from trev.eval.annotation import (
     export_conflicting_for_refinement,
     export_topic_sample,
     refinement_branch,
     write_csv,
 )
 from trev.config import load_config
-from trev.dataset import load_averitec
-from trev.topics import tag_claims
+from trev.data.dataset import load_averitec
+from trev.eval.topics import tag_claims
 
 OUT = Path(__file__).resolve().parent.parent / "outputs" / "annotations"
 

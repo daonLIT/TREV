@@ -10,7 +10,7 @@ from trev.experiment import (
     predictions_to_records,
     run_experiments,
 )
-from trev.indexing import ClaimIndex
+from trev.data.indexing import ClaimIndex
 from trev.llm import LLM
 from trev.schemas import AveritecLabel, Claim, ClaimType, Passage
 from tests.test_indexing import FakeEmbedder

@@ -9,7 +9,7 @@ from __future__ import annotations
 import argparse
 
 from trev.config import load_config
-from trev.indexing import E5Embedder, build_claim_index
+from trev.data.indexing import E5Embedder, build_claim_index
 
 
 def main() -> None:

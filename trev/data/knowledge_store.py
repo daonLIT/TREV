@@ -127,7 +127,7 @@ def load_claim_passages(
     """claim_id에 매핑된 `{claim_id}.json`의 passage들을 추출한다.
 
     url2text element를 Passage로 펼친 뒤 (url, text) 기준으로 dedup한다. 인덱싱은
-    이 전체 목록 대신 스트리밍 청커(`trev.indexing.build_claim_chunks`)를 쓴다(대용량).
+    이 전체 목록 대신 스트리밍 청커(`trev.data.indexing.build_claim_chunks`)를 쓴다(대용량).
     """
     passages: list[Passage] = []
     seen: set[tuple[str, str]] = set()

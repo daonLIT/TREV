@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-from trev.agent import run_agent, verify_with_agent, VERIFIER_SYSTEM
-from trev.indexing import ClaimIndex
+from trev.agent.agent import run_agent, verify_with_agent, VERIFIER_SYSTEM
+from trev.data.indexing import ClaimIndex
 from trev.llm import AssistantTurn, ToolCallRequest
 from trev.schemas import AveritecLabel, Claim, ClaimType, Label5, Passage
-from trev.tools import AgentContext, Toolbox, make_search_evidence_tool
+from trev.agent.tools import AgentContext, Toolbox, make_search_evidence_tool
 from tests.test_indexing import FakeEmbedder
 
 

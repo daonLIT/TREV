@@ -8,7 +8,7 @@ import pytest
 
 from trev.llm import LLM
 from trev.schemas import Claim, ClaimType, Evidence, Role
-from trev.tier import (
+from trev.pipeline.tier import (
     DEFAULT_WEIGHTS,
     LLMDomainClassifier,
     assign_tier,

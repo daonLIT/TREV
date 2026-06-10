@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from collections import Counter
 
-from trev.recall import precision_at_k, recall_at_k
+from trev.eval.recall import precision_at_k, recall_at_k
 
 
 def accuracy(pred_labels, gold_labels) -> float:

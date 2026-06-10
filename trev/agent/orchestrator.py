@@ -12,17 +12,17 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Field
 
-from trev.agent import Budget, run_tool_loop
-from trev.controller import _high_tier_stance_conflict
+from trev.agent.agent import Budget, run_tool_loop
+from trev.pipeline.controller import _high_tier_stance_conflict
 from trev.schemas import AgentStep, AgentTrace, Claim, Label5, Verdict
-from trev.tier import rank_evidence
-from trev.tools import (
+from trev.pipeline.tier import rank_evidence
+from trev.agent.tools import (
     AgentContext,
     make_assess_source_tier_tool,
     make_rank_by_tier_tool,
     make_search_evidence_tool,
 )
-from trev.verifier import VerifierOutput, _TO_LABEL5, run_verifier, to_averitec_label
+from trev.pipeline.verifier import VerifierOutput, _TO_LABEL5, run_verifier, to_averitec_label
 
 DEFAULT_SEARCH_STEPS = 6
 

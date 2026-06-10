@@ -8,7 +8,7 @@ import pytest
 
 from trev.llm import LLM
 from trev.schemas import AveritecLabel, Claim, ClaimType, Evidence, Label5
-from trev.verifier import to_averitec_label, verify
+from trev.pipeline.verifier import to_averitec_label, verify
 from tests.test_llm import FakeClient
 
 

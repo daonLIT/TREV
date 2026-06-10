@@ -12,8 +12,8 @@ from __future__ import annotations
 from pathlib import Path
 
 from trev.config import load_config
-from trev.dataset import load_averitec
-from trev.tier import classify_domain, subset_domain_frequency
+from trev.data.dataset import load_averitec
+from trev.pipeline.tier import classify_domain, subset_domain_frequency
 
 OUT = Path(__file__).resolve().parent.parent / "docs" / "domain_frequency.md"
 

@@ -18,7 +18,7 @@ from pydantic import BaseModel, Field, ValidationError
 
 from trev.llm import AssistantTurn
 from trev.schemas import AgentStep, AgentTrace, Claim, Label5, ToolCall, Verdict
-from trev.tools import (
+from trev.agent.tools import (
     AgentContext,
     Tool,
     Toolbox,
@@ -27,7 +27,7 @@ from trev.tools import (
     make_search_evidence_tool,
     make_verify_claim_tool,
 )
-from trev.verifier import VerifierLabel, _TO_LABEL5, to_averitec_label
+from trev.pipeline.verifier import VerifierLabel, _TO_LABEL5, to_averitec_label
 
 DEFAULT_MAX_STEPS = 8
 

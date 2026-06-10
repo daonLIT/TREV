@@ -4,14 +4,14 @@ from __future__ import annotations
 
 import pytest
 
-from trev.ablation import agreement_rate, compare_methods
+from trev.eval.ablation import agreement_rate, compare_methods
 from trev.experiment import labels_by_claim, predictions_to_records, run_experiments
-from trev.indexing import ClaimIndex
+from trev.data.indexing import ClaimIndex
 from trev.llm import AssistantTurn, ToolCallRequest
-from trev.metrics import evaluate
-from trev.orchestrator import search_claim, Plan
+from trev.eval.metrics import evaluate
+from trev.agent.orchestrator import search_claim, Plan
 from trev.schemas import AveritecLabel, Claim, ClaimType, Passage
-from trev.tools import AgentContext
+from trev.agent.tools import AgentContext
 from tests.test_indexing import FakeEmbedder
 
 TIER_CFG = {"weights": {1: 1.0, 2: 0.7, 3: 0.4, 4: 0.1}, "overrides": {},

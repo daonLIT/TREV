@@ -11,7 +11,7 @@ from enum import Enum
 
 from pydantic import BaseModel
 
-from trev.metrics import macro_f1
+from trev.eval.metrics import macro_f1
 from trev.schemas import Claim
 
 

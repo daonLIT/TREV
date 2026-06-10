@@ -6,7 +6,7 @@
 from __future__ import annotations
 
 from trev.config import load_config
-from trev.dataset import load_averitec, subset_gate
+from trev.data.dataset import load_averitec, subset_gate
 
 
 def main() -> None:

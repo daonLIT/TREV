@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from trev.indexing import ClaimIndex
-from trev.retriever import build_queries, passes_time_filter, retrieve
+from trev.data.indexing import ClaimIndex
+from trev.pipeline.retriever import build_queries, passes_time_filter, retrieve
 from trev.schemas import Claim, ClaimType, Passage
 from tests.test_indexing import FakeEmbedder
 

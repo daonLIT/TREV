@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from trev.knowledge_store import (
+from trev.data.knowledge_store import (
     derive_published_at,
     extract_domain,
     load_claim_passages,

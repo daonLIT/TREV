@@ -14,7 +14,7 @@ G0 주의: 검색 코퍼스의 published_at 커버리지는 사실상 0%(아카�
 
 from __future__ import annotations
 
-from trev.indexing import ClaimIndex, Embedder
+from trev.data.indexing import ClaimIndex, Embedder
 from trev.schemas import Claim, ClaimType, Evidence
 
 # claim type별 질의 템플릿(2~3개). `{c}` = claim 텍스트.

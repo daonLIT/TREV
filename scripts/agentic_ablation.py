@@ -16,18 +16,18 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from trev.ablation import agreement_rate, compare_methods
+from trev.eval.ablation import agreement_rate, compare_methods
 from trev.config import load_config
-from trev.dataset import load_averitec
+from trev.data.dataset import load_averitec
 from trev.experiment import (
     labels_by_claim,
     predictions_to_records,
     run_experiments,
 )
-from trev.indexing import ClaimIndex, E5Embedder, build_claim_index
+from trev.data.indexing import ClaimIndex, E5Embedder, build_claim_index
 from trev.llm import LLM
-from trev.metrics import evaluate
-from trev.topics import tag_claims, topic_breakdown
+from trev.eval.metrics import evaluate
+from trev.eval.topics import tag_claims, topic_breakdown
 
 REPO = Path(__file__).resolve().parent.parent
 INDEX_DIR = REPO / "index"

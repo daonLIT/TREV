@@ -11,7 +11,7 @@
 
 from __future__ import annotations
 
-from trev.metrics import macro_f1
+from trev.eval.metrics import macro_f1
 
 # 4라벨 → 3라벨 축약(상충/과장 구분을 버림): Conflicting → NEI.
 _TO_3LABEL = {

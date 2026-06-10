@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from trev.indexing import ClaimIndex
+from trev.data.indexing import ClaimIndex
 from trev.llm import AssistantTurn, ToolCallRequest
-from trev.orchestrator import orchestrate
+from trev.agent.orchestrator import orchestrate
 from trev.schemas import Claim, ClaimType, Label5, Passage
 from tests.test_indexing import FakeEmbedder
 
@@ -88,7 +88,7 @@ def test_tool_budget_caps_search():
     class CappedLLM:
         def __init__(self): self._v = [_GOOD]
         def complete_json(self, messages, schema=None):
-            from trev.orchestrator import Plan
+            from trev.agent.orchestrator import Plan
             if schema is Plan:
                 return schema.model_validate({"sub_questions": ["q"]})
             return schema.model_validate(self._v.pop(0))

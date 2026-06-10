@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from trev.ablation import (
+from trev.eval.ablation import (
     agreement_rate,
     compare_methods,
     granularity_macro_f1,

@@ -15,9 +15,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from trev.config import load_config
-from trev.dataset import load_averitec
+from trev.data.dataset import load_averitec
 from trev.experiment import DEFAULT_MODES, predictions_to_records, run_experiments
-from trev.indexing import E5Embedder, ClaimIndex, build_claim_index
+from trev.data.indexing import E5Embedder, ClaimIndex, build_claim_index
 from trev.llm import LLM
 
 REPO = Path(__file__).resolve().parent.parent

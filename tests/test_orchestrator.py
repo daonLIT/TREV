@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-from trev.indexing import ClaimIndex
+from trev.data.indexing import ClaimIndex
 from trev.llm import AssistantTurn, ToolCallRequest
-from trev.orchestrator import Plan, orchestrate, plan_claim, search_claim
+from trev.agent.orchestrator import Plan, orchestrate, plan_claim, search_claim
 from trev.schemas import AveritecLabel, Claim, ClaimType, Label5, Passage
-from trev.tools import AgentContext
+from trev.agent.tools import AgentContext
 from tests.test_indexing import FakeEmbedder
 
 TIER_CFG = {
