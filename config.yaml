@@ -1,0 +1,13 @@
+# TREV 설정. S0에서는 LLM·데이터 계약 최소값만 정의하고,
+# tier 화이트리스트(D3/#19)·검색 파라미터(S3/#5)는 해당 슬라이스에서 추가한다.
+
+llm:
+  # HAI-GPT 게이트웨이 모델. GPT-5 게이트(G1)는 이 모델로 ping한다.
+  model: gpt-5
+  temperature: 0
+  max_retries: 3
+
+data:
+  split: dev                      # 평가는 dev only (test/test_2025/train 차단 — trev.guards)
+  # claim type 필터: Numerical + Event/Property. 표본 부족 시 Quote Verification 보조 포함.
+  include_quote_verification: false
