@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import os
+from dataclasses import dataclass, field
 from typing import Any, TypeVar
 
 from pydantic import BaseModel, ValidationError
@@ -23,6 +24,26 @@ from trev.config import load_config
 T = TypeVar("T", bound=BaseModel)
 
 DEFAULT_BASE_URL = "https://factchat-cloud.mindlogic.ai/v1/gateway"
+
+# tool-calling은 게이트웨이가 ~40s 걸릴 수 있어(G-agent 실측) 넉넉한 timeout을 둔다.
+TOOL_CALL_TIMEOUT = 180
+
+
+@dataclass
+class ToolCallRequest:
+    """LLM이 요청한 단일 도구 호출(정규화 — SDK 객체 누출 없음)."""
+
+    id: str
+    name: str
+    arguments: dict
+
+
+@dataclass
+class AssistantTurn:
+    """tool-calling 1턴의 어시스턴트 응답: 도구 호출들 또는 최종 텍스트."""
+
+    content: str | None = None
+    tool_calls: list[ToolCallRequest] = field(default_factory=list)
 
 
 class LLMError(Exception):
@@ -124,6 +145,30 @@ class LLM:
             kwargs["temperature"] = self.temperature
         resp = self.client.chat.completions.create(**kwargs)
         return resp.choices[0].message.content
+
+    @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, max=10))
+    def complete_with_tools(
+        self, messages: list[dict], tools: list[dict], *, tool_choice: str = "auto"
+    ) -> AssistantTurn:
+        """tools(JSON-Schema)와 함께 호출하고, 정규화된 AssistantTurn을 반환한다.
+
+        병렬 tool_calls(GPT-5 실측)를 리스트로 파싱한다. 도구 호출이 없으면 최종 텍스트.
+        """
+        kwargs: dict[str, Any] = {
+            "model": self.model, "messages": messages,
+            "tools": tools, "tool_choice": tool_choice, "timeout": TOOL_CALL_TIMEOUT,
+        }
+        if self.temperature is not None:
+            kwargs["temperature"] = self.temperature
+        msg = self.client.chat.completions.create(**kwargs).choices[0].message
+        calls = [
+            ToolCallRequest(
+                id=tc.id, name=tc.function.name,
+                arguments=json.loads(tc.function.arguments or "{}"),
+            )
+            for tc in (getattr(msg, "tool_calls", None) or [])
+        ]
+        return AssistantTurn(content=msg.content, tool_calls=calls)
 
 
 def _strip_code_fence(text: str) -> str:

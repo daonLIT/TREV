@@ -72,15 +72,30 @@ def retrieve(
     """
     if mode == "gpt_only":
         return []
-
     n = candidate_n * 2 if expand else candidate_n
-    # 여러 질의 템플릿 결과를 (url, text) 기준으로 병합(최고 점수 유지).
+    return retrieve_for_queries(
+        claim, index, embedder, build_queries(claim),
+        method=method, k=k, candidate_n=n,
+    )
+
+
+def retrieve_for_queries(
+    claim: Claim,
+    index: ClaimIndex,
+    embedder: Embedder,
+    queries: list[str],
+    *,
+    method: str = "dense",
+    k: int = 10,
+    candidate_n: int = 50,
+) -> list[Evidence]:
+    """임의 질의 리스트로 검색 → 시점 필터 → top-k Evidence(에이전트 search 도구가 사용)."""
     best: dict[tuple[str, str], tuple] = {}
-    for query in build_queries(claim):
+    for query in queries:
         hits = (
-            index.search_bm25(query, k=n)
+            index.search_bm25(query, k=candidate_n)
             if method == "bm25"
-            else index.search_dense(query, embedder, k=n)
+            else index.search_dense(query, embedder, k=candidate_n)
         )
         for hit in hits:
             key = (hit.passage.url, hit.passage.text)
