@@ -1,0 +1,73 @@
+{
+  "gpt_only": {
+    "n": 5,
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "recall@10": 0.0,
+    "precision@10": null,
+    "n_with_gold": 5,
+    "citation": {
+      "rate": 0.0,
+      "uncited": 5,
+      "n": 5
+    },
+    "retrieval_breakdown": {
+      "retrieval_failure": 5
+    },
+    "avg_tool_calls": null
+  },
+  "naive_rag": {
+    "n": 5,
+    "accuracy": 0.4,
+    "macro_f1": 0.28571428571428575,
+    "recall@10": 0.3,
+    "precision@10": 0.06000000000000001,
+    "n_with_gold": 5,
+    "citation": {
+      "rate": 0.6,
+      "uncited": 2,
+      "n": 5
+    },
+    "retrieval_breakdown": {
+      "retrieved": 2,
+      "retrieval_failure": 3
+    },
+    "avg_tool_calls": null
+  },
+  "unweighted_rag": {
+    "n": 5,
+    "accuracy": 0.4,
+    "macro_f1": 0.28571428571428575,
+    "recall@10": 0.3,
+    "precision@10": 0.06000000000000001,
+    "n_with_gold": 5,
+    "citation": {
+      "rate": 0.6,
+      "uncited": 2,
+      "n": 5
+    },
+    "retrieval_breakdown": {
+      "retrieved": 2,
+      "retrieval_failure": 3
+    },
+    "avg_tool_calls": null
+  },
+  "proposed": {
+    "n": 5,
+    "accuracy": 0.4,
+    "macro_f1": 0.28571428571428575,
+    "recall@10": 0.2,
+    "precision@10": 0.02,
+    "n_with_gold": 5,
+    "citation": {
+      "rate": 0.6,
+      "uncited": 2,
+      "n": 5
+    },
+    "retrieval_breakdown": {
+      "retrieval_failure": 4,
+      "retrieved": 1
+    },
+    "avg_tool_calls": null
+  }
+}

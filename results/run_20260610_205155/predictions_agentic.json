@@ -1,0 +1,114 @@
+[
+  {
+    "claim_id": 0,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e10",
+      "e2",
+      "e8",
+      "e0",
+      "e3"
+    ],
+    "retrieved_urls": [
+      "https://www.snopes.com/fact-check/false-sean-connery-letter-to-apple/",
+      "https://www.businessinsider.com/james-bond-sean-connery-steve-jobs-apple-letter-2011-6",
+      "https://www.dailymail.co.uk/news/article-2006317/Sean-Connery-letter-Steve-Jobs-rejecting-offer-appear-Apple-ad-revealed-fake.html",
+      "https://www.cnet.com/culture/fake-sean-connery-letter-to-steve-jobs-goes-viral/",
+      "https://www.mi6-hq.com/news/index.php?itemid=9532",
+      "https://www.dailymail.co.uk/news/article-2006317/Sean-Connery-letter-Steve-Jobs-rejecting-offer-appear-Apple-ad-revealed-fake.html",
+      "https://www.dailymail.co.uk/news/article-2006317/Sean-Connery-letter-Steve-Jobs-rejecting-offer-appear-Apple-ad-revealed-fake.html",
+      "https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/",
+      "https://blog.aventure-apple.com/2019/03/02/sean-connery-a-t-il-envoye-balader-steve-jobs/",
+      "https://www.telegraph.co.uk/culture/film/jamesbond/8589096/Fake-Sean-Connery-letter-to-Steve-Jobs-becomes-Twitter-sensation.html"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201129141238/https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/",
+      "https://web.archive.org/web/20201202085933/https://scoopertino.com/about-scoopertino/"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 6
+    }
+  },
+  {
+    "claim_id": 1,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.9,
+    "cited": [
+      "e11",
+      "e12",
+      "e0",
+      "e3",
+      "e5",
+      "e6",
+      "e8",
+      "e9",
+      "e13",
+      "e14"
+    ],
+    "retrieved_urls": [
+      "https://www.justice.gov/storage/120919-examination.pdf",
+      "https://www.complex.com/music/a/tracewilliamcowen/leaked-trump-admin-document-billie-eilish-destroying-our-country",
+      "https://www.vulture.com/2020/10/trump-administration-approved-celebrities-covid-ad.html",
+      "https://money.yahoo.com/leaked-trump-admin-document-describes-191559664.html",
+      "https://finance.yahoo.com/news/leaked-trump-admin-document-describes-191559664.html",
+      "https://medium.com/everythings-interesting/no-the-trump-administration-didnt-accuse-billie-eilish-of-destroying-our-country-3771ad9361b6",
+      "https://consequence.net/2020/10/billie-eilish-destroying-country-leaked-trump/",
+      "https://www.nylon.com/entertainment/billie-eilish-trump-covid-ad",
+      "https://www.nme.com/news/music/trump-admin-says-billie-eilish-is-destroying-our-country-and-everything-we-care-about-2803852",
+      "https://hollywoodlife.com/2020/10/29/donald-trump-administration-attacks-billie-eilish-destroying-our-country/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201101145631/https://nypost.com/2020/10/30/washington-post-wrongly-claims-trump-officials-criticized-billie-eilish/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 6
+    }
+  },
+  {
+    "claim_id": 2,
+    "mode": "agentic",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.82,
+    "cited": [
+      "e0",
+      "e1",
+      "e6",
+      "e7"
+    ],
+    "retrieved_urls": [
+      "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/lost-stolen-visas.html",
+      "https://www.cbp.gov/travel/international-visitors/electronic-visa-update-system-evus/frequently-asked-questions",
+      "https://pubmed.ncbi.nlm.nih.gov/30679368/",
+      "https://www.europarl.europa.eu/RegData/etudes/STUD/2020/653621/EXPO_STU(2020)653621_EN.pdf",
+      "https://time.com/5793021/twitter-verified-fake-candidate/",
+      "https://www.aljazeera.com/news/2020/10/25/social-meboycott-french-products-online-against-macrons-islam",
+      "https://www.cnn.com/2020/02/28/tech/fake-twitter-candidate-2020/index.html",
+      "https://www.cnn.com/2020/02/28/tech/fake-twitter-candidate-2020/index.html",
+      "https://time.com/5793021/twitter-verified-fake-candidate/",
+      "https://www.cnn.com/2020/02/28/tech/fake-twitter-candidate-2020/index.html"
+    ],
+    "gold_urls": [
+      "https://www.aljazeera.com/news/2020/10/26/french-president-comments-over-islam-keep-sparking-outrage",
+      "https://web.archive.org/web/20210905081440/https://twitter.com/ImranKhanPTI/status/1320286665785704448",
+      "https://web.archive.org/web/20210629013122/https://twitter.com/PakConsulateFr/status/1322495811993903104"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 6
+    }
+  }
+]

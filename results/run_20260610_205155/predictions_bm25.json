@@ -1,0 +1,536 @@
+[
+  {
+    "claim_id": 0,
+    "mode": "gpt_only",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.88,
+    "cited": [],
+    "retrieved_urls": [],
+    "gold_urls": [
+      "https://web.archive.org/web/20201129141238/https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/",
+      "https://web.archive.org/web/20201202085933/https://scoopertino.com/about-scoopertino/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 1,
+    "mode": "gpt_only",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.84,
+    "cited": [],
+    "retrieved_urls": [],
+    "gold_urls": [
+      "https://web.archive.org/web/20201101145631/https://nypost.com/2020/10/30/washington-post-wrongly-claims-trump-officials-criticized-billie-eilish/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 2,
+    "mode": "gpt_only",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.86,
+    "cited": [],
+    "retrieved_urls": [],
+    "gold_urls": [
+      "https://www.aljazeera.com/news/2020/10/26/french-president-comments-over-islam-keep-sparking-outrage",
+      "https://web.archive.org/web/20210905081440/https://twitter.com/ImranKhanPTI/status/1320286665785704448",
+      "https://web.archive.org/web/20210629013122/https://twitter.com/PakConsulateFr/status/1322495811993903104"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 3,
+    "mode": "gpt_only",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.9,
+    "cited": [],
+    "retrieved_urls": [],
+    "gold_urls": [
+      "https://www.familytreedna.com/groups/nadar/about/background",
+      "https://www.independent.co.uk/news/science/world-s-most-ancient-race-traced-in-dna-study-1677113.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 4,
+    "mode": "gpt_only",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.86,
+    "cited": [],
+    "retrieved_urls": [],
+    "gold_urls": [
+      "https://erau.edu/gaetz-aerospace-institute/about/don-gaetz",
+      "https://www.celebritynetworth.com/richest-politicians/republicans/don-gaetz-net-worth/",
+      "https://web.archive.org/web/20210713185816/http://ir.chemed.com/news-releases/news-release-details/roto-rooter-inc-completes-merger-vitas-healthcare-corporation"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 0,
+    "mode": "naive_rag",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.93,
+    "cited": [
+      "0-3",
+      "0-5",
+      "0-1",
+      "0-0",
+      "0-4"
+    ],
+    "retrieved_urls": [
+      "https://www.dailymail.co.uk/news/article-2006317/Sean-Connery-letter-Steve-Jobs-rejecting-offer-appear-Apple-ad-revealed-fake.html",
+      "https://www.businessinsider.com/james-bond-sean-connery-steve-jobs-apple-letter-2011-6",
+      "https://www.dailymail.co.uk/news/article-2006317/Sean-Connery-letter-Steve-Jobs-rejecting-offer-appear-Apple-ad-revealed-fake.html",
+      "https://www.snopes.com/fact-check/false-sean-connery-letter-to-apple/",
+      "https://www.mi6-hq.com/news/index.php?itemid=9532",
+      "https://www.cnet.com/culture/fake-sean-connery-letter-to-steve-jobs-goes-viral/",
+      "https://maclalala2.wordpress.com/2011/06/24/%E3%81%9F%E3%81%8B%E3%81%8C%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%9E%E3%83%B3%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB%E3%82%B8%E3%82%A7%E3%83%BC/",
+      "https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/",
+      "https://maclalala2.wordpress.com/2011/06/24/%E3%81%9F%E3%81%8B%E3%81%8C%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%9E%E3%83%B3%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB%E3%82%B8%E3%82%A7%E3%83%BC/",
+      "https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201129141238/https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/",
+      "https://web.archive.org/web/20201202085933/https://scoopertino.com/about-scoopertino/"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {}
+  },
+  {
+    "claim_id": 1,
+    "mode": "naive_rag",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.0,
+    "cited": [],
+    "retrieved_urls": [
+      "https://nypost.com/2020/10/30/washington-post-wrongly-claims-trump-officials-criticized-billie-eilish/",
+      "https://medium.com/everythings-interesting/no-the-trump-administration-didnt-accuse-billie-eilish-of-destroying-our-country-3771ad9361b6",
+      "https://www.businessinsider.com/billie-eilish-destroying-country-donald-trump-administration-leaked-documents-2020-10",
+      "https://www.thefader.com/2020/10/29/report-trump-admin-document-says-billie-eilish-is-destroying-our-country-and-everything-we-care-about",
+      "https://www.tmz.com/2020/10/29/billie-eilish-trump-document-ripped-leaked-destroying-our-country/",
+      "https://www.businessinsider.nl/the-trump-administration-accused-billie-eilish-of-destroying-our-country-and-everything-we-care-about-in-newly-leaked-documents/",
+      "https://consequence.net/2020/10/billie-eilish-destroying-country-leaked-trump/",
+      "https://money.yahoo.com/leaked-trump-admin-document-describes-191559664.html",
+      "https://finance.yahoo.com/news/leaked-trump-admin-document-describes-191559664.html",
+      "https://www.nme.com/news/music/trump-admin-says-billie-eilish-is-destroying-our-country-and-everything-we-care-about-2803852"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201101145631/https://nypost.com/2020/10/30/washington-post-wrongly-claims-trump-officials-criticized-billie-eilish/"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {}
+  },
+  {
+    "claim_id": 2,
+    "mode": "naive_rag",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.74,
+    "cited": [
+      "2-0",
+      "2-3",
+      "2-6"
+    ],
+    "retrieved_urls": [
+      "https://www.dw.com/en/pakistans-imran-khan-slams-french-president-macrons-views-on-islam/a-55394035",
+      "https://www.parhlo.com/pm-imran-erdogan-muslims-slam-macron/",
+      "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Nepal.html",
+      "https://news.sky.com/story/france-urges-arab-nations-to-stop-boycotts-of-french-products-over-macrons-defence-of-prophet-cartoons-12114843",
+      "https://www.dw.com/en/opinion-erdogan-and-khan-are-hypocritical-about-macrons-france/a-55408436",
+      "https://www.cbsnews.com/news/lilttle-pygmy-pakistan-minister-brands-us-envoy-in-twitter-back-and-forth/",
+      "https://www.bbc.co.uk/news/world-europe-54683738",
+      "https://www.bbc.com/news/world-europe-54683738",
+      "http://chicago.china-consulate.gov.cn/eng/xw/201910/t20191014_4658395.htm",
+      "http://www.irdiplomacy.ir/en/news/1983044/achievements-of-imran-khan-s-visit-to-iran"
+    ],
+    "gold_urls": [
+      "https://www.aljazeera.com/news/2020/10/26/french-president-comments-over-islam-keep-sparking-outrage",
+      "https://web.archive.org/web/20210905081440/https://twitter.com/ImranKhanPTI/status/1320286665785704448",
+      "https://web.archive.org/web/20210629013122/https://twitter.com/PakConsulateFr/status/1322495811993903104"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 3,
+    "mode": "naive_rag",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.0,
+    "cited": [],
+    "retrieved_urls": [
+      "https://www.wikiwand.com/en/Nadar_(caste)",
+      "https://www.library.upenn.edu/news/diversity-stacks-ethnicity",
+      "https://www.visitnorway.com/places-to-go/unesco-world-heritage-sites/",
+      "http://www.nadarsangam.com/history.html",
+      "https://tulu-research.blogspot.com/2010/01/222-nadava-evolution-outline.html",
+      "https://desiweddingbells.wordpress.com/2016/04/21/some-twists-you-can-add-to-your-traditional-nadar-wedding-customs/",
+      "https://www.nadarcommunity.com/",
+      "https://en.wikipedia.org/wiki/Nadar_(caste)",
+      "https://en-academic.com/dic.nsf/enwiki/484798",
+      "https://hcl.com/leadership/"
+    ],
+    "gold_urls": [
+      "https://www.familytreedna.com/groups/nadar/about/background",
+      "https://www.independent.co.uk/news/science/world-s-most-ancient-race-traced-in-dna-study-1677113.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 4,
+    "mode": "naive_rag",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.93,
+    "cited": [
+      "4-3",
+      "4-1",
+      "4-0"
+    ],
+    "retrieved_urls": [
+      "https://www.tampabay.com/florida-politics/buzz/2019/11/04/politifact-facebook-post-says-matt-gaetz-has-numerous-duis-its-wrong/",
+      "https://www.factcheck.org/2019/10/misleading-posts-target-gop-rep-matt-gaetz/",
+      "https://www.politifact.com/factchecks/2019/nov/01/facebook-posts/post-says-rep-matt-gaetz-has-numerous-duis-wrong/",
+      "https://www.tampabay.com/florida-politics/buzz/2019/11/04/politifact-facebook-post-says-matt-gaetz-has-numerous-duis-its-wrong/",
+      "https://www.politifact.com/factchecks/2019/nov/01/facebook-posts/post-says-rep-matt-gaetz-has-numerous-duis-wrong/",
+      "https://www.cbsnews.com/news/trump-administration-coronavirus-vaccine-researcher-covid-19-cure-60-minutes/",
+      "https://www.pnj.com/story/opinion/2019/07/20/marlette-mother-jones-kicks-open-gaetz/1761716001/",
+      "https://www.gainesville.com/story/news/state/2011/09/19/meet-the-next-florida-senate-president/31816043007/",
+      "https://www.jonesday.com/en/insights/2017/08/yates-memos-influence-felt-in-doj-health-care-enforcement",
+      "https://bergermontague.com/hospice-compassus-to-pay-3-9-million-to-settle-false-claims-act-lawsuit/"
+    ],
+    "gold_urls": [
+      "https://erau.edu/gaetz-aerospace-institute/about/don-gaetz",
+      "https://www.celebritynetworth.com/richest-politicians/republicans/don-gaetz-net-worth/",
+      "https://web.archive.org/web/20210713185816/http://ir.chemed.com/news-releases/news-release-details/roto-rooter-inc-completes-merger-vitas-healthcare-corporation"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 0,
+    "mode": "unweighted_rag",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.97,
+    "cited": [
+      "0-3",
+      "0-5",
+      "0-1",
+      "0-0"
+    ],
+    "retrieved_urls": [
+      "https://www.dailymail.co.uk/news/article-2006317/Sean-Connery-letter-Steve-Jobs-rejecting-offer-appear-Apple-ad-revealed-fake.html",
+      "https://www.businessinsider.com/james-bond-sean-connery-steve-jobs-apple-letter-2011-6",
+      "https://www.dailymail.co.uk/news/article-2006317/Sean-Connery-letter-Steve-Jobs-rejecting-offer-appear-Apple-ad-revealed-fake.html",
+      "https://www.snopes.com/fact-check/false-sean-connery-letter-to-apple/",
+      "https://www.mi6-hq.com/news/index.php?itemid=9532",
+      "https://www.cnet.com/culture/fake-sean-connery-letter-to-steve-jobs-goes-viral/",
+      "https://maclalala2.wordpress.com/2011/06/24/%E3%81%9F%E3%81%8B%E3%81%8C%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%9E%E3%83%B3%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB%E3%82%B8%E3%82%A7%E3%83%BC/",
+      "https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/",
+      "https://maclalala2.wordpress.com/2011/06/24/%E3%81%9F%E3%81%8B%E3%81%8C%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%9E%E3%83%B3%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB%E3%82%B8%E3%82%A7%E3%83%BC/",
+      "https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201129141238/https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/",
+      "https://web.archive.org/web/20201202085933/https://scoopertino.com/about-scoopertino/"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {}
+  },
+  {
+    "claim_id": 1,
+    "mode": "unweighted_rag",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.0,
+    "cited": [],
+    "retrieved_urls": [
+      "https://nypost.com/2020/10/30/washington-post-wrongly-claims-trump-officials-criticized-billie-eilish/",
+      "https://medium.com/everythings-interesting/no-the-trump-administration-didnt-accuse-billie-eilish-of-destroying-our-country-3771ad9361b6",
+      "https://www.businessinsider.com/billie-eilish-destroying-country-donald-trump-administration-leaked-documents-2020-10",
+      "https://www.thefader.com/2020/10/29/report-trump-admin-document-says-billie-eilish-is-destroying-our-country-and-everything-we-care-about",
+      "https://www.tmz.com/2020/10/29/billie-eilish-trump-document-ripped-leaked-destroying-our-country/",
+      "https://www.businessinsider.nl/the-trump-administration-accused-billie-eilish-of-destroying-our-country-and-everything-we-care-about-in-newly-leaked-documents/",
+      "https://consequence.net/2020/10/billie-eilish-destroying-country-leaked-trump/",
+      "https://money.yahoo.com/leaked-trump-admin-document-describes-191559664.html",
+      "https://finance.yahoo.com/news/leaked-trump-admin-document-describes-191559664.html",
+      "https://www.nme.com/news/music/trump-admin-says-billie-eilish-is-destroying-our-country-and-everything-we-care-about-2803852"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201101145631/https://nypost.com/2020/10/30/washington-post-wrongly-claims-trump-officials-criticized-billie-eilish/"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {}
+  },
+  {
+    "claim_id": 2,
+    "mode": "unweighted_rag",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.86,
+    "cited": [
+      "[2-0]",
+      "[2-3]",
+      "[2-6]"
+    ],
+    "retrieved_urls": [
+      "https://www.dw.com/en/pakistans-imran-khan-slams-french-president-macrons-views-on-islam/a-55394035",
+      "https://www.parhlo.com/pm-imran-erdogan-muslims-slam-macron/",
+      "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Nepal.html",
+      "https://news.sky.com/story/france-urges-arab-nations-to-stop-boycotts-of-french-products-over-macrons-defence-of-prophet-cartoons-12114843",
+      "https://www.dw.com/en/opinion-erdogan-and-khan-are-hypocritical-about-macrons-france/a-55408436",
+      "https://www.cbsnews.com/news/lilttle-pygmy-pakistan-minister-brands-us-envoy-in-twitter-back-and-forth/",
+      "https://www.bbc.co.uk/news/world-europe-54683738",
+      "https://www.bbc.com/news/world-europe-54683738",
+      "http://chicago.china-consulate.gov.cn/eng/xw/201910/t20191014_4658395.htm",
+      "http://www.irdiplomacy.ir/en/news/1983044/achievements-of-imran-khan-s-visit-to-iran"
+    ],
+    "gold_urls": [
+      "https://www.aljazeera.com/news/2020/10/26/french-president-comments-over-islam-keep-sparking-outrage",
+      "https://web.archive.org/web/20210905081440/https://twitter.com/ImranKhanPTI/status/1320286665785704448",
+      "https://web.archive.org/web/20210629013122/https://twitter.com/PakConsulateFr/status/1322495811993903104"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 3,
+    "mode": "unweighted_rag",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.0,
+    "cited": [],
+    "retrieved_urls": [
+      "https://www.wikiwand.com/en/Nadar_(caste)",
+      "https://www.library.upenn.edu/news/diversity-stacks-ethnicity",
+      "https://www.visitnorway.com/places-to-go/unesco-world-heritage-sites/",
+      "http://www.nadarsangam.com/history.html",
+      "https://tulu-research.blogspot.com/2010/01/222-nadava-evolution-outline.html",
+      "https://desiweddingbells.wordpress.com/2016/04/21/some-twists-you-can-add-to-your-traditional-nadar-wedding-customs/",
+      "https://www.nadarcommunity.com/",
+      "https://en.wikipedia.org/wiki/Nadar_(caste)",
+      "https://en-academic.com/dic.nsf/enwiki/484798",
+      "https://hcl.com/leadership/"
+    ],
+    "gold_urls": [
+      "https://www.familytreedna.com/groups/nadar/about/background",
+      "https://www.independent.co.uk/news/science/world-s-most-ancient-race-traced-in-dna-study-1677113.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 4,
+    "mode": "unweighted_rag",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.9,
+    "cited": [
+      "4-0",
+      "4-1",
+      "4-2",
+      "4-3",
+      "4-4"
+    ],
+    "retrieved_urls": [
+      "https://www.tampabay.com/florida-politics/buzz/2019/11/04/politifact-facebook-post-says-matt-gaetz-has-numerous-duis-its-wrong/",
+      "https://www.factcheck.org/2019/10/misleading-posts-target-gop-rep-matt-gaetz/",
+      "https://www.politifact.com/factchecks/2019/nov/01/facebook-posts/post-says-rep-matt-gaetz-has-numerous-duis-wrong/",
+      "https://www.tampabay.com/florida-politics/buzz/2019/11/04/politifact-facebook-post-says-matt-gaetz-has-numerous-duis-its-wrong/",
+      "https://www.politifact.com/factchecks/2019/nov/01/facebook-posts/post-says-rep-matt-gaetz-has-numerous-duis-wrong/",
+      "https://www.cbsnews.com/news/trump-administration-coronavirus-vaccine-researcher-covid-19-cure-60-minutes/",
+      "https://www.pnj.com/story/opinion/2019/07/20/marlette-mother-jones-kicks-open-gaetz/1761716001/",
+      "https://www.gainesville.com/story/news/state/2011/09/19/meet-the-next-florida-senate-president/31816043007/",
+      "https://www.jonesday.com/en/insights/2017/08/yates-memos-influence-felt-in-doj-health-care-enforcement",
+      "https://bergermontague.com/hospice-compassus-to-pay-3-9-million-to-settle-false-claims-act-lawsuit/"
+    ],
+    "gold_urls": [
+      "https://erau.edu/gaetz-aerospace-institute/about/don-gaetz",
+      "https://www.celebritynetworth.com/richest-politicians/republicans/don-gaetz-net-worth/",
+      "https://web.archive.org/web/20210713185816/http://ir.chemed.com/news-releases/news-release-details/roto-rooter-inc-completes-merger-vitas-healthcare-corporation"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 0,
+    "mode": "proposed",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.93,
+    "cited": [
+      "0-3",
+      "0-5",
+      "0-0",
+      "0-1"
+    ],
+    "retrieved_urls": [
+      "https://www.snopes.com/fact-check/false-sean-connery-letter-to-apple/",
+      "https://www.snopes.com/fact-check/false-sean-connery-letter-to-apple/",
+      "https://www.forbes.com/sites/onmarketing/2011/12/14/the-real-story-behind-apples-think-different-campaign/",
+      "https://abcnews.go.com/Health/Economy/story?id=7902416&page=1",
+      "https://www.latimes.com/entertainment/movies/moviesnow/la-et-mn-sacheen-littlefeather-oscars-20160204-htmlstory.html",
+      "https://www.usatoday.com/story/entertainment/celebrities/2020/07/02/celebrity-commercials-taylor-swift-snoop-dogg-ja-rule-mariah-carey/3277778001/",
+      "https://www.nbcnews.com/news/world/pre-caffeine-tech-apple-gossip-smart-pugs-flna122578",
+      "https://www.latimes.com/entertainment/movies/moviesnow/la-et-mn-sacheen-littlefeather-oscars-20160204-htmlstory.html",
+      "https://www.theguardian.com/politics/1999/dec/31/uk.politicalnews4",
+      "https://www.usatoday.com/story/entertainment/celebrities/2020/07/02/celebrity-commercials-taylor-swift-snoop-dogg-ja-rule-mariah-carey/3277778001/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201129141238/https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/",
+      "https://web.archive.org/web/20201202085933/https://scoopertino.com/about-scoopertino/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 1,
+    "mode": "proposed",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.0,
+    "cited": [],
+    "retrieved_urls": [
+      "https://oag.ca.gov/news/press-releases/attorney-general-becerra-files-lawsuit-challenging-trump-administration%E2%80%99s-2",
+      "https://www.foxnews.com/entertainment/michael-keaton-joe-biden-debate-trump-unprepared",
+      "https://www.cbsnews.com/news/cia-director-says-leaks-are-on-the-rise-cites-worship-of-leakers-like-snowden/",
+      "https://www.usatoday.com/story/entertainment/music/2020/08/19/billie-eilish-debuts-song-my-future-dnc-after-ripping-trump/5613653002/",
+      "https://nypost.com/2020/10/30/washington-post-wrongly-claims-trump-officials-criticized-billie-eilish/",
+      "https://medium.com/everythings-interesting/no-the-trump-administration-didnt-accuse-billie-eilish-of-destroying-our-country-3771ad9361b6",
+      "https://www.businessinsider.com/billie-eilish-destroying-country-donald-trump-administration-leaked-documents-2020-10",
+      "https://www.thefader.com/2020/10/29/report-trump-admin-document-says-billie-eilish-is-destroying-our-country-and-everything-we-care-about",
+      "https://www.tmz.com/2020/10/29/billie-eilish-trump-document-ripped-leaked-destroying-our-country/",
+      "https://www.businessinsider.nl/the-trump-administration-accused-billie-eilish-of-destroying-our-country-and-everything-we-care-about-in-newly-leaked-documents/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201101145631/https://nypost.com/2020/10/30/washington-post-wrongly-claims-trump-officials-criticized-billie-eilish/"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {}
+  },
+  {
+    "claim_id": 2,
+    "mode": "proposed",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.73,
+    "cited": [
+      "[2-0]",
+      "[2-6]",
+      "[2-7]",
+      "[2-3]"
+    ],
+    "retrieved_urls": [
+      "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Nepal.html",
+      "https://www.cbsnews.com/news/lilttle-pygmy-pakistan-minister-brands-us-envoy-in-twitter-back-and-forth/",
+      "https://www.bbc.co.uk/news/world-europe-54683738",
+      "https://www.bbc.com/news/world-europe-54683738",
+      "http://studies.aljazeera.net/en/reports/2015/12/20151228124414320534.html",
+      "https://www.aljazeera.com/news/2019/11/8/french-president-calls-bosnia-a-ticking-time-bomb",
+      "https://www.bbc.com/news/world-europe-54692485",
+      "https://www.bbc.co.uk/news/world-europe-54683738",
+      "https://www.bbc.com/news/world-europe-54683738",
+      "https://www.dw.com/en/pakistans-imran-khan-slams-french-president-macrons-views-on-islam/a-55394035"
+    ],
+    "gold_urls": [
+      "https://www.aljazeera.com/news/2020/10/26/french-president-comments-over-islam-keep-sparking-outrage",
+      "https://web.archive.org/web/20210905081440/https://twitter.com/ImranKhanPTI/status/1320286665785704448",
+      "https://web.archive.org/web/20210629013122/https://twitter.com/PakConsulateFr/status/1322495811993903104"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 3,
+    "mode": "proposed",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.0,
+    "cited": [],
+    "retrieved_urls": [
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4326674/",
+      "https://www.pbs.org/newshour/politics/u-s-and-israel-officially-withdraw-from-unesco",
+      "https://www.wikiwand.com/en/Nadar_(caste)",
+      "https://www.library.upenn.edu/news/diversity-stacks-ethnicity",
+      "https://www.visitnorway.com/places-to-go/unesco-world-heritage-sites/",
+      "http://www.nadarsangam.com/history.html",
+      "https://tulu-research.blogspot.com/2010/01/222-nadava-evolution-outline.html",
+      "https://desiweddingbells.wordpress.com/2016/04/21/some-twists-you-can-add-to-your-traditional-nadar-wedding-customs/",
+      "https://www.nadarcommunity.com/",
+      "https://en.wikipedia.org/wiki/Nadar_(caste)"
+    ],
+    "gold_urls": [
+      "https://www.familytreedna.com/groups/nadar/about/background",
+      "https://www.independent.co.uk/news/science/world-s-most-ancient-race-traced-in-dna-study-1677113.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  },
+  {
+    "claim_id": 4,
+    "mode": "proposed",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.93,
+    "cited": [
+      "4-1",
+      "4-2",
+      "4-4",
+      "4-3",
+      "4-0"
+    ],
+    "retrieved_urls": [
+      "https://www.factcheck.org/2019/10/misleading-posts-target-gop-rep-matt-gaetz/",
+      "https://www.politifact.com/factchecks/2019/nov/01/facebook-posts/post-says-rep-matt-gaetz-has-numerous-duis-wrong/",
+      "https://www.politifact.com/factchecks/2019/nov/01/facebook-posts/post-says-rep-matt-gaetz-has-numerous-duis-wrong/",
+      "https://www.texasattorneygeneral.gov/news/releases/ag-paxton-recovers-110-million-texas-medicaid-fraud-settlements",
+      "https://www.factcheck.org/2019/12/social-posts-distort-facts-on-trump-charities/",
+      "https://www.politifact.com/factchecks/2014/mar/03/florida-democratic-party/rick-scott-rick-scott-oversaw-largest-medicare-fra/",
+      "https://www.politifact.com/factchecks/2019/nov/01/facebook-posts/post-says-rep-matt-gaetz-has-numerous-duis-wrong/",
+      "https://www.cbsnews.com/news/trump-administration-coronavirus-vaccine-researcher-covid-19-cure-60-minutes/",
+      "https://www.usatoday.com/story/news/politics/2020/03/09/coronavirus-matt-gaetz-defends-use-gas-mask-after-constituent-dies/5000255002/",
+      "https://www.npr.org/2019/02/06/692046272/trump-ally-tries-to-remove-parkland-fathers-from-gun-violence-hearing"
+    ],
+    "gold_urls": [
+      "https://erau.edu/gaetz-aerospace-institute/about/don-gaetz",
+      "https://www.celebritynetworth.com/richest-politicians/republicans/don-gaetz-net-worth/",
+      "https://web.archive.org/web/20210713185816/http://ir.chemed.com/news-releases/news-release-details/roto-rooter-inc-completes-merger-vitas-healthcare-corporation"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {}
+  }
+]
