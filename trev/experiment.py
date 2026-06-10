@@ -85,14 +85,23 @@ def run_experiments(
     k: int = 10,
     candidate_n: int = 50,
     config: ControllerConfig = ControllerConfig(),
+    verbose: bool = True,
 ) -> dict[str, list[dict]]:
     """claim들 × 조건의 예측 + 회수 URL + 비용을 만든다.
 
     `agentic` 조건은 멀티에이전트 orchestrator(동일 KS·인덱스·GPT-5)로, 나머지 4조건은
     결정론 controller로 실행한다 — 동일 레코드 포맷으로 head-to-head 채점한다.
+    `verbose`면 claim별·조건별 진행률을 즉시(flush) 출력한다.
     """
     results: dict[str, list[dict]] = {m: [] for m in modes}
-    for claim in claims:
+    total = len(claims)
+
+    def log(msg: str):
+        if verbose:
+            print(msg, flush=True)
+
+    for i, claim in enumerate(claims, 1):
+        log(f"[{i}/{total}] claim {claim.claim_id} ({method}) — 인덱스 준비…")
         index = index_provider(claim)
         for mode in modes:
             if mode in ("agentic", "agentic_no_tier"):
@@ -104,6 +113,8 @@ def run_experiments(
                     "verdict": verdict, "retrieved_urls": trace.retrieved_urls,
                     "cost": {"steps": trace.steps_used, "tool_calls": trace.tool_calls_used},
                 })
+                log(f"  [{i}/{total}] {mode:16} → {verdict.averitec_label.value} "
+                    f"(tools {trace.tool_calls_used})")
             else:
                 verdict = predict_claim(claim, index, embedder, llm, mode=mode, method=method,
                                         tier_config=tier_config, k=k, candidate_n=candidate_n,
@@ -111,6 +122,8 @@ def run_experiments(
                 urls = ranked_topk_urls(claim, index, embedder, mode=mode, method=method,
                                         tier_config=tier_config, k=k, candidate_n=candidate_n)
                 results[mode].append({"verdict": verdict, "retrieved_urls": urls, "cost": {}})
+                log(f"  [{i}/{total}] {mode:16} → {verdict.averitec_label.value} "
+                    f"(cited {len(verdict.cited)})")
     return results
 
 
