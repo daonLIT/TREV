@@ -114,3 +114,35 @@ def verify(claim: Claim, evidence: list[Evidence], llm) -> Verdict:
         justification=out.justification,
         cited=out.cited,
     )
+
+
+class _GptOnlyOutput(BaseModel):
+    """gpt_only 출력 — 근거가 없어 cited/stance를 요구하지 않는다."""
+
+    label: VerifierLabel
+    confidence: float = Field(ge=0.0, le=1.0)
+    justification: str
+
+
+_GPT_ONLY_PROMPT = """You are a fact-checking model. Judge the CLAIM using your own \
+knowledge (no evidence is provided). Labels: SUPPORT / REFUTE / PARTIAL / NEI. \
+Do NOT output CONFLICT. Return ONLY JSON: \
+{"label": "...", "confidence": 0.0-1.0, "justification": "..."}"""
+
+
+def gpt_only_verdict(claim: Claim, llm) -> Verdict:
+    """검색 없이 claim만으로 라벨을 직출한다(baseline). cited는 비운다(controller가 면제)."""
+    out = llm.complete_json(
+        [{"role": "system", "content": _GPT_ONLY_PROMPT},
+         {"role": "user", "content": f"CLAIM: {claim.text}"}],
+        schema=_GptOnlyOutput,
+    )
+    label5 = _TO_LABEL5[out.label]
+    return Verdict(
+        claim_id=claim.claim_id,
+        label5=label5,
+        averitec_label=to_averitec_label(label5),
+        confidence=out.confidence,
+        justification=out.justification,
+        cited=[],
+    )

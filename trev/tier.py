@@ -141,16 +141,22 @@ def rank_evidence(
     tier_config: dict,
     *,
     weighted: bool = True,
+    dynamic_role: bool = True,
     classifier: LLMDomainClassifier | None = None,
 ) -> list[Evidence]:
     """근거에 tier/role/weight를 부여하고 점수로 재정렬한다.
 
-    proposed(weighted=True): `score = sim * weight`. unweighted/naive: `score = sim`.
-    role은 결정론적으로 판정(자기출처 → target). 입력 Evidence는 보존하고 복사본을 반환한다.
+    - `weighted`: proposed면 `score = sim*weight`, 아니면 `score = sim`(unweighted/naive).
+    - `dynamic_role`: True면 자기출처→target(T4 강등). False(naive)면 역할 미적용(도메인 tier만).
+    입력 Evidence는 보존하고 복사본을 반환한다.
     """
     ranked: list[Evidence] = []
     for e in evidence:
-        role = Role.TARGET if is_self_source(e.source_domain, claim) else Role.GENERAL
+        role = (
+            Role.TARGET
+            if dynamic_role and is_self_source(e.source_domain, claim)
+            else Role.GENERAL
+        )
         tier, weight = assign_tier(
             claim.type, role, e.source_domain, tier_config, classifier=classifier
         )
