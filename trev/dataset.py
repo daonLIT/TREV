@@ -105,6 +105,8 @@ def load_averitec(
                 source_domains=claim_source_domains(
                     obj.get("original_claim_url"), obj.get("reporting_source")
                 ),
+                speaker=obj.get("speaker") or None,
+                publisher=obj.get("reporting_source") or None,
             )
         )
     return claims

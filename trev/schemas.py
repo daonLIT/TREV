@@ -68,6 +68,9 @@ class Claim(BaseModel):
     label: AveritecLabel | None = None  # gold(평가 기준). 예측 경로에서는 사용 금지.
     # 자기출처매칭(role=target)용 — original_claim_url/reporting_source 도메인(US16).
     source_domains: list[str] = Field(default_factory=list)
+    # 토픽 태깅 보조 입력(US17): speaker, publisher(reporting_source).
+    speaker: str | None = None
+    publisher: str | None = None
 
 
 class Passage(BaseModel):
