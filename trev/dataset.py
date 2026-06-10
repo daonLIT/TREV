@@ -145,6 +145,21 @@ def load_gold_evidence(
     return evidence
 
 
+def gold_source_urls(claim_id: int, path: str | Path = DEFAULT_DEV_PATH) -> list[str]:
+    """claim의 gold 근거 URL(questions[].answers[].source_url, 비어있지 않은 것)."""
+    path = Path(path)
+    assert_data_file_allowed(path.name)
+    with open(path, encoding="utf-8") as f:
+        obj = json.load(f)[claim_id]
+    urls: list[str] = []
+    for q in obj.get("questions") or []:
+        for a in q.get("answers") or []:
+            url = a.get("source_url")
+            if url:
+                urls.append(url)
+    return urls
+
+
 def conflicting_count(claims: list[Claim]) -> int:
     """서브셋 내 gold label == Conflicting Evidence/Cherrypicking 개수."""
     return sum(1 for c in claims if c.label == AveritecLabel.CONFLICTING)
