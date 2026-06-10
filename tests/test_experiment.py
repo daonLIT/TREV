@@ -89,12 +89,22 @@ def test_run_experiments_and_serialize():
                               index_provider=lambda c: index, tier_config=TIER_CFG,
                               method="dense")
     assert set(results) == set(DEFAULT_MODES)
-    records = predictions_to_records([_claim()], results)
+    # 회수 URL이 RAG 모드엔 동반, gpt_only엔 빈 리스트.
+    assert results["proposed"][0]["retrieved_urls"]
+    assert results["gpt_only"][0]["retrieved_urls"] == []
+
+    records = predictions_to_records(
+        [_claim()], results,
+        gold_urls_fn=lambda cid: ["https://cdc.gov/a"],   # 픽스처 gold(회수됨)
+        ks_urls_fn=lambda cid: ["https://cdc.gov/a"],
+    )
     assert len(records) == len(DEFAULT_MODES)
-    # 재현·재채점용 직렬화 가능 + gold 동반.
     blob = json.dumps(records)
     assert '"gold_label": "Supported"' in blob
-    assert all("pred_label" in r and "mode" in r for r in records)
+    assert all("retrieved_urls" in r and "retrieval_category" in r for r in records)
+    # proposed는 cdc.gov를 회수 → retrieved 분류.
+    proposed = next(r for r in records if r["mode"] == "proposed")
+    assert proposed["retrieval_category"] == "retrieved"
 
 
 def test_bm25_method_runs():

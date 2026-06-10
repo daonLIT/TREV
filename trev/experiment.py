@@ -11,12 +11,37 @@ from __future__ import annotations
 
 from trev import controller
 from trev.controller import ControllerConfig
+from trev.dataset import gold_source_urls
 from trev.indexing import ClaimIndex, Embedder
+from trev.knowledge_store import load_claim_urls
+from trev.recall import classify_retrieval
 from trev.retriever import retrieve
 from trev.schemas import Claim, Verdict
+from trev.tier import rank_evidence
 from trev.verifier import gpt_only_verdict, run_verifier
 
 DEFAULT_MODES = ("gpt_only", "naive_rag", "unweighted_rag", "proposed")
+
+
+def ranked_topk_urls(
+    claim: Claim,
+    index: ClaimIndex,
+    embedder: Embedder,
+    *,
+    mode: str,
+    method: str,
+    tier_config: dict,
+    k: int = 10,
+    candidate_n: int = 50,
+) -> list[str]:
+    """모드별 ranking을 적용한 top-k 회수 URL(Recall@k 채점 입력). gpt_only는 빈 리스트."""
+    if mode == "gpt_only":
+        return []
+    rp = {"weighted": mode == "proposed", "dynamic_role": mode != "naive_rag"}
+    evidence = retrieve(claim, index, embedder, k=candidate_n, candidate_n=candidate_n,
+                        method=method)
+    ranked = rank_evidence(claim, evidence, tier_config, **rp)
+    return [e.url for e in ranked[:k] if e.url]
 
 
 def predict_claim(
@@ -59,37 +84,57 @@ def run_experiments(
     k: int = 10,
     candidate_n: int = 50,
     config: ControllerConfig = ControllerConfig(),
-) -> dict[str, list[Verdict]]:
-    """claim들 × 조건의 예측을 만든다. `index_provider(claim)`가 인덱스를 빌드/로드한다."""
-    results: dict[str, list[Verdict]] = {m: [] for m in modes}
+) -> dict[str, list[dict]]:
+    """claim들 × 조건의 예측 + 회수 URL을 만든다. `index_provider(claim)`가 인덱스를 제공."""
+    results: dict[str, list[dict]] = {m: [] for m in modes}
     for claim in claims:
         index = index_provider(claim)
         for mode in modes:
-            results[mode].append(
-                predict_claim(claim, index, embedder, llm, mode=mode, method=method,
-                              tier_config=tier_config, k=k, candidate_n=candidate_n,
-                              config=config)
-            )
+            verdict = predict_claim(claim, index, embedder, llm, mode=mode, method=method,
+                                    tier_config=tier_config, k=k, candidate_n=candidate_n,
+                                    config=config)
+            urls = ranked_topk_urls(claim, index, embedder, mode=mode, method=method,
+                                    tier_config=tier_config, k=k, candidate_n=candidate_n)
+            results[mode].append({"verdict": verdict, "retrieved_urls": urls})
     return results
 
 
 def predictions_to_records(
-    claims: list[Claim], results: dict[str, list[Verdict]]
+    claims: list[Claim],
+    results: dict[str, list[dict]],
+    *,
+    k: int = 10,
+    gold_urls_fn=gold_source_urls,
+    ks_urls_fn=load_claim_urls,
 ) -> list[dict]:
-    """예측을 재현·재채점용 레코드로 직렬화한다(조건별 예측 + gold label)."""
+    """예측을 재현·재채점용 레코드로 직렬화한다(예측 + 회수url + gold url + 검색분류)."""
     by_id = {c.claim_id: c for c in claims}
+    # claim별 gold url·KS url은 mode마다 동일 → 1회만 조회해 캐시.
+    gold_cache: dict[int, list[str]] = {}
+    ks_cache: dict[int, list[str]] = {}
+
     records = []
-    for mode, verdicts in results.items():
-        for v in verdicts:
-            gold = by_id.get(v.claim_id)
+    for mode, preds in results.items():
+        for pred in preds:
+            v: Verdict = pred["verdict"]
+            cid = v.claim_id
+            gold = by_id.get(cid)
+            gold_urls = gold_cache.setdefault(cid, gold_urls_fn(cid))
+            ks_urls = ks_cache.setdefault(cid, ks_urls_fn(cid))
+            retrieved = pred["retrieved_urls"]
             records.append({
-                "claim_id": v.claim_id,
+                "claim_id": cid,
                 "mode": mode,
                 "label5": v.label5.value,
                 "pred_label": v.averitec_label.value,
                 "gold_label": gold.label.value if gold and gold.label else None,
                 "confidence": v.confidence,
                 "cited": v.cited,
-                "justification": v.justification,
+                "retrieved_urls": retrieved,
+                "gold_urls": gold_urls,
+                "retrieval_category": classify_retrieval(
+                    gold_urls, ks_urls, retrieved,
+                    gold_label=gold.label if gold else None, k=k,
+                ),
             })
     return records

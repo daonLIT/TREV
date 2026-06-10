@@ -72,7 +72,7 @@ def main() -> None:
     print(f"[written] {out}  ({len(claims)} claims × {len(results)} 조건 = {len(records)} 예측)")
     for mode in results:
         from collections import Counter
-        dist = Counter(v.averitec_label.value for v in results[mode])
+        dist = Counter(p["verdict"].averitec_label.value for p in results[mode])
         print(f"  {mode:16s} {dict(dist)}")
 
 
