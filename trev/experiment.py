@@ -86,33 +86,37 @@ def run_experiments(
     candidate_n: int = 50,
     config: ControllerConfig = ControllerConfig(),
     verbose: bool = True,
+    max_workers: int = 1,
 ) -> dict[str, list[dict]]:
     """claim들 × 조건의 예측 + 회수 URL + 비용을 만든다.
 
     `agentic` 조건은 멀티에이전트 orchestrator(동일 KS·인덱스·GPT-5)로, 나머지 4조건은
     결정론 controller로 실행한다 — 동일 레코드 포맷으로 head-to-head 채점한다.
     `verbose`면 claim별·조건별 진행률을 즉시(flush) 출력한다.
+    `max_workers>1`이면 claim 단위로 병렬 처리한다(GPT-5 호출이 I/O라 큰 가속). 이때 `embedder`는
+    thread-safe여야 한다(`LockedEmbedder`로 감싸 호출 — 스크립트가 처리).
     """
-    results: dict[str, list[dict]] = {m: [] for m in modes}
     total = len(claims)
 
     def log(msg: str):
         if verbose:
             print(msg, flush=True)
 
-    for i, claim in enumerate(claims, 1):
-        log(f"[{i}/{total}] claim {claim.claim_id} ({method}) — 인덱스 준비…")
+    def process(item) -> dict:
+        i, claim = item
+        log(f"[{i}/{total}] claim {claim.claim_id} ({method}) — 처리 시작…")
         index = index_provider(claim)
+        out: dict[str, dict] = {}
         for mode in modes:
             if mode in ("agentic", "agentic_no_tier"):
                 verdict, trace = orchestrate(
                     claim, index, embedder, llm, tier_config=tier_config,
                     method=method, k=k, candidate_n=candidate_n,
                     use_tier=(mode == "agentic"))   # ablation: tier 도구·가중 on/off
-                results[mode].append({
+                out[mode] = {
                     "verdict": verdict, "retrieved_urls": trace.retrieved_urls,
                     "cost": {"steps": trace.steps_used, "tool_calls": trace.tool_calls_used},
-                })
+                }
                 log(f"  [{i}/{total}] {mode:16} → {verdict.averitec_label.value} "
                     f"(tools {trace.tool_calls_used})")
             else:
@@ -121,9 +125,23 @@ def run_experiments(
                                         config=config)
                 urls = ranked_topk_urls(claim, index, embedder, mode=mode, method=method,
                                         tier_config=tier_config, k=k, candidate_n=candidate_n)
-                results[mode].append({"verdict": verdict, "retrieved_urls": urls, "cost": {}})
+                out[mode] = {"verdict": verdict, "retrieved_urls": urls, "cost": {}}
                 log(f"  [{i}/{total}] {mode:16} → {verdict.averitec_label.value} "
                     f"(cited {len(verdict.cited)})")
+        return out
+
+    items = list(enumerate(claims, 1))
+    if max_workers and max_workers > 1:
+        from concurrent.futures import ThreadPoolExecutor
+        with ThreadPoolExecutor(max_workers=max_workers) as ex:
+            per_claim = list(ex.map(process, items))   # 입력 순서 보존
+    else:
+        per_claim = [process(it) for it in items]
+
+    results: dict[str, list[dict]] = {m: [] for m in modes}
+    for out in per_claim:
+        for mode in modes:
+            results[mode].append(out[mode])
     return results
 
 

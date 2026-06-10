@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -17,7 +18,7 @@ from dotenv import load_dotenv
 from trev.config import load_config
 from trev.data.dataset import load_averitec
 from trev.experiment import DEFAULT_MODES, predictions_to_records, run_experiments
-from trev.data.indexing import E5Embedder, ClaimIndex, build_claim_index
+from trev.data.indexing import E5Embedder, ClaimIndex, LockedEmbedder, build_claim_index
 from trev.llm import LLM
 
 REPO = Path(__file__).resolve().parent.parent
@@ -49,6 +50,8 @@ def main() -> None:
     ap.add_argument("--limit", type=int, default=None, help="claim 수 제한(스모크용)")
     ap.add_argument("--no-cache", action="store_true", help="인덱스 디스크 캐시 비활성")
     ap.add_argument("--agentic", action="store_true", help="멀티에이전트 조건만 실행")
+    ap.add_argument("--workers", type=int, default=int(os.environ.get("WORKERS", "8")),
+                    help="GPT-5 호출 동시 처리 수(claim 병렬). rate limit 걸리면 줄이기")
     args = ap.parse_args()
 
     cfg = load_config()
@@ -59,13 +62,18 @@ def main() -> None:
         claims = claims[: args.limit]
 
     embedder = E5Embedder(cfg.get("index", {}).get("e5_model", "intfloat/multilingual-e5-large"))
+    if args.workers > 1:
+        embedder = LockedEmbedder(embedder)   # GPU 임베딩 직렬화(병렬 안전)
     provider = _index_provider(embedder, cfg.get("index", {}), cache=not args.no_cache)
     llm = LLM.from_config(cfg)
 
     modes = ("agentic",) if args.agentic else DEFAULT_MODES
+    print(f"[실행] method={args.method} modes={modes} claims={len(claims)} workers={args.workers}",
+          flush=True)
     results = run_experiments(
         claims, embedder, llm, index_provider=provider,
         tier_config=cfg.get("tier", {}), method=args.method, modes=modes,
+        max_workers=args.workers,
     )
     records = predictions_to_records(claims, results)
     OUT_DIR.mkdir(parents=True, exist_ok=True)

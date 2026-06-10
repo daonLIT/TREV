@@ -38,14 +38,15 @@ class DataHygieneError(Exception):
 def missing_gitignore_entries(gitignore_text: str) -> list[str]:
     """`gitignore_text`에서 빠진 필수 항목을 순서대로 반환한다(없으면 빈 리스트).
 
-    주석(`#`)·공백 라인은 무시하고 라인 단위 정확 일치로 검사한다.
+    주석(`#`)·공백 라인은 무시한다. 루트 앵커(`/data_store/`)와 비앵커(`data_store/`)를 동일하게
+    인정하기 위해 앞 슬래시는 무시하고 비교한다.
     """
     present = {
-        line.strip()
+        line.strip().lstrip("/")
         for line in gitignore_text.splitlines()
         if line.strip() and not line.lstrip().startswith("#")
     }
-    return [entry for entry in REQUIRED_GITIGNORE_ENTRIES if entry not in present]
+    return [entry for entry in REQUIRED_GITIGNORE_ENTRIES if entry.lstrip("/") not in present]
 
 
 def assert_gitignore_complete(gitignore_path: str | Path) -> None:

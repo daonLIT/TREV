@@ -2,9 +2,13 @@
 # run_all.sh — TREV 전체 실험을 한 번에 실행하고 산출물을 정리한다 (GPU PC, Linux).
 #
 # 사용법:
-#   bash run_all.sh                         # 기본값으로 전체 실행
-#   AGENTIC_LIMIT=394 N=3 bash run_all.sh   # agentic도 전체(주의: 수십 시간~며칠)
+#   bash run_all.sh                         # 기본(WORKERS=8 병렬)으로 전체 실행
+#   WORKERS=10 bash run_all.sh              # GPT-5 호출 10개 동시 (rate limit 걸리면 줄이기)
+#   AGENTIC_LIMIT=394 bash run_all.sh       # agentic도 전체
 #   LIMIT=20 AGENTIC_LIMIT=10 bash run_all.sh   # 빠른 스모크
+#
+# WORKERS = GPT-5 호출 동시 처리 수(claim 병렬). 병목이 API 지연이라 이게 가장 큰 가속.
+# 기본 8 → 전체 실행이 ~하루에서 ~2-3시간으로. 로그에 429/재시도 많으면 줄이기.
 #
 # 비용(반드시 읽기):
 #   - 결정론 baseline(dense+bm25): claim당 GPT-5 ~1회 → 전체 394는 ~수시간(감당 가능).

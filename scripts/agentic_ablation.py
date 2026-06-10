@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -24,7 +25,7 @@ from trev.experiment import (
     predictions_to_records,
     run_experiments,
 )
-from trev.data.indexing import ClaimIndex, E5Embedder, build_claim_index
+from trev.data.indexing import ClaimIndex, E5Embedder, LockedEmbedder, build_claim_index
 from trev.llm import LLM
 from trev.eval.metrics import evaluate
 from trev.eval.topics import tag_claims, topic_breakdown
@@ -52,19 +53,23 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=5)
     ap.add_argument("--n", type=int, default=3, help="agentic N회 반복(일치율)")
+    ap.add_argument("--workers", type=int, default=int(os.environ.get("WORKERS", "8")),
+                    help="GPT-5 호출 동시 처리 수")
     args = ap.parse_args()
 
     cfg = load_config()
     claims = load_averitec(
         include_quote=cfg.get("data", {}).get("include_quote_verification", False))[: args.limit]
     embedder = E5Embedder(cfg.get("index", {}).get("e5_model", "intfloat/multilingual-e5-large"))
+    if args.workers > 1:
+        embedder = LockedEmbedder(embedder)
     provider = _provider(embedder, cfg.get("index", {}))
     llm = LLM.from_config(cfg)
     tier_cfg = cfg.get("tier", {})
 
     def _run(modes):
         results = run_experiments(claims, embedder, llm, index_provider=provider,
-                                  tier_config=tier_cfg, modes=modes)
+                                  tier_config=tier_cfg, modes=modes, max_workers=args.workers)
         return predictions_to_records(claims, results)
 
     # 1) tier 도구 on/off + agentic vs deterministic proposed.

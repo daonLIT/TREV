@@ -100,6 +100,24 @@ class E5Embedder:
         return np.asarray(vecs, dtype=np.float32)
 
 
+class LockedEmbedder:
+    """임베더를 락으로 감싸 동시 호출에서 GPU 임베딩을 직렬화한다(병렬 실험 안전).
+
+    GPT-5 호출(병목)은 락 밖에서 병렬로 돌고, e5 encode(GPU)만 한 번에 하나씩 실행된다
+    (SentenceTransformer/torch는 동시 encode가 안전하지 않을 수 있음).
+    """
+
+    def __init__(self, embedder: "Embedder"):
+        import threading
+
+        self._embedder = embedder
+        self._lock = threading.Lock()
+
+    def encode(self, texts: list[str], *, is_query: bool = False) -> np.ndarray:
+        with self._lock:
+            return self._embedder.encode(texts, is_query=is_query)
+
+
 def _normalize(mat: np.ndarray) -> np.ndarray:
     """행 단위 L2 정규화(코사인=내적). 0 벡터는 그대로 둔다."""
     mat = np.asarray(mat, dtype=np.float32)
