@@ -71,10 +71,15 @@ def search_claim(
     ctx: AgentContext, llm, plan: Plan, *,
     max_steps: int = DEFAULT_SEARCH_STEPS, budget: Budget | None = None,
     feedback: str | None = None, trace: AgentTrace | None = None,
+    use_tier: bool = True,
 ):
-    """하위 질문별로 도구를 호출해 근거를 모은다(ctx.pool 채움). feedback은 재검색 힌트."""
-    tools = [make_search_evidence_tool(ctx), make_rank_by_tier_tool(ctx),
-             make_assess_source_tier_tool(ctx)]
+    """하위 질문별로 도구를 호출해 근거를 모은다(ctx.pool 채움). feedback은 재검색 힌트.
+
+    use_tier=False(ablation)면 rank_by_tier 도구를 제거한다.
+    """
+    tools = [make_search_evidence_tool(ctx), make_assess_source_tier_tool(ctx)]
+    if use_tier:
+        tools.insert(1, make_rank_by_tier_tool(ctx))
     user = "Sub-questions to investigate:\n" + "\n".join(f"- {q}" for q in plan.sub_questions)
     if feedback:
         user += f"\n\n{feedback}"
@@ -123,9 +128,11 @@ def orchestrate(
     tier_config: dict | None = None, method: str = "dense",
     k: int = 10, candidate_n: int = 50, search_steps: int = DEFAULT_SEARCH_STEPS,
     low_confidence: float = 0.5, max_steps: int = 12, max_tool_calls: int = 24,
+    use_tier: bool = True,
 ) -> tuple[Verdict, AgentTrace]:
     """planner→searcher→verifier 조율 + 저신뢰 재검색(1회) + R5 CONFLICT + cited 강제.
 
+    `use_tier`=False(ablation)면 rank_by_tier 도구 제거 + 가중 랭킹 미적용(tier 기여 분리).
     반환: (Verdict, AgentTrace). trace는 에이전트별 도구호출 기록 + 비용(소비 step·tool 수).
     """
     if tier_config is None:
@@ -147,12 +154,13 @@ def orchestrate(
     plan = plan_claim(claim, llm)
     trace.steps.append(AgentStep(agent="planner",
                                  note="sub_questions: " + "; ".join(plan.sub_questions)))
-    search_claim(ctx, llm, plan, max_steps=search_steps, budget=budget, trace=trace)
+    search_claim(ctx, llm, plan, max_steps=search_steps, budget=budget, trace=trace,
+                 use_tier=use_tier)
 
     def _evaluate() -> VerifierOutput | None:
         if not ctx.pool:
             return None
-        evidence = rank_evidence(claim, list(ctx.pool.values()), tier_config, weighted=True)
+        evidence = rank_evidence(claim, list(ctx.pool.values()), tier_config, weighted=use_tier)
         state["evidence"] = evidence
         out = verify_pool(claim, evidence, llm)
         trace.steps.append(AgentStep(
@@ -167,7 +175,7 @@ def orchestrate(
     # R4 동등: 저신뢰 → searcher로 1회 피드백 재검색 후 재검증, 그래도 낮으면 NEI.
     if out.confidence < low_confidence:
         search_claim(ctx, llm, plan, max_steps=search_steps, budget=budget,
-                     feedback=_FEEDBACK, trace=trace)
+                     feedback=_FEEDBACK, trace=trace, use_tier=use_tier)
         out = _evaluate()
         if out is None or out.confidence < low_confidence:
             return _finish(_nei(claim, "low confidence after re-search"))

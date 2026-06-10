@@ -95,10 +95,11 @@ def run_experiments(
     for claim in claims:
         index = index_provider(claim)
         for mode in modes:
-            if mode == "agentic":
+            if mode in ("agentic", "agentic_no_tier"):
                 verdict, trace = orchestrate(
                     claim, index, embedder, llm, tier_config=tier_config,
-                    method=method, k=k, candidate_n=candidate_n)
+                    method=method, k=k, candidate_n=candidate_n,
+                    use_tier=(mode == "agentic"))   # ablation: tier 도구·가중 on/off
                 results[mode].append({
                     "verdict": verdict, "retrieved_urls": trace.retrieved_urls,
                     "cost": {"steps": trace.steps_used, "tool_calls": trace.tool_calls_used},
@@ -111,6 +112,12 @@ def run_experiments(
                                         tier_config=tier_config, k=k, candidate_n=candidate_n)
                 results[mode].append({"verdict": verdict, "retrieved_urls": urls, "cost": {}})
     return results
+
+
+def labels_by_claim(records: list[dict], mode: str | None = None) -> dict[int, str]:
+    """레코드를 {claim_id: pred_label}로 변환한다(N=3 일치율 입력)."""
+    return {r["claim_id"]: r["pred_label"]
+            for r in records if mode is None or r["mode"] == mode}
 
 
 def predictions_to_records(
