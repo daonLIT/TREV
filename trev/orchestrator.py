@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Field
 
-from trev.agent import _Continue, run_tool_loop
+from trev.agent import Budget, run_tool_loop
 from trev.controller import _high_tier_stance_conflict
 from trev.schemas import Claim, Label5, Verdict
 from trev.tier import rank_evidence
@@ -67,17 +67,23 @@ _FINISH_SEARCH_SPEC = {
 }
 
 
-def search_claim(ctx: AgentContext, llm, plan: Plan, *, max_steps: int = DEFAULT_SEARCH_STEPS):
-    """하위 질문별로 도구를 호출해 근거를 모은다(ctx.pool 채움)."""
+def search_claim(
+    ctx: AgentContext, llm, plan: Plan, *,
+    max_steps: int = DEFAULT_SEARCH_STEPS, budget: Budget | None = None,
+    feedback: str | None = None,
+):
+    """하위 질문별로 도구를 호출해 근거를 모은다(ctx.pool 채움). feedback은 재검색 힌트."""
     tools = [make_search_evidence_tool(ctx), make_rank_by_tier_tool(ctx),
              make_assess_source_tier_tool(ctx)]
     user = "Sub-questions to investigate:\n" + "\n".join(f"- {q}" for q in plan.sub_questions)
+    if feedback:
+        user += f"\n\n{feedback}"
     run_tool_loop(
         ctx, llm, system_prompt=_SEARCHER_SYSTEM, user_prompt=user, tools=tools,
         terminal_specs=[_FINISH_SEARCH_SPEC],
         on_terminal=lambda name, args: args or {},   # finish_search → 종료
         nudge="Call search_evidence for more, or finish_search to stop.",
-        max_steps=max_steps,
+        max_steps=max_steps, budget=budget,
     )
 
 
@@ -96,29 +102,12 @@ def _nei(claim: Claim, why: str) -> Verdict:
                    confidence=0.0, justification=why, cited=[])
 
 
-def orchestrate(
-    claim: Claim, index, embedder, llm, *,
-    tier_config: dict | None = None, method: str = "dense",
-    k: int = 10, candidate_n: int = 50, search_steps: int = DEFAULT_SEARCH_STEPS,
-) -> Verdict:
-    """planner→searcher→verifier 조율 + R5 CONFLICT + cited 강제 → 단일 Verdict."""
-    if tier_config is None:
-        from trev.config import load_config
-        tier_config = load_config().get("tier", {})
-    ctx = AgentContext(claim=claim, index=index, embedder=embedder,
-                       tier_config=tier_config, method=method, k=k, candidate_n=candidate_n)
+_FEEDBACK = ("The previous evidence was insufficient (low confidence). "
+             "Search with broader or alternative queries to find more trustworthy evidence.")
 
-    plan = plan_claim(claim, llm)
-    search_claim(ctx, llm, plan, max_steps=search_steps)
-    if not ctx.pool:
-        return _nei(claim, "no evidence gathered")
 
-    # tier 메타 보장(R5 입력) — searcher가 랭크했어도 orchestrator가 확정.
-    evidence = rank_evidence(claim, list(ctx.pool.values()), tier_config, weighted=True)
-    out = verify_pool(claim, evidence, llm)
-    if not out.cited:                       # cited 강제(무인용 금지)
-        return _nei(claim, "verifier returned no citation")
-
+def _verdict_from(claim: Claim, out: VerifierOutput, evidence) -> Verdict:
+    """verifier 출력 + R5 CONFLICT로 Verdict를 만든다."""
     label5 = _TO_LABEL5[out.label]
     if _high_tier_stance_conflict(evidence, out):   # R5: T1~T2 stance 공존 → CONFLICT
         label5 = Label5.CONFLICT
@@ -127,3 +116,47 @@ def orchestrate(
         averitec_label=to_averitec_label(label5),
         confidence=out.confidence, justification=out.justification, cited=out.cited,
     )
+
+
+def orchestrate(
+    claim: Claim, index, embedder, llm, *,
+    tier_config: dict | None = None, method: str = "dense",
+    k: int = 10, candidate_n: int = 50, search_steps: int = DEFAULT_SEARCH_STEPS,
+    low_confidence: float = 0.5, max_steps: int = 12, max_tool_calls: int = 24,
+) -> tuple[Verdict, Budget]:
+    """planner→searcher→verifier 조율 + 저신뢰 재검색(1회) + R5 CONFLICT + cited 강제.
+
+    반환: (Verdict, Budget). Budget은 소비된 step·tool 호출 수(비용 지표 — A5/A6).
+    """
+    if tier_config is None:
+        from trev.config import load_config
+        tier_config = load_config().get("tier", {})
+    budget = Budget(max_steps=max_steps, max_tool_calls=max_tool_calls)
+    ctx = AgentContext(claim=claim, index=index, embedder=embedder,
+                       tier_config=tier_config, method=method, k=k, candidate_n=candidate_n)
+
+    plan = plan_claim(claim, llm)
+    search_claim(ctx, llm, plan, max_steps=search_steps, budget=budget)
+
+    def _evaluate() -> VerifierOutput | None:
+        if not ctx.pool:
+            return None
+        evidence = rank_evidence(claim, list(ctx.pool.values()), tier_config, weighted=True)
+        return verify_pool(claim, evidence, llm)
+
+    out = _evaluate()
+    if out is None:
+        return _nei(claim, "no evidence gathered"), budget
+
+    # R4 동등: 저신뢰 → searcher로 1회 피드백 재검색 후 재검증, 그래도 낮으면 NEI.
+    if out.confidence < low_confidence:
+        search_claim(ctx, llm, plan, max_steps=search_steps, budget=budget, feedback=_FEEDBACK)
+        out = _evaluate()
+        if out is None or out.confidence < low_confidence:
+            return _nei(claim, "low confidence after re-search"), budget
+
+    if not out.cited:                       # cited 강제(무인용 금지)
+        return _nei(claim, "verifier returned no citation"), budget
+
+    evidence = rank_evidence(claim, list(ctx.pool.values()), tier_config, weighted=True)
+    return _verdict_from(claim, out, evidence), budget

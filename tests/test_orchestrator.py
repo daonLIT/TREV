@@ -86,8 +86,9 @@ def test_orchestrate_planner_searcher_verifier_to_verdict():
         verifier={"label": "REFUTE", "confidence": 0.8, "justification": "j",
                   "cited": ["e0"], "stances": [{"doc_id": "e0", "stance": "REFUTE"}]},
     )
-    v = orchestrate(_claim(), index, FakeEmbedder(), llm, tier_config=TIER_CFG)
+    v, budget = orchestrate(_claim(), index, FakeEmbedder(), llm, tier_config=TIER_CFG)
     assert v.label5 is Label5.REFUTE and v.averitec_label is AveritecLabel.REFUTED
+    assert budget.tool_calls >= 1  # searcher가 도구를 사용(비용 기록)
     assert v.cited == ["e0"]
 
 
@@ -107,7 +108,7 @@ def test_orchestrate_conflict_on_high_tier_stance_disagreement():
                   "stances": [{"doc_id": "e0", "stance": "SUPPORT"},
                               {"doc_id": "e1", "stance": "REFUTE"}]},
     )
-    v = orchestrate(_claim(), index, FakeEmbedder(), llm, tier_config=TIER_CFG)
+    v, _ = orchestrate(_claim(), index, FakeEmbedder(), llm, tier_config=TIER_CFG)
     assert v.label5 is Label5.CONFLICT
     assert v.averitec_label is AveritecLabel.CONFLICTING
 
@@ -121,5 +122,5 @@ def test_orchestrate_nei_when_no_evidence():
         search_turns=_search_then_finish(),
         verifier={"label": "SUPPORT", "confidence": 0.9, "justification": "j", "cited": ["e0"], "stances": []},
     )
-    v = orchestrate(_claim(), empty, FakeEmbedder(), llm, tier_config=TIER_CFG)
+    v, _ = orchestrate(_claim(), empty, FakeEmbedder(), llm, tier_config=TIER_CFG)
     assert v.label5 is Label5.NEI

@@ -12,6 +12,7 @@ justification·cited)를 호출 → 결정론과 동일 형태의 Verdict(5→4 
 from __future__ import annotations
 
 import json
+from dataclasses import dataclass
 
 from pydantic import BaseModel, Field, ValidationError
 
@@ -122,6 +123,22 @@ class _Continue:
         self.error = error
 
 
+@dataclass
+class Budget:
+    """전 오케스트레이션 공유 예산(비용·시간 통제). tool-calling 1턴 ~40s(G-agent 실측)."""
+
+    max_steps: int = 12
+    max_tool_calls: int = 24
+    steps: int = 0
+    tool_calls: int = 0
+
+    def step_exhausted(self) -> bool:
+        return self.steps >= self.max_steps
+
+    def tool_exhausted(self) -> bool:
+        return self.tool_calls >= self.max_tool_calls
+
+
 def run_tool_loop(
     ctx: AgentContext,
     llm,
@@ -133,11 +150,13 @@ def run_tool_loop(
     on_terminal,
     nudge: str,
     max_steps: int = DEFAULT_MAX_STEPS,
+    budget: "Budget | None" = None,
 ):
     """일반 tool-calling 루프(단일 에이전트·searcher가 공유).
 
     tool_calls를 리스트로 실행하고, 종료 도구(`terminal_specs`)는 `on_terminal(name, args)`로
-    처리한다. 반환값이 `_Continue`면 오류를 회신하고 계속, 아니면 그 값으로 종료. step 상한 시 None.
+    처리한다. 반환값이 `_Continue`면 오류를 회신하고 계속, 아니면 그 값으로 종료.
+    `budget`이 있으면 전역 step·tool 호출 상한을 적용한다(상한 시 안전 종료). 종료 도구 미호출 시 None.
     """
     toolbox = Toolbox(tools)
     specs = toolbox.specs() + terminal_specs
@@ -147,6 +166,10 @@ def run_tool_loop(
         {"role": "user", "content": user_prompt},
     ]
     for _ in range(max_steps):
+        if budget is not None and (budget.step_exhausted() or budget.tool_exhausted()):
+            break
+        if budget is not None:
+            budget.steps += 1
         turn = llm.complete_with_tools(messages, specs)
         if not turn.tool_calls:
             messages.append({"role": "assistant", "content": turn.content or ""})
@@ -160,7 +183,11 @@ def run_tool_loop(
                     messages.append(_tool_msg(tc.id, out.error))
                 else:
                     return out
+            elif budget is not None and budget.tool_exhausted():
+                messages.append(_tool_msg(tc.id, "error: tool budget exhausted — finish now"))
             else:
+                if budget is not None:
+                    budget.tool_calls += 1
                 messages.append(_tool_msg(tc.id, toolbox.call(tc.name, tc.arguments)))
     return None
 
