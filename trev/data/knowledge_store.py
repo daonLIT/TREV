@@ -25,7 +25,7 @@ from urllib.parse import urlparse
 from trev.guards import assert_knowledge_store_path
 from trev.schemas import Passage
 
-_REPO_ROOT = Path(__file__).resolve().parent.parent
+_REPO_ROOT = Path(__file__).resolve().parents[2]  # trev/data/knowledge_store.py → 레포 루트
 DEFAULT_KS_DIR = _REPO_ROOT / "knowledge_store" / "dev"
 
 # web.archive.org/web/<14자리 타임스탬프>/<원본 URL>

@@ -20,7 +20,7 @@ from trev.data.knowledge_store import (
 )
 from trev.schemas import AveritecLabel, Claim, ClaimType, Evidence
 
-_REPO_ROOT = Path(__file__).resolve().parent.parent
+_REPO_ROOT = Path(__file__).resolve().parents[2]  # trev/data/dataset.py → 레포 루트
 DEFAULT_DEV_PATH = _REPO_ROOT / "data_store" / "averitec" / "dev.json"
 
 # 서브셋 핵심 타입(항상 포함) + Quote(토글). 우선순위 = 단일 Claim.type 선택 순서.
