@@ -106,25 +106,32 @@ def _iter_records(path: Path):
                 yield json.loads(line)
 
 
-def load_claim_passages(
-    claim_id: int, ks_dir: str | Path = DEFAULT_KS_DIR
-) -> list[Passage]:
-    """claim_id에 매핑된 `{claim_id}.json`의 passage들을 추출한다.
+def iter_claim_records(claim_id: int, ks_dir: str | Path = DEFAULT_KS_DIR):
+    """claim_id에 매핑된 `{claim_id}.json` 레코드를 순회한다(가드 + claim_id 교차검증).
 
-    레코드 claim_id ↔ 파일 인덱스 교차검증(문자열 비교, 불일치 시 ValueError),
-    url2text element를 Passage로 펼친 뒤 (url, text) 기준으로 dedup한다.
+    스트리밍 소비자(인덱싱 청커 등)가 url2text를 전부 Passage로 펼치지 않고 쓰도록 한다.
     """
-    ks_dir = Path(ks_dir)
-    path = ks_dir / f"{claim_id}.json"
+    path = Path(ks_dir) / f"{claim_id}.json"
     assert_knowledge_store_path(path)  # dev split만 허용(#16 가드)
-
-    passages: list[Passage] = []
-    seen: set[tuple[str, str]] = set()
     for rec in _iter_records(path):
         if str(rec.get("claim_id")) != str(claim_id):
             raise ValueError(
                 f"{path.name}: claim_id 불일치 (레코드 {rec.get('claim_id')!r} != {claim_id})"
             )
+        yield rec
+
+
+def load_claim_passages(
+    claim_id: int, ks_dir: str | Path = DEFAULT_KS_DIR
+) -> list[Passage]:
+    """claim_id에 매핑된 `{claim_id}.json`의 passage들을 추출한다.
+
+    url2text element를 Passage로 펼친 뒤 (url, text) 기준으로 dedup한다. 인덱싱은
+    이 전체 목록 대신 스트리밍 청커(`trev.indexing.build_claim_chunks`)를 쓴다(대용량).
+    """
+    passages: list[Passage] = []
+    seen: set[tuple[str, str]] = set()
+    for rec in iter_claim_records(claim_id, ks_dir):
         url = rec.get("url") or ""
         if not url:
             continue

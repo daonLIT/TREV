@@ -16,7 +16,12 @@ from typing import Protocol
 
 import numpy as np
 
-from trev.knowledge_store import DEFAULT_KS_DIR, load_claim_passages
+from trev.knowledge_store import (
+    DEFAULT_KS_DIR,
+    derive_published_at,
+    extract_domain,
+    iter_claim_records,
+)
 from trev.schemas import Passage
 
 
@@ -149,6 +154,65 @@ def _tokenize(text: str) -> list[str]:
     return text.lower().split()
 
 
+def build_claim_chunks(
+    claim_id: int,
+    *,
+    ks_dir=DEFAULT_KS_DIR,
+    max_words: int = 180,
+    max_chunks_per_url: int | None = None,
+    dedup: bool = True,
+) -> list[Passage]:
+    """KS 레코드를 스트리밍하며 URL별 단어를 모아 청크를 만든다(메모리 효율).
+
+    `chunk_passages(load_claim_passages(...))`와 동일 결과지만, url2text를 line별
+    Passage로 펼치지 않아 대용량 claim(라인 수십만)에서 객체 생성 비용을 피한다.
+    `max_chunks_per_url`이 있으면 URL당 단어 예산(=cap×max_words)에서 조기 종료한다.
+    """
+    budget = max_words * max_chunks_per_url if max_chunks_per_url else None
+    groups: dict[str, dict] = {}  # url -> {words, domain, published_at, ks_type, seen}
+    for rec in iter_claim_records(claim_id, ks_dir):
+        url = rec.get("url") or ""
+        if not url:
+            continue
+        g = groups.get(url)
+        if g is None:
+            g = {
+                "words": [], "domain": extract_domain(url),
+                "published_at": derive_published_at(url),
+                "ks_type": rec.get("type"), "seen": set(),
+            }
+            groups[url] = g
+        if budget is not None and len(g["words"]) >= budget:
+            continue  # 이 URL은 이미 충분(조기 종료)
+        for text in rec.get("url2text") or []:
+            if not isinstance(text, str) or not text.strip():
+                continue
+            if dedup:
+                if text in g["seen"]:
+                    continue
+                g["seen"].add(text)
+            g["words"].extend(text.split())
+            if budget is not None and len(g["words"]) >= budget:
+                break
+
+    chunks: list[Passage] = []
+    for url, g in groups.items():
+        words = g["words"]
+        n = 0
+        for i in range(0, len(words), max_words):
+            if max_chunks_per_url is not None and n >= max_chunks_per_url:
+                break
+            chunks.append(
+                Passage(
+                    claim_id=claim_id, url=url, text=" ".join(words[i:i + max_words]),
+                    source_domain=g["domain"], published_at=g["published_at"],
+                    ks_type=g["ks_type"],
+                )
+            )
+            n += 1
+    return chunks
+
+
 def build_claim_index(
     claim_id: int,
     embedder: Embedder,
@@ -157,9 +221,9 @@ def build_claim_index(
     max_words: int = 180,
     max_chunks_per_url: int | None = None,
 ) -> ClaimIndex:
-    """D2 로드 → URL 재청킹 → per-claim 인덱스 빌드(전 과정 결선)."""
-    passages = load_claim_passages(claim_id, ks_dir)
-    chunks = chunk_passages(
-        passages, max_words=max_words, max_chunks_per_url=max_chunks_per_url
+    """KS 스트리밍 청킹 → per-claim 인덱스 빌드(전 과정 결선)."""
+    chunks = build_claim_chunks(
+        claim_id, ks_dir=ks_dir, max_words=max_words,
+        max_chunks_per_url=max_chunks_per_url,
     )
     return ClaimIndex.build(chunks, embedder)

@@ -7,7 +7,13 @@ from pathlib import Path
 
 import numpy as np
 
-from trev.indexing import ClaimIndex, build_claim_index, chunk_passages
+from trev.indexing import (
+    ClaimIndex,
+    build_claim_chunks,
+    build_claim_index,
+    chunk_passages,
+)
+from trev.knowledge_store import load_claim_passages
 from trev.schemas import Passage
 
 KS_DIR = Path(__file__).parent / "fixtures" / "knowledge_store" / "dev"
@@ -109,3 +115,19 @@ def test_build_claim_index_end_to_end():
     assert any("example.com" in u for u in urls)
     hits = idx.search_dense("BBC", FakeEmbedder(), k=3)
     assert hits and any("bbc" in h.passage.url for h in hits)
+
+
+def test_streaming_chunks_match_passage_path():
+    """스트리밍 청커 = chunk_passages(load_claim_passages) 동일 결과(메모리만 절감)."""
+    streamed = build_claim_chunks(0, ks_dir=KS_DIR)
+    via_passages = chunk_passages(load_claim_passages(0, KS_DIR))
+    key = lambda cs: sorted((c.url, c.text, c.source_domain, c.published_at) for c in cs)
+    assert key(streamed) == key(via_passages)
+
+
+def test_streaming_cap_limits_chunks_per_url():
+    chunks = build_claim_chunks(0, ks_dir=KS_DIR, max_words=2, max_chunks_per_url=1)
+    per_url = {}
+    for c in chunks:
+        per_url[c.url] = per_url.get(c.url, 0) + 1
+    assert all(v <= 1 for v in per_url.values())
