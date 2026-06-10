@@ -1,0 +1,31 @@
+[
+  {
+    "claim": "A: numerical single-type, DD-MM-YYYY date",
+    "claim_date": "31-10-2020",
+    "label": "Refuted",
+    "claim_types": ["Numerical Claim"]
+  },
+  {
+    "claim": "B: position only -> excluded from subset",
+    "claim_date": "01-01-2019",
+    "label": "Supported",
+    "claim_types": ["Position Statement"]
+  },
+  {
+    "claim": "C: multi-type, Y-m-d date, conflicting label",
+    "claim_date": "2019-05-01",
+    "label": "Conflicting Evidence/Cherrypicking",
+    "claim_types": ["Causal Claim", "Event/Property Claim"]
+  },
+  {
+    "claim": "D: quote only -> excluded unless include_quote, empty date",
+    "claim_date": "",
+    "label": "Not Enough Evidence",
+    "claim_types": ["Quote Verification"]
+  },
+  {
+    "claim": "E: numerical+event multi-type, missing date field",
+    "label": "Refuted",
+    "claim_types": ["Event/Property Claim", "Numerical Claim"]
+  }
+]
