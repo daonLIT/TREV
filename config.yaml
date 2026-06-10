@@ -11,3 +11,9 @@ data:
   split: dev                      # 평가는 dev only (test/test_2025/train 차단 — trev.guards)
   # claim type 필터: Numerical + Event/Property. 표본 부족 시 Quote Verification 보조 포함.
   include_quote_verification: false
+
+index:
+  # per-claim 인덱싱(D4). url2text는 페이지 라인이라 URL별 병합 후 재청킹한다.
+  e5_model: intfloat/multilingual-e5-large
+  chunk_max_words: 180
+  max_chunks_per_url: null         # null=무제한. 실데이터(claim당 ~52만 라인)에선 상한 권장.
