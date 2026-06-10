@@ -13,8 +13,12 @@ from datetime import datetime
 from pathlib import Path
 
 from trev.guards import assert_data_file_allowed
-from trev.knowledge_store import claim_source_domains
-from trev.schemas import AveritecLabel, Claim, ClaimType
+from trev.knowledge_store import (
+    claim_source_domains,
+    derive_published_at,
+    extract_domain,
+)
+from trev.schemas import AveritecLabel, Claim, ClaimType, Evidence
 
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DEV_PATH = _REPO_ROOT / "data_store" / "averitec" / "dev.json"
@@ -104,6 +108,41 @@ def load_averitec(
             )
         )
     return claims
+
+
+def load_gold_evidence(
+    claim_id: int, path: str | Path = DEFAULT_DEV_PATH
+) -> list[Evidence]:
+    """claim의 gold 근거(questions[].answers[])를 Evidence stub으로 반환한다(S2 워킹 스켈레톤).
+
+    검색 미구현 단계에서 verifier 입력으로 주입한다(S3/S4에서 실검색으로 교체).
+    gold는 평가/스켈레톤 전용 — 검색 코퍼스에 섞지 않는다.
+    """
+    path = Path(path)
+    assert_data_file_allowed(path.name)
+    with open(path, encoding="utf-8") as f:
+        raw = json.load(f)
+    obj = raw[claim_id]
+
+    evidence: list[Evidence] = []
+    for q in obj.get("questions") or []:
+        question = q.get("question") or ""
+        for a in q.get("answers") or []:
+            answer = (a.get("answer") or "").strip()
+            if not answer:
+                continue
+            url = a.get("source_url") or None
+            evidence.append(
+                Evidence(
+                    doc_id=f"g{len(evidence)}",
+                    snippet=f"{question} — {answer}" if question else answer,
+                    url=url,
+                    source_domain=extract_domain(url) if url else None,
+                    source=extract_domain(url) if url else None,
+                    published_at=derive_published_at(url) if url else None,
+                )
+            )
+    return evidence
 
 
 def conflicting_count(claims: list[Claim]) -> int:
