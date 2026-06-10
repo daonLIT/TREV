@@ -14,6 +14,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Protocol
 
+import json
+from pathlib import Path
+
 import numpy as np
 
 from trev.knowledge_store import (
@@ -116,24 +119,52 @@ class SearchHit:
 class ClaimIndex:
     """단일 claim의 청크에 대한 dense(FAISS) + lexical(BM25) 인덱스."""
 
-    def __init__(self, passages: list[Passage], embeddings: np.ndarray):
-        import faiss
-        from rank_bm25 import BM25Okapi
-
+    def __init__(self, passages: list[Passage], faiss_index, bm25):
         self.passages = passages
-        self._embeddings = _normalize(embeddings)
-        dim = self._embeddings.shape[1] if len(passages) else 1
-        self._faiss = faiss.IndexFlatIP(dim)
-        if len(passages):
-            self._faiss.add(self._embeddings)
-        self._bm25 = BM25Okapi([_tokenize(p.text) for p in passages] or [[""]])
+        self._faiss = faiss_index
+        self._bm25 = bm25
 
     @classmethod
     def build(cls, passages: list[Passage], embedder: Embedder) -> "ClaimIndex":
-        if not passages:
-            return cls([], np.zeros((0, 1), dtype=np.float32))
-        emb = embedder.encode([p.text for p in passages], is_query=False)
-        return cls(passages, emb)
+        import faiss
+        from rank_bm25 import BM25Okapi
+
+        dim = 1
+        faiss_index = faiss.IndexFlatIP(dim)
+        if passages:
+            emb = _normalize(embedder.encode([p.text for p in passages], is_query=False))
+            dim = emb.shape[1]
+            faiss_index = faiss.IndexFlatIP(dim)
+            faiss_index.add(emb)
+        bm25 = BM25Okapi([_tokenize(p.text) for p in passages] or [[""]])
+        return cls(passages, faiss_index, bm25)
+
+    def save(self, directory: str | Path) -> None:
+        """FAISS 인덱스 + passage 메타를 디스크에 저장한다(BM25는 재구성). 빌드 1회용."""
+        import faiss
+
+        d = Path(directory)
+        d.mkdir(parents=True, exist_ok=True)
+        faiss.write_index(self._faiss, str(d / "faiss.index"))
+        (d / "passages.json").write_text(
+            json.dumps([p.model_dump() for p in self.passages], ensure_ascii=False),
+            encoding="utf-8",
+        )
+
+    @classmethod
+    def load(cls, directory: str | Path) -> "ClaimIndex":
+        """save된 인덱스를 재로드한다(e5 재임베딩 없이 — 실험 재실행 가속)."""
+        import faiss
+        from rank_bm25 import BM25Okapi
+
+        d = Path(directory)
+        faiss_index = faiss.read_index(str(d / "faiss.index"))
+        passages = [
+            Passage(**o)
+            for o in json.loads((d / "passages.json").read_text(encoding="utf-8"))
+        ]
+        bm25 = BM25Okapi([_tokenize(p.text) for p in passages] or [[""]])
+        return cls(passages, faiss_index, bm25)
 
     def search_dense(self, query: str, embedder: Embedder, k: int = 5) -> list[SearchHit]:
         if not self.passages:

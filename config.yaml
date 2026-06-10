@@ -16,7 +16,9 @@ index:
   # per-claim 인덱싱(D4). url2text는 페이지 라인이라 URL별 병합 후 재청킹한다.
   e5_model: intfloat/multilingual-e5-large
   chunk_max_words: 180
-  max_chunks_per_url: null         # null=무제한. 실데이터(claim당 ~52만 라인)에선 상한 권장.
+  # URL당 청크 상한(페이지 lead 우선). null=무제한이나 claim당 ~4만 청크라 임베딩 불가 →
+  # 실험 기본값으로 상한 필수. 3 ≈ 페이지 앞 ~540단어. 연구자가 튜닝 가능.
+  max_chunks_per_url: 3
 
 tier:
   # 도메인 → base tier 화이트리스트(D3). overrides(정확 도메인) → heuristics → T4 기본.

@@ -60,19 +60,29 @@ def retrieve(
     *,
     k: int = 10,
     candidate_n: int = 50,
+    method: str = "dense",
+    expand: bool = False,
     mode: str = "proposed",
 ) -> list[Evidence]:
-    """claim에 대해 dense 검색 → 시점 필터 → top-k Evidence를 반환한다.
+    """claim에 대해 검색 → 시점 필터 → top-k Evidence를 반환한다.
 
-    `mode="gpt_only"`면 검색을 생략하고 빈 리스트를 반환한다.
+    - `method`: "dense"(e5 FAISS) 또는 "bm25"(lexical ablation).
+    - `expand`: R4 재검색 시 후보 폭을 넓힌다(candidate_n×2).
+    - `mode="gpt_only"`면 검색을 생략하고 빈 리스트를 반환한다.
     """
     if mode == "gpt_only":
         return []
 
+    n = candidate_n * 2 if expand else candidate_n
     # 여러 질의 템플릿 결과를 (url, text) 기준으로 병합(최고 점수 유지).
     best: dict[tuple[str, str], tuple] = {}
     for query in build_queries(claim):
-        for hit in index.search_dense(query, embedder, k=candidate_n):
+        hits = (
+            index.search_bm25(query, k=n)
+            if method == "bm25"
+            else index.search_dense(query, embedder, k=n)
+        )
+        for hit in hits:
             key = (hit.passage.url, hit.passage.text)
             if key not in best or hit.score > best[key][1]:
                 best[key] = (hit.passage, hit.score)
