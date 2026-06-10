@@ -17,7 +17,15 @@ from pydantic import BaseModel, Field, ValidationError
 
 from trev.llm import AssistantTurn
 from trev.schemas import Claim, Label5, Verdict
-from trev.tools import AgentContext, Tool, Toolbox, make_search_evidence_tool
+from trev.tools import (
+    AgentContext,
+    Tool,
+    Toolbox,
+    make_assess_source_tier_tool,
+    make_rank_by_tier_tool,
+    make_search_evidence_tool,
+    make_verify_claim_tool,
+)
 from trev.verifier import VerifierLabel, _TO_LABEL5, to_averitec_label
 
 DEFAULT_MAX_STEPS = 8
@@ -50,14 +58,22 @@ SUBMIT_TOOL_SPEC = {
 }
 
 VERIFIER_SYSTEM = """You are a fact-checking agent. Verify the CLAIM using ONLY evidence \
-from the search_evidence tool (the knowledge store). Do not use outside knowledge.
+from the knowledge store tools. Do not use outside knowledge.
+
+Tools:
+- search_evidence: gather evidence (returns citable doc_ids).
+- rank_by_tier: rank gathered evidence by source trust tier (T1 best); prefer high-tier sources.
+- assess_source_tier: look up a domain's tier.
+- verify_claim: delegate a labeled assessment with per-evidence stances.
 
 Process:
-1. Call search_evidence with focused queries to gather evidence (you may issue several).
-2. Judge the claim: SUPPORT (evidence supports it), REFUTE (core is false), \
-PARTIAL (exaggerated/cherry-picked/partly true), NEI (no trustworthy evidence).
-3. Call submit_verdict with your label, confidence (0-1), justification, and cited \
-(doc_ids you relied on — must be non-empty). Do NOT use a CONFLICT label.
+1. search_evidence with focused queries (you may issue several).
+2. Optionally rank_by_tier / assess_source_tier to weigh source trust, and verify_claim to \
+get an assessment.
+3. Judge: SUPPORT / REFUTE (core is false) / PARTIAL (exaggerated/cherry-picked) / NEI \
+(no trustworthy evidence). Prefer trustworthy (T1-T3) evidence.
+4. Call submit_verdict with label, confidence (0-1), justification, and non-empty cited \
+(doc_ids). Do NOT use a CONFLICT label.
 Ground every judgment in the retrieved evidence."""
 
 
@@ -141,8 +157,16 @@ def verify_with_agent(
     tier_config: dict | None = None, method: str = "dense",
     k: int = 10, candidate_n: int = 50, max_steps: int = DEFAULT_MAX_STEPS,
 ) -> Verdict:
-    """단일 검증 에이전트로 claim을 관통시켜 Verdict를 만든다(A1 진입점)."""
+    """단일 검증 에이전트로 claim을 관통시켜 Verdict를 만든다(검색·tier·verify 도구 사용)."""
+    if tier_config is None:
+        from trev.config import load_config
+        tier_config = load_config().get("tier", {})
     ctx = AgentContext(claim=claim, index=index, embedder=embedder,
                        tier_config=tier_config, method=method, k=k, candidate_n=candidate_n)
-    tools = [make_search_evidence_tool(ctx)]
+    tools = [
+        make_search_evidence_tool(ctx),
+        make_rank_by_tier_tool(ctx),
+        make_assess_source_tier_tool(ctx),
+        make_verify_claim_tool(ctx, llm),
+    ]
     return run_agent(ctx, llm, system_prompt=VERIFIER_SYSTEM, tools=tools, max_steps=max_steps)

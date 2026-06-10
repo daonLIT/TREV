@@ -14,7 +14,9 @@ from typing import Callable
 
 from trev.indexing import ClaimIndex, Embedder
 from trev.retriever import retrieve_for_queries
-from trev.schemas import Claim, Evidence
+from trev.schemas import Claim, Evidence, Role
+from trev.tier import assign_tier, rank_evidence
+from trev.verifier import run_verifier
 
 
 @dataclass
@@ -119,5 +121,79 @@ def make_search_evidence_tool(ctx: AgentContext) -> Tool:
             },
             "required": ["query"],
         },
+        handler=handler,
+    )
+
+
+def make_rank_by_tier_tool(ctx: AgentContext) -> Tool:
+    """`rank_by_tier(weighted)` — 수집 근거에 동적 tier·자기출처 강등·가중을 적용(핵심 기여 도구)."""
+
+    def handler(args: dict) -> str:
+        if not ctx.pool:
+            return "error: no evidence yet — call search_evidence first"
+        weighted = bool(args.get("weighted", True))
+        ranked = rank_evidence(
+            ctx.claim, list(ctx.pool.values()), ctx.tier_config or {}, weighted=weighted
+        )
+        for e in ranked:  # 풀에 tier/role/weight 주석(doc_id 유지)
+            ctx.pool[e.doc_id] = e
+        lines = [
+            f"[{e.doc_id}] T{e.tier} w{e.weight} ({e.source_domain or 'unknown'}) {e.snippet[:120]}"
+            for e in ranked
+        ]
+        return "Ranked by tier (T1 most trustworthy):\n" + "\n".join(lines)
+
+    return Tool(
+        name="rank_by_tier",
+        description="Rank gathered evidence by source tier (dynamic tier + self-source "
+                    "demotion). weighted=true applies tier weights to the score.",
+        parameters={
+            "type": "object",
+            "properties": {"weighted": {"type": "boolean"}},
+        },
+        handler=handler,
+    )
+
+
+def make_assess_source_tier_tool(ctx: AgentContext) -> Tool:
+    """`assess_source_tier(domain)` — 도메인의 신뢰 tier·weight를 질의."""
+
+    def handler(args: dict) -> str:
+        domain = args.get("domain")
+        if not isinstance(domain, str) or not domain.strip():
+            return "error: 'domain' (non-empty string) is required"
+        tier, weight = assign_tier(
+            ctx.claim.type, Role.GENERAL, domain, ctx.tier_config or {}
+        )
+        return f"{domain} -> tier T{tier} (weight {weight})"
+
+    return Tool(
+        name="assess_source_tier",
+        description="Look up the trust tier (T1-T4) and weight of a source domain.",
+        parameters={
+            "type": "object",
+            "properties": {"domain": {"type": "string"}},
+            "required": ["domain"],
+        },
+        handler=handler,
+    )
+
+
+def make_verify_claim_tool(ctx: AgentContext, llm) -> Tool:
+    """`verify_claim()` — 수집 근거로 verifier(run_verifier)에 판정을 위임(라벨·stance·cited)."""
+
+    def handler(args: dict) -> str:
+        if not ctx.pool:
+            return "error: no evidence yet — call search_evidence first"
+        out = run_verifier(ctx.claim, list(ctx.pool.values()), llm)
+        stances = ", ".join(f"{s.doc_id}:{s.stance.value}" for s in out.stances)
+        return (f"Verifier: label={out.label.value} confidence={out.confidence} "
+                f"cited={out.cited} stances=[{stances}] justification={out.justification}")
+
+    return Tool(
+        name="verify_claim",
+        description="Delegate verification of the claim against gathered evidence. "
+                    "Returns a label, per-evidence stances, and cited doc_ids.",
+        parameters={"type": "object", "properties": {}},
         handler=handler,
     )
