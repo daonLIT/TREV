@@ -68,6 +68,21 @@ class Claim(BaseModel):
     label: AveritecLabel | None = None  # gold(평가 기준). 예측 경로에서는 사용 금지.
 
 
+class Passage(BaseModel):
+    """KS에서 추출한 검색 단위(url2text 1개). D2가 생산, D4 인덱싱·D5 Recall이 소비.
+
+    `ks_type`은 검색전략 provenance(14종)로 분석용 보존일 뿐 부스팅에 쓰지 않는다.
+    `published_at`은 아카이브 스냅샷에서 유도(없으면 None=시점필터 통과).
+    """
+
+    claim_id: int
+    url: str
+    text: str
+    source_domain: str | None = None
+    published_at: str | None = None
+    ks_type: str | None = None
+
+
 class Evidence(BaseModel):
     """검색된 근거 1건. published_at은 아카이브 스냅샷에서 유도(없으면 None)."""
 
