@@ -114,3 +114,33 @@ class Verdict(BaseModel):
     confidence: float = Field(ge=0.0, le=1.0)
     justification: str
     cited: list[str] = Field(default_factory=list)
+
+
+class ToolCall(BaseModel):
+    """에이전트가 실행한 단일 도구 호출 기록(분석·trace)."""
+
+    name: str
+    args: dict
+    result: str
+
+
+class AgentStep(BaseModel):
+    """한 에이전트 턴: 어느 에이전트가 어떤 도구를 호출하고 무엇을 관찰/산출했는지."""
+
+    agent: str
+    tool_calls: list[ToolCall] = Field(default_factory=list)
+    note: str | None = None  # planner/verifier 산출 요약 또는 어시스턴트 텍스트
+
+
+class AgentTrace(BaseModel):
+    """오케스트레이션 전체 추론·도구호출 기록 + 비용(소비 step·tool 수)."""
+
+    steps: list[AgentStep] = Field(default_factory=list)
+    tool_calls_used: int = 0  # 실제 도구 실행 수(예산 소비)
+    steps_used: int = 0       # 실제 LLM 턴 수(예산 소비)
+
+    def n_steps(self) -> int:
+        return len(self.steps)
+
+    def n_tool_calls(self) -> int:
+        return sum(len(s.tool_calls) for s in self.steps)

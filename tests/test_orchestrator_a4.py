@@ -58,9 +58,9 @@ def test_low_confidence_triggers_one_research_then_recovers():
     llm = ScriptedLLM(plan={"sub_questions": ["q"]},
                       search_rounds=[_search_finish(), _search_finish()],
                       verifier_outs=[_LOW, _GOOD])
-    v, budget = orchestrate(_claim(), _index(), FakeEmbedder(), llm, tier_config=TIER_CFG)
+    v, trace = orchestrate(_claim(), _index(), FakeEmbedder(), llm, tier_config=TIER_CFG)
     assert v.label5 is Label5.REFUTE          # 재검색 후 회복
-    assert budget.tool_calls >= 2             # 두 라운드 검색
+    assert trace.tool_calls_used >= 2         # 두 라운드 검색
 
 
 def test_low_confidence_still_low_after_research_is_nei():
@@ -95,7 +95,7 @@ def test_tool_budget_caps_search():
         def complete_with_tools(self, m, t, *, tool_choice="auto"):
             return many_searches.pop(0)
 
-    v, budget = orchestrate(_claim(), _index(), FakeEmbedder(), CappedLLM(),
-                            tier_config=TIER_CFG, max_tool_calls=3, search_steps=50)
-    assert budget.tool_calls <= 3            # 상한 준수
+    v, trace = orchestrate(_claim(), _index(), FakeEmbedder(), CappedLLM(),
+                           tier_config=TIER_CFG, max_tool_calls=3, search_steps=50)
+    assert trace.tool_calls_used <= 3        # 상한 준수
     assert v.label5 in set(Label5)           # 예외 없이 Verdict

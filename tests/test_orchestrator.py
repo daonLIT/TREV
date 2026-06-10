@@ -86,9 +86,11 @@ def test_orchestrate_planner_searcher_verifier_to_verdict():
         verifier={"label": "REFUTE", "confidence": 0.8, "justification": "j",
                   "cited": ["e0"], "stances": [{"doc_id": "e0", "stance": "REFUTE"}]},
     )
-    v, budget = orchestrate(_claim(), index, FakeEmbedder(), llm, tier_config=TIER_CFG)
+    v, trace = orchestrate(_claim(), index, FakeEmbedder(), llm, tier_config=TIER_CFG)
     assert v.label5 is Label5.REFUTE and v.averitec_label is AveritecLabel.REFUTED
-    assert budget.tool_calls >= 1  # searcher가 도구를 사용(비용 기록)
+    assert trace.tool_calls_used >= 1  # searcher가 도구를 사용(비용 기록)
+    assert any(s.agent == "planner" for s in trace.steps)   # 역할별 trace 기록
+    assert any(s.agent == "verifier" for s in trace.steps)
     assert v.cited == ["e0"]
 
 

@@ -14,7 +14,7 @@ from pydantic import BaseModel, Field
 
 from trev.agent import Budget, run_tool_loop
 from trev.controller import _high_tier_stance_conflict
-from trev.schemas import Claim, Label5, Verdict
+from trev.schemas import AgentStep, AgentTrace, Claim, Label5, Verdict
 from trev.tier import rank_evidence
 from trev.tools import (
     AgentContext,
@@ -70,7 +70,7 @@ _FINISH_SEARCH_SPEC = {
 def search_claim(
     ctx: AgentContext, llm, plan: Plan, *,
     max_steps: int = DEFAULT_SEARCH_STEPS, budget: Budget | None = None,
-    feedback: str | None = None,
+    feedback: str | None = None, trace: AgentTrace | None = None,
 ):
     """하위 질문별로 도구를 호출해 근거를 모은다(ctx.pool 채움). feedback은 재검색 힌트."""
     tools = [make_search_evidence_tool(ctx), make_rank_by_tier_tool(ctx),
@@ -83,7 +83,7 @@ def search_claim(
         terminal_specs=[_FINISH_SEARCH_SPEC],
         on_terminal=lambda name, args: args or {},   # finish_search → 종료
         nudge="Call search_evidence for more, or finish_search to stop.",
-        max_steps=max_steps, budget=budget,
+        max_steps=max_steps, budget=budget, trace=trace, agent="searcher",
     )
 
 
@@ -123,40 +123,53 @@ def orchestrate(
     tier_config: dict | None = None, method: str = "dense",
     k: int = 10, candidate_n: int = 50, search_steps: int = DEFAULT_SEARCH_STEPS,
     low_confidence: float = 0.5, max_steps: int = 12, max_tool_calls: int = 24,
-) -> tuple[Verdict, Budget]:
+) -> tuple[Verdict, AgentTrace]:
     """planner→searcher→verifier 조율 + 저신뢰 재검색(1회) + R5 CONFLICT + cited 강제.
 
-    반환: (Verdict, Budget). Budget은 소비된 step·tool 호출 수(비용 지표 — A5/A6).
+    반환: (Verdict, AgentTrace). trace는 에이전트별 도구호출 기록 + 비용(소비 step·tool 수).
     """
     if tier_config is None:
         from trev.config import load_config
         tier_config = load_config().get("tier", {})
     budget = Budget(max_steps=max_steps, max_tool_calls=max_tool_calls)
+    trace = AgentTrace()
     ctx = AgentContext(claim=claim, index=index, embedder=embedder,
                        tier_config=tier_config, method=method, k=k, candidate_n=candidate_n)
 
+    def _finish(verdict: Verdict) -> tuple[Verdict, AgentTrace]:
+        trace.tool_calls_used = budget.tool_calls
+        trace.steps_used = budget.steps
+        return verdict, trace
+
     plan = plan_claim(claim, llm)
-    search_claim(ctx, llm, plan, max_steps=search_steps, budget=budget)
+    trace.steps.append(AgentStep(agent="planner",
+                                 note="sub_questions: " + "; ".join(plan.sub_questions)))
+    search_claim(ctx, llm, plan, max_steps=search_steps, budget=budget, trace=trace)
 
     def _evaluate() -> VerifierOutput | None:
         if not ctx.pool:
             return None
         evidence = rank_evidence(claim, list(ctx.pool.values()), tier_config, weighted=True)
-        return verify_pool(claim, evidence, llm)
+        out = verify_pool(claim, evidence, llm)
+        trace.steps.append(AgentStep(
+            agent="verifier",
+            note=f"label={out.label.value} confidence={out.confidence} cited={out.cited}"))
+        return out
 
     out = _evaluate()
     if out is None:
-        return _nei(claim, "no evidence gathered"), budget
+        return _finish(_nei(claim, "no evidence gathered"))
 
     # R4 동등: 저신뢰 → searcher로 1회 피드백 재검색 후 재검증, 그래도 낮으면 NEI.
     if out.confidence < low_confidence:
-        search_claim(ctx, llm, plan, max_steps=search_steps, budget=budget, feedback=_FEEDBACK)
+        search_claim(ctx, llm, plan, max_steps=search_steps, budget=budget,
+                     feedback=_FEEDBACK, trace=trace)
         out = _evaluate()
         if out is None or out.confidence < low_confidence:
-            return _nei(claim, "low confidence after re-search"), budget
+            return _finish(_nei(claim, "low confidence after re-search"))
 
     if not out.cited:                       # cited 강제(무인용 금지)
-        return _nei(claim, "verifier returned no citation"), budget
+        return _finish(_nei(claim, "verifier returned no citation"))
 
     evidence = rank_evidence(claim, list(ctx.pool.values()), tier_config, weighted=True)
-    return _verdict_from(claim, out, evidence), budget
+    return _finish(_verdict_from(claim, out, evidence))

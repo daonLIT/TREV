@@ -17,7 +17,7 @@ from dataclasses import dataclass
 from pydantic import BaseModel, Field, ValidationError
 
 from trev.llm import AssistantTurn
-from trev.schemas import Claim, Label5, Verdict
+from trev.schemas import AgentStep, AgentTrace, Claim, Label5, ToolCall, Verdict
 from trev.tools import (
     AgentContext,
     Tool,
@@ -151,12 +151,15 @@ def run_tool_loop(
     nudge: str,
     max_steps: int = DEFAULT_MAX_STEPS,
     budget: "Budget | None" = None,
+    trace: AgentTrace | None = None,
+    agent: str = "agent",
 ):
     """일반 tool-calling 루프(단일 에이전트·searcher가 공유).
 
     tool_calls를 리스트로 실행하고, 종료 도구(`terminal_specs`)는 `on_terminal(name, args)`로
     처리한다. 반환값이 `_Continue`면 오류를 회신하고 계속, 아니면 그 값으로 종료.
-    `budget`이 있으면 전역 step·tool 호출 상한을 적용한다(상한 시 안전 종료). 종료 도구 미호출 시 None.
+    `budget`이 있으면 전역 step·tool 호출 상한을 적용한다. `trace`가 있으면 매 턴의 도구호출·
+    관찰을 AgentStep으로 기록한다. 종료 도구 미호출 시 None.
     """
     toolbox = Toolbox(tools)
     specs = toolbox.specs() + terminal_specs
@@ -165,6 +168,11 @@ def run_tool_loop(
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt},
     ]
+
+    def _record(calls, note):
+        if trace is not None:
+            trace.steps.append(AgentStep(agent=agent, tool_calls=calls, note=note))
+
     for _ in range(max_steps):
         if budget is not None and (budget.step_exhausted() or budget.tool_exhausted()):
             break
@@ -174,21 +182,31 @@ def run_tool_loop(
         if not turn.tool_calls:
             messages.append({"role": "assistant", "content": turn.content or ""})
             messages.append({"role": "user", "content": nudge})
+            _record([], turn.content)
             continue
         messages.append(_assistant_msg(turn))
+        step_calls: list[ToolCall] = []
         for tc in turn.tool_calls:
             if tc.name in terminal_names:
                 out = on_terminal(tc.name, tc.arguments)
                 if isinstance(out, _Continue):
                     messages.append(_tool_msg(tc.id, out.error))
+                    step_calls.append(ToolCall(name=tc.name, args=tc.arguments, result=out.error))
                 else:
+                    step_calls.append(ToolCall(name=tc.name, args=tc.arguments, result="(terminal)"))
+                    _record(step_calls, turn.content)
                     return out
             elif budget is not None and budget.tool_exhausted():
-                messages.append(_tool_msg(tc.id, "error: tool budget exhausted — finish now"))
+                msg = "error: tool budget exhausted — finish now"
+                messages.append(_tool_msg(tc.id, msg))
+                step_calls.append(ToolCall(name=tc.name, args=tc.arguments, result=msg))
             else:
                 if budget is not None:
                     budget.tool_calls += 1
-                messages.append(_tool_msg(tc.id, toolbox.call(tc.name, tc.arguments)))
+                result = toolbox.call(tc.name, tc.arguments)
+                messages.append(_tool_msg(tc.id, result))
+                step_calls.append(ToolCall(name=tc.name, args=tc.arguments, result=result))
+        _record(step_calls, turn.content)
     return None
 
 
