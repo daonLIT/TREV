@@ -1,0 +1,5 @@
+{"claim_id": "0", "type": "gold", "query": "_", "url": "https://web.archive.org/web/20201129141238/https://scoopertino.com/exposed-the-imac-disaster/", "url2text": ["Gold evidence line one.", "Gold evidence line two."]}
+{"claim_id": "0", "type": "question", "query": "what happened", "url": "https://www.example.com/article?utm=1", "url2text": ["Example body line A.", "Example body line B."]}
+{"claim_id": "0", "type": "question_duplicate", "query": "what happened again", "url": "https://www.example.com/article?utm=1", "url2text": ["Example body line A.", "Example body line B."]}
+{"claim_id": "0", "type": "most_similar", "query": "similar", "url": "http://news.bbc.co.uk/story", "url2text": ["BBC text.", "  ", ""]}
+{"claim_id": "0", "type": "gpt_url_only", "query": "x", "url": "", "url2text": ["should be skipped: empty url"]}

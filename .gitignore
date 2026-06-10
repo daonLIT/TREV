@@ -228,8 +228,8 @@ hai-gpt 사용문서.md
 
 
 
-# Data
-data_store/
-knowledge_store/
-index/
-outputs/
+# Data (레포 루트만 — tests/fixtures/ 의 동명 디렉터리는 커밋되어야 함)
+/data_store/
+/knowledge_store/
+/index/
+/outputs/
