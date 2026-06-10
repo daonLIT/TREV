@@ -66,6 +66,8 @@ class Claim(BaseModel):
     topic: str | None = None
     checkworthiness: float | None = None
     label: AveritecLabel | None = None  # gold(평가 기준). 예측 경로에서는 사용 금지.
+    # 자기출처매칭(role=target)용 — original_claim_url/reporting_source 도메인(US16).
+    source_domains: list[str] = Field(default_factory=list)
 
 
 class Passage(BaseModel):

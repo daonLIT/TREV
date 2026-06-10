@@ -13,6 +13,7 @@ from datetime import datetime
 from pathlib import Path
 
 from trev.guards import assert_data_file_allowed
+from trev.knowledge_store import claim_source_domains
 from trev.schemas import AveritecLabel, Claim, ClaimType
 
 _REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -97,6 +98,9 @@ def load_averitec(
                 type=ctype,
                 claim_date=parse_claim_date(obj.get("claim_date")),
                 label=_normalize_label(obj.get("label")),
+                source_domains=claim_source_domains(
+                    obj.get("original_claim_url"), obj.get("reporting_source")
+                ),
             )
         )
     return claims

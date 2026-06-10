@@ -17,3 +17,17 @@ index:
   e5_model: intfloat/multilingual-e5-large
   chunk_max_words: 180
   max_chunks_per_url: null         # null=무제한. 실데이터(claim당 ~52만 라인)에선 상한 권장.
+
+tier:
+  # 도메인 → base tier 화이트리스트(D3). overrides(정확 도메인) → heuristics → T4 기본.
+  # overrides는 서브셋 빈도목록(docs/domain_frequency.md)을 사람이 감수해 채운다.
+  weights: {1: 1.0, 2: 0.7, 3: 0.4, 4: 0.1}
+  overrides: {}                    # 예) politifact.com: 2
+  heuristics:
+    1: [".gov", ".gov.uk", ".mil", ".int", "europa.eu", "court", "census", "who.int", "oecd.org", "worldbank.org", "imf.org"]
+    2: ["politifact", "factcheck", "snopes", "fullfact", "leadstories", "checkyourfact", "factcheck.org"]
+    3: ["bbc.", "reuters", "apnews", "nytimes", "washingtonpost", "theguardian", "cnn.",
+        "npr.org", "aljazeera", "nbcnews", "cbsnews", "abcnews", "foxnews", "pbs.org",
+        "usatoday", "politico", "bloomberg", "forbes", "time.com", "axios", "thehill",
+        "latimes", "wsj.com", "economist"]
+    # 미분류는 T4(소셜·블로그·미상). 긴 꼬리(54k 도메인) 오버라이드/애매분류는 사람+S4/#6 LLM.

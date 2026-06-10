@@ -31,6 +31,17 @@ DEFAULT_KS_DIR = _REPO_ROOT / "knowledge_store" / "dev"
 # web.archive.org/web/<14자리 타임스탬프>/<원본 URL>
 _ARCHIVE_RE = re.compile(r"web\.archive\.org/web/(\d{14})/(.*)", re.IGNORECASE)
 
+# reporting_source는 도메인이 아닌 이름("Facebook" 등)이라, 알려진 플랫폼만 이름→도메인
+# 매핑한다(나머지는 추측하지 않음). 자기출처매칭의 신뢰 신호는 original_claim_url이다.
+_SOURCE_NAME_DOMAINS = {
+    "facebook": "facebook.com",
+    "instagram": "instagram.com",
+    "twitter": "twitter.com",
+    "youtube": "youtube.com",
+    "tiktok": "tiktok.com",
+    "whatsapp": "whatsapp.com",
+}
+
 
 def recover_archive_url(url: str) -> str:
     """아카이브 스냅샷 URL이면 원본 URL을, 아니면 입력을 그대로 반환한다."""
@@ -48,6 +59,27 @@ def extract_domain(url: str) -> str | None:
     if netloc.startswith("www."):
         netloc = netloc[len("www."):]
     return netloc or None
+
+
+def claim_source_domains(
+    original_claim_url: str | None, reporting_source: str | None
+) -> list[str]:
+    """claim 자기출처 도메인 집합을 만든다(role=target 자기출처매칭 입력, US16).
+
+    original_claim_url은 netloc(아카이브 복원 후)을 쓰고, reporting_source는 이름이라
+    알려진 플랫폼 토큰만 도메인으로 매핑한다.
+    """
+    domains: set[str] = set()
+    if original_claim_url:
+        d = extract_domain(original_claim_url)
+        if d:
+            domains.add(d)
+    if reporting_source:
+        tokens = set(re.split(r"[^a-z0-9]+", reporting_source.lower()))
+        for name, dom in _SOURCE_NAME_DOMAINS.items():
+            if name in tokens:
+                domains.add(dom)
+    return sorted(domains)
 
 
 def derive_published_at(url: str) -> str | None:
@@ -117,3 +149,17 @@ def load_claim_passages(
                 )
             )
     return passages
+
+
+def load_claim_urls(claim_id: int, ks_dir: str | Path = DEFAULT_KS_DIR) -> list[str]:
+    """claim의 KS 고유 URL 목록(경량 — url2text를 펼치지 않음). 도메인 빈도 집계용."""
+    path = Path(ks_dir) / f"{claim_id}.json"
+    assert_knowledge_store_path(path)
+    seen: list[str] = []
+    seen_set: set[str] = set()
+    for rec in _iter_records(path):
+        url = rec.get("url") or ""
+        if url and url not in seen_set:
+            seen_set.add(url)
+            seen.append(url)
+    return seen
