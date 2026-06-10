@@ -136,9 +136,12 @@ def orchestrate(
     ctx = AgentContext(claim=claim, index=index, embedder=embedder,
                        tier_config=tier_config, method=method, k=k, candidate_n=candidate_n)
 
+    state: dict = {"evidence": []}
+
     def _finish(verdict: Verdict) -> tuple[Verdict, AgentTrace]:
         trace.tool_calls_used = budget.tool_calls
         trace.steps_used = budget.steps
+        trace.retrieved_urls = [e.url for e in state["evidence"][:k] if e.url]
         return verdict, trace
 
     plan = plan_claim(claim, llm)
@@ -150,6 +153,7 @@ def orchestrate(
         if not ctx.pool:
             return None
         evidence = rank_evidence(claim, list(ctx.pool.values()), tier_config, weighted=True)
+        state["evidence"] = evidence
         out = verify_pool(claim, evidence, llm)
         trace.steps.append(AgentStep(
             agent="verifier",
@@ -171,5 +175,4 @@ def orchestrate(
     if not out.cited:                       # cited 강제(무인용 금지)
         return _finish(_nei(claim, "verifier returned no citation"))
 
-    evidence = rank_evidence(claim, list(ctx.pool.values()), tier_config, weighted=True)
-    return _finish(_verdict_from(claim, out, evidence))
+    return _finish(_verdict_from(claim, out, state["evidence"]))

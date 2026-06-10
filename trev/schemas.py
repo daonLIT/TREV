@@ -133,11 +133,12 @@ class AgentStep(BaseModel):
 
 
 class AgentTrace(BaseModel):
-    """오케스트레이션 전체 추론·도구호출 기록 + 비용(소비 step·tool 수)."""
+    """오케스트레이션 전체 추론·도구호출 기록 + 비용(소비 step·tool 수) + 회수 url."""
 
     steps: list[AgentStep] = Field(default_factory=list)
     tool_calls_used: int = 0  # 실제 도구 실행 수(예산 소비)
     steps_used: int = 0       # 실제 LLM 턴 수(예산 소비)
+    retrieved_urls: list[str] = Field(default_factory=list)  # searcher 최종 top-k url(Recall@k)
 
     def n_steps(self) -> int:
         return len(self.steps)

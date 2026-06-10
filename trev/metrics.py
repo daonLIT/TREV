@@ -65,6 +65,8 @@ def evaluate_mode(records: list[dict], k: int = 10) -> dict:
     breakdown = Counter(
         r["retrieval_category"] for r in records if r.get("retrieval_category")
     )
+    tool_calls = [r["cost"]["tool_calls"] for r in records
+                  if r.get("cost") and "tool_calls" in r["cost"]]
     return {
         "n": len(records),
         "accuracy": accuracy(pred, gold),
@@ -72,6 +74,7 @@ def evaluate_mode(records: list[dict], k: int = 10) -> dict:
         **recall_precision(retrievals, k),
         "citation": citation_rate([r.get("cited") or [] for r in records]),
         "retrieval_breakdown": dict(breakdown),
+        "avg_tool_calls": sum(tool_calls) / len(tool_calls) if tool_calls else None,
     }
 
 

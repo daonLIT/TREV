@@ -14,6 +14,7 @@ from trev.controller import ControllerConfig
 from trev.dataset import gold_source_urls
 from trev.indexing import ClaimIndex, Embedder
 from trev.knowledge_store import load_claim_urls
+from trev.orchestrator import orchestrate
 from trev.recall import classify_retrieval
 from trev.retriever import retrieve
 from trev.schemas import Claim, Verdict
@@ -85,17 +86,30 @@ def run_experiments(
     candidate_n: int = 50,
     config: ControllerConfig = ControllerConfig(),
 ) -> dict[str, list[dict]]:
-    """claim들 × 조건의 예측 + 회수 URL을 만든다. `index_provider(claim)`가 인덱스를 제공."""
+    """claim들 × 조건의 예측 + 회수 URL + 비용을 만든다.
+
+    `agentic` 조건은 멀티에이전트 orchestrator(동일 KS·인덱스·GPT-5)로, 나머지 4조건은
+    결정론 controller로 실행한다 — 동일 레코드 포맷으로 head-to-head 채점한다.
+    """
     results: dict[str, list[dict]] = {m: [] for m in modes}
     for claim in claims:
         index = index_provider(claim)
         for mode in modes:
-            verdict = predict_claim(claim, index, embedder, llm, mode=mode, method=method,
-                                    tier_config=tier_config, k=k, candidate_n=candidate_n,
-                                    config=config)
-            urls = ranked_topk_urls(claim, index, embedder, mode=mode, method=method,
-                                    tier_config=tier_config, k=k, candidate_n=candidate_n)
-            results[mode].append({"verdict": verdict, "retrieved_urls": urls})
+            if mode == "agentic":
+                verdict, trace = orchestrate(
+                    claim, index, embedder, llm, tier_config=tier_config,
+                    method=method, k=k, candidate_n=candidate_n)
+                results[mode].append({
+                    "verdict": verdict, "retrieved_urls": trace.retrieved_urls,
+                    "cost": {"steps": trace.steps_used, "tool_calls": trace.tool_calls_used},
+                })
+            else:
+                verdict = predict_claim(claim, index, embedder, llm, mode=mode, method=method,
+                                        tier_config=tier_config, k=k, candidate_n=candidate_n,
+                                        config=config)
+                urls = ranked_topk_urls(claim, index, embedder, mode=mode, method=method,
+                                        tier_config=tier_config, k=k, candidate_n=candidate_n)
+                results[mode].append({"verdict": verdict, "retrieved_urls": urls, "cost": {}})
     return results
 
 
@@ -136,5 +150,6 @@ def predictions_to_records(
                     gold_urls, ks_urls, retrieved,
                     gold_label=gold.label if gold else None, k=k,
                 ),
+                "cost": pred.get("cost", {}),
             })
     return records

@@ -20,7 +20,7 @@ OUT_DIR = Path(__file__).resolve().parent.parent / "outputs"
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--method", choices=["dense", "bm25"], default="dense")
+    ap.add_argument("--method", choices=["dense", "bm25", "agentic"], default="dense")
     ap.add_argument("--k", type=int, default=10)
     args = ap.parse_args()
 
