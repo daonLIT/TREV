@@ -61,7 +61,9 @@ def predict_claim(
     """단일 claim·단일 조건의 예측 Verdict를 만든다(seam을 controller에 결선)."""
 
     def retrieve_fn(c, expand=False):
-        return retrieve(c, index, embedder, k=k, candidate_n=candidate_n,
+        # 전체 후보 풀(candidate_n)을 받아 controller가 가중 랭킹 후 top-k로 절단한다
+        # (가중을 절단보다 먼저 적용 — 고tier 근거가 raw-sim top-k 밖에 있어도 승격되게).
+        return retrieve(c, index, embedder, k=candidate_n, candidate_n=candidate_n,
                         method=method, expand=expand)
 
     return controller.run(
@@ -69,7 +71,7 @@ def predict_claim(
         retrieve_fn=retrieve_fn,
         verify_fn=lambda c, ev: run_verifier(c, ev, llm),
         gpt_only_fn=lambda c: gpt_only_verdict(c, llm),
-        tier_config=tier_config, config=config,
+        tier_config=tier_config, config=config, top_k=k,
     )
 
 

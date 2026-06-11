@@ -77,11 +77,12 @@ def run(
     gpt_only_fn,
     tier_config: dict,
     config: ControllerConfig = ControllerConfig(),
+    top_k: int = 10,
 ) -> Verdict:
     """단일 claim을 모드에 따라 라우팅해 Verdict를 만든다.
 
     retrieve_fn(claim, expand=False)->list[Evidence], verify_fn(claim, evidence)->VerifierOutput,
-    gpt_only_fn(claim)->Verdict.
+    gpt_only_fn(claim)->Verdict. `top_k`: 가중 랭킹 후 검증에 쓸 상위 근거 수(절단은 가중 뒤).
     """
     if mode == "gpt_only":  # R1/R2/R5·cited 우회
         return gpt_only_fn(claim)
@@ -91,7 +92,7 @@ def run(
         return _nei(claim, "R1: checkworthiness below threshold")
 
     rp = _rank_params(mode)
-    evidence = rank_evidence(claim, retrieve_fn(claim), tier_config, **rp)
+    evidence = rank_evidence(claim, retrieve_fn(claim), tier_config, top_k=top_k, **rp)
 
     # R2: 근거 없음 또는 최상 tier가 T4(=T1~T3 없음) → 즉시 NEI
     if not evidence or all(e.tier == 4 for e in evidence):
@@ -102,7 +103,7 @@ def run(
 
     # R4: 저신뢰 → 질의 확장 1회 재검색·재검증, 그래도 낮으면 NEI
     if out.confidence < config.low_confidence:
-        evidence = rank_evidence(claim, retrieve_fn(claim, expand=True), tier_config, **rp)
+        evidence = rank_evidence(claim, retrieve_fn(claim, expand=True), tier_config, top_k=top_k, **rp)
         if not evidence or all(e.tier == 4 for e in evidence):
             return _nei(claim, "R4: no trustworthy evidence after expansion")
         out = verify_fn(claim, evidence)

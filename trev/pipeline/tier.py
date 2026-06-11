@@ -143,11 +143,13 @@ def rank_evidence(
     weighted: bool = True,
     dynamic_role: bool = True,
     classifier: LLMDomainClassifier | None = None,
+    top_k: int | None = None,
 ) -> list[Evidence]:
     """근거에 tier/role/weight를 부여하고 점수로 재정렬한다.
 
     - `weighted`: proposed면 `score = sim*weight`, 아니면 `score = sim`(unweighted/naive).
     - `dynamic_role`: True면 자기출처→target(T4 강등). False(naive)면 역할 미적용(도메인 tier만).
+    - `top_k`: 지정 시 가중 정렬 후 상위 k개로 절단(가중을 절단보다 먼저 적용 — 고tier 승격 보존).
     입력 Evidence는 보존하고 복사본을 반환한다.
     """
     ranked: list[Evidence] = []
@@ -166,4 +168,4 @@ def rank_evidence(
             e.model_copy(update={"tier": tier, "role": role, "weight": weight, "score": score})
         )
     ranked.sort(key=lambda ev: ev.score, reverse=True)
-    return ranked
+    return ranked[:top_k] if top_k is not None else ranked

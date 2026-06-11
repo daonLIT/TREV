@@ -61,7 +61,18 @@ def build_client(api_key: str | None = None, base_url: str | None = None):
     if not key:
         raise LLMError("HAI_GPT_API_KEY가 없음(.env 또는 인자로 제공).")
     url = base_url or os.environ.get("HAI_GPT_BASE_URL") or DEFAULT_BASE_URL
-    return OpenAI(api_key=key, base_url=url)
+    client = OpenAI(api_key=key, base_url=url)
+
+    # LangSmith 추적(선택): LANGSMITH_TRACING=true면 클라이언트를 wrap해 모든 호출을 추적.
+    # langsmith 미설치/미설정이면 그대로 통과(동작 영향 없음).
+    if os.environ.get("LANGSMITH_TRACING", "").lower() in ("true", "1"):
+        try:
+            from langsmith.wrappers import wrap_openai
+
+            client = wrap_openai(client)
+        except ImportError:
+            pass
+    return client
 
 
 class LLM:
