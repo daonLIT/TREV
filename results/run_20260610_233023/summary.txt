@@ -1,0 +1,11 @@
+method   mode                acc  macroF1   R@10   P@10 avg_tools
+-----------------------------------------------------------------
+agentic  agentic           0.450    0.265  0.125  0.020     11.55
+bm25     gpt_only          0.513    0.409  0.000   None      None
+bm25     naive_rag         0.429    0.354  0.067  0.017      None
+bm25     unweighted_rag    0.431    0.355  0.070  0.018      None
+bm25     proposed          0.406    0.334  0.041  0.010      None
+dense    gpt_only          0.571    0.432  0.000   None      None
+dense    naive_rag         0.449    0.368  0.105  0.026      None
+dense    unweighted_rag    0.452    0.369  0.105  0.026      None
+dense    proposed          0.444    0.367  0.057  0.014      None

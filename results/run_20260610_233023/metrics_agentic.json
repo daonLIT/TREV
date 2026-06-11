@@ -1,0 +1,20 @@
+{
+  "agentic": {
+    "n": 20,
+    "accuracy": 0.45,
+    "macro_f1": 0.2651515151515152,
+    "recall@10": 0.125,
+    "precision@10": 0.02,
+    "n_with_gold": 20,
+    "citation": {
+      "rate": 0.95,
+      "uncited": 1,
+      "n": 20
+    },
+    "retrieval_breakdown": {
+      "retrieved": 3,
+      "retrieval_failure": 17
+    },
+    "avg_tool_calls": 11.55
+  }
+}
