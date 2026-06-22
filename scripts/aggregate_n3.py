@@ -27,15 +27,31 @@ from scipy.stats import binomtest
 
 from trev.eval.metrics import evaluate
 
-OUT_DIR = Path(__file__).resolve().parent.parent / "outputs"
-RESULTS_DIR = Path(__file__).resolve().parent.parent / "results"
+REPO = Path(__file__).resolve().parent.parent
+RESULTS_DIR = REPO / "results"
 
 
-def _load_run(method: str, run_id: str) -> list[dict]:
-    path = OUT_DIR / f"predictions_{method}_run{run_id}.json"
+def _load_run(in_dir: Path, method: str, run_id: str) -> list[dict]:
+    path = in_dir / f"predictions_{method}_run{run_id}.json"
     if not path.exists():
         raise SystemExit(f"[누락] {path} — run-id={run_id} 예측이 없음. 먼저 run_experiments 실행.")
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _timeout_excluded_ids(runs: list[list[dict]]) -> set[int]:
+    """타임아웃/에러 시그니처(confidence=0 AND 검색결과 없음)로 실패한 claim 집합.
+    한 조건·한 run에서라도 실패하면 공정 비교 위해 모든 조건에서 제외(RESULTS clean 방식).
+    RAG의 정상 NEI(conf=0이나 검색결과 존재)는 제외 대상 아님."""
+    bad: set[int] = set()
+    for recs in runs:
+        for r in recs:
+            if (r.get("confidence") or 0) == 0 and not r.get("retrieved_urls"):
+                bad.add(r["claim_id"])
+    return bad
+
+
+def _filter(runs: list[list[dict]], drop_ids: set[int]) -> list[list[dict]]:
+    return [[r for r in recs if r["claim_id"] not in drop_ids] for recs in runs]
 
 
 def _majority_label(labels: list[str]) -> str:
@@ -115,9 +131,21 @@ def main() -> None:
     ap.add_argument("--method", choices=["dense", "bm25"], default="dense")
     ap.add_argument("--runs", nargs="+", default=["1", "2", "3"], help="run-id 목록")
     ap.add_argument("--k", type=int, default=10)
+    ap.add_argument("--in-dir", type=str, default="outputs",
+                    help="예측 json 위치(기본 outputs). results 폴더에 두면 --in-dir results")
+    ap.add_argument("--exclude-timeouts", action="store_true",
+                    help="타임아웃(conf=0 & 검색실패) claim을 모든 조건에서 공통 제외(clean 비교)")
+    ap.add_argument("--tag", type=str, default=None, help="출력 파일명 접미사(예: clean, gem)")
     args = ap.parse_args()
 
-    runs = [_load_run(args.method, rid) for rid in args.runs]
+    in_dir = REPO / args.in_dir
+    runs = [_load_run(in_dir, args.method, rid) for rid in args.runs]
+    n_before = len({r["claim_id"] for r in runs[0]})
+    n_excluded = 0
+    if args.exclude_timeouts:
+        drop = _timeout_excluded_ids(runs)
+        runs = _filter(runs, drop)
+        n_excluded = len(drop)
     tables = [evaluate(rec, k=args.k) for rec in runs]
     modes = sorted(tables[0].keys())
 
@@ -146,14 +174,19 @@ def main() -> None:
                     "bootstrap": _bootstrap_acc_delta(maj["proposed"], maj[other]),
                 }
 
+    n_eval = len({r["claim_id"] for r in runs[0]})
     result = {"method": args.method, "n_runs": len(runs),
+              "n_total": n_before, "n_excluded_timeout": n_excluded, "n_eval": n_eval,
+              "exclude_timeouts": args.exclude_timeouts,
               "summary": summary, "comparisons": comparisons}
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    out = RESULTS_DIR / f"n3_{args.method}.json"
+    tag = f"_{args.tag}" if args.tag else ""
+    out = RESULTS_DIR / f"n3_{args.method}{tag}.json"
     out.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
 
     # 콘솔 출력
-    print(f"\n[N={len(runs)} {args.method}]  (per-run acc: {args.runs})\n")
+    excl = f", 타임아웃 제외 {n_excluded} → N_eval={n_eval}" if args.exclude_timeouts else f", N_eval={n_eval}"
+    print(f"\n[N={len(runs)} {args.method}]  (per-run acc id: {args.runs}{excl})\n")
     hdr = f"{'mode':16s} {'acc(mean±std)':>16s} {'macroF1(mean±std)':>18s} {'agree':>7s}"
     print(hdr); print("-" * len(hdr))
     for mode in modes:
