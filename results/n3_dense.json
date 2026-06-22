@@ -1,0 +1,90 @@
+{
+  "method": "dense",
+  "n_runs": 1,
+  "summary": {
+    "gpt_only": {
+      "accuracy_mean": 0.6192893401015228,
+      "accuracy_std": 0.0,
+      "macro_f1_mean": 0.4522963819334787,
+      "macro_f1_std": 0.0,
+      "per_run_acc": [
+        0.6192893401015228
+      ],
+      "agreement": {
+        "agreement": 1.0,
+        "n": 394
+      }
+    },
+    "naive_rag": {
+      "accuracy_mean": 0.43908629441624364,
+      "accuracy_std": 0.0,
+      "macro_f1_mean": 0.391734776124091,
+      "macro_f1_std": 0.0,
+      "per_run_acc": [
+        0.43908629441624364
+      ],
+      "agreement": {
+        "agreement": 1.0,
+        "n": 394
+      }
+    },
+    "proposed": {
+      "accuracy_mean": 0.434010152284264,
+      "accuracy_std": 0.0,
+      "macro_f1_mean": 0.37989887509471354,
+      "macro_f1_std": 0.0,
+      "per_run_acc": [
+        0.434010152284264
+      ],
+      "agreement": {
+        "agreement": 1.0,
+        "n": 394
+      }
+    },
+    "unweighted_rag": {
+      "accuracy_mean": 0.4263959390862944,
+      "accuracy_std": 0.0,
+      "macro_f1_mean": 0.38064556404981936,
+      "macro_f1_std": 0.0,
+      "per_run_acc": [
+        0.4263959390862944
+      ],
+      "agreement": {
+        "agreement": 1.0,
+        "n": 394
+      }
+    }
+  },
+  "comparisons": {
+    "proposed_vs_unweighted_rag": {
+      "mcnemar": {
+        "b_only_A_correct": 52,
+        "c_only_B_correct": 49,
+        "n_discordant": 101,
+        "p_value": 0.8423820985077435
+      },
+      "bootstrap": {
+        "delta_acc": 0.007614213197969543,
+        "ci95": [
+          -0.04314720812182741,
+          0.0583756345177665
+        ]
+      }
+    },
+    "proposed_vs_naive_rag": {
+      "mcnemar": {
+        "b_only_A_correct": 51,
+        "c_only_B_correct": 53,
+        "n_discordant": 104,
+        "p_value": 0.921948827626431
+      },
+      "bootstrap": {
+        "delta_acc": -0.005076142131979695,
+        "ci95": [
+          -0.05583756345177665,
+          0.04568527918781726
+        ]
+      }
+    }
+  }
+}
