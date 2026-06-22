@@ -128,7 +128,7 @@ def _bootstrap_acc_delta(
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--method", choices=["dense", "bm25"], default="dense")
+    ap.add_argument("--method", choices=["dense", "bm25", "agentic"], default="dense")
     ap.add_argument("--runs", nargs="+", default=["1", "2", "3"], help="run-id 목록")
     ap.add_argument("--k", type=int, default=10)
     ap.add_argument("--in-dir", type=str, default="outputs",
@@ -165,14 +165,18 @@ def main() -> None:
 
     # 2) 다수결 라벨로 McNemar + bootstrap (proposed 기준 비교)
     maj = _majority_by_mode(runs)
-    comparisons = {}
+    pairs = []
     if "proposed" in maj:
-        for other in ("unweighted_rag", "naive_rag"):
-            if other in maj:
-                comparisons[f"proposed_vs_{other}"] = {
-                    "mcnemar": _mcnemar(maj["proposed"], maj[other]),
-                    "bootstrap": _bootstrap_acc_delta(maj["proposed"], maj[other]),
-                }
+        pairs += [("proposed", "unweighted_rag"), ("proposed", "naive_rag")]
+    if "agentic" in maj and "agentic_unweighted" in maj:  # tier 도구 ablation(RQ5)
+        pairs += [("agentic", "agentic_unweighted")]
+    comparisons = {}
+    for a, b in pairs:
+        if a in maj and b in maj:
+            comparisons[f"{a}_vs_{b}"] = {
+                "mcnemar": _mcnemar(maj[a], maj[b]),
+                "bootstrap": _bootstrap_acc_delta(maj[a], maj[b]),
+            }
 
     n_eval = len({r["claim_id"] for r in runs[0]})
     result = {"method": args.method, "n_runs": len(runs),
