@@ -52,6 +52,8 @@ def main() -> None:
     ap.add_argument("--agentic", action="store_true", help="멀티에이전트 조건만 실행")
     ap.add_argument("--workers", type=int, default=int(os.environ.get("WORKERS", "8")),
                     help="GPT-5 호출 동시 처리 수(claim 병렬). rate limit 걸리면 줄이기")
+    ap.add_argument("--run-id", type=str, default=None,
+                    help="N=3 반복용 run 식별자. 지정 시 predictions_{method}_run{run-id}.json로 저장(덮어쓰기 방지)")
     args = ap.parse_args()
 
     cfg = load_config()
@@ -78,6 +80,8 @@ def main() -> None:
     records = predictions_to_records(claims, results)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     suffix = "agentic" if args.agentic else args.method
+    if args.run_id is not None:
+        suffix = f"{suffix}_run{args.run_id}"
     out = OUT_DIR / f"predictions_{suffix}.json"
     out.write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[written] {out}  ({len(claims)} claims × {len(results)} 조건 = {len(records)} 예측)")
