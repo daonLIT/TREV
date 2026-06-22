@@ -54,6 +54,8 @@ def main() -> None:
                     help="GPT-5 호출 동시 처리 수(claim 병렬). rate limit 걸리면 줄이기")
     ap.add_argument("--run-id", type=str, default=None,
                     help="N=3 반복용 run 식별자. 지정 시 predictions_{method}_run{run-id}.json로 저장(덮어쓰기 방지)")
+    ap.add_argument("--model", type=str, default=None,
+                    help="config의 llm.model 오버라이드(cross-provider용, 예: gemini-3.1-flash-lite). 게이트웨이가 OpenAI 호환이라 모델 id만 바꾸면 됨")
     args = ap.parse_args()
 
     cfg = load_config()
@@ -68,10 +70,12 @@ def main() -> None:
         embedder = LockedEmbedder(embedder)   # GPU 임베딩 직렬화(병렬 안전)
     provider = _index_provider(embedder, cfg.get("index", {}), cache=not args.no_cache)
     llm = LLM.from_config(cfg)
+    if args.model:
+        llm.model = args.model   # cross-provider 오버라이드(게이트웨이 OpenAI 호환)
 
     modes = ("agentic",) if args.agentic else DEFAULT_MODES
-    print(f"[실행] method={args.method} modes={modes} claims={len(claims)} workers={args.workers}",
-          flush=True)
+    print(f"[실행] method={args.method} modes={modes} model={llm.model} "
+          f"claims={len(claims)} workers={args.workers}", flush=True)
     results = run_experiments(
         claims, embedder, llm, index_provider=provider,
         tier_config=cfg.get("tier", {}), method=args.method, modes=modes,
