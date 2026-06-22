@@ -132,7 +132,11 @@ def assign_tier(
         if tier == DEFAULT_TIER and classifier is not None and source_domain:
             tier = classifier.tier(source_domain)
     weights = tier_config.get("weights") or DEFAULT_WEIGHTS
-    return tier, float(weights.get(tier, DEFAULT_WEIGHTS[4]))
+    weight = float(weights.get(tier, DEFAULT_WEIGHTS[4]))
+    # self-source 강등 단독 ablation용: 지정 시 자기출처(target)만 별도 가중(나머지 tier와 무관).
+    if role is Role.TARGET and tier_config.get("self_source_weight") is not None:
+        weight = float(tier_config["self_source_weight"])
+    return tier, weight
 
 
 def rank_evidence(
