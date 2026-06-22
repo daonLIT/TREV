@@ -1,0 +1,3686 @@
+[
+  {
+    "claim_id": 0,
+    "mode": "agentic",
+    "label5": "SUPPORT",
+    "pred_label": "Supported",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e8",
+      "e4",
+      "e0"
+    ],
+    "retrieved_urls": [
+      "https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/",
+      "https://maclalala2.wordpress.com/2011/06/24/%E3%81%9F%E3%81%8B%E3%81%8C%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%9E%E3%83%B3%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB%E3%82%B8%E3%82%A7%E3%83%BC/",
+      "https://brainspike.wordpress.com/2010/08/09/chenbro-es34169-mini-itx-case-meets-zotac-h55itx-a-e-board/htpc3/",
+      "https://www.splasmata.com/?m=201106",
+      "https://www.kraftfuttermischwerk.de/blogg/james-bonds-brief-an-steve-jobs/",
+      "https://www.philmug.ph/community/threads/sean-connerys-letter-to-steve-jobs.73237/",
+      "https://www.snopes.com/fact-check/false-sean-connery-letter-to-apple/",
+      "https://www.bloomberg.com/news/photo-essays/2012-05-30/knights-who-say-meh-the-dullest-honorary-knighthoods",
+      "https://www.dailymail.co.uk/news/article-2006317/Sean-Connery-letter-Steve-Jobs-rejecting-offer-appear-Apple-ad-revealed-fake.html",
+      "https://www.businessinsider.com/james-bond-sean-connery-steve-jobs-apple-letter-2011-6"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201129141238/https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/",
+      "https://web.archive.org/web/20201202085933/https://scoopertino.com/about-scoopertino/"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 1,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e12",
+      "e13",
+      "e14",
+      "e11",
+      "e4",
+      "e10"
+    ],
+    "retrieved_urls": [
+      "https://nypost.com/2020/10/30/washington-post-wrongly-claims-trump-officials-criticized-billie-eilish/",
+      "https://www.businessinsider.nl/the-trump-administration-accused-billie-eilish-of-destroying-our-country-and-everything-we-care-about-in-newly-leaked-documents/",
+      "https://uproxx.com/pop/trump-billie-eilish-destroying-america/",
+      "https://nypost.com/2020/10/30/washington-post-wrongly-claims-trump-officials-criticized-billie-eilish/",
+      "https://www.nylon.com/entertainment/billie-eilish-trump-covid-ad",
+      "https://finance.yahoo.com/news/trump-administration-claimed-billie-eilish-214141314.html",
+      "https://www.stereogum.com/2104276/billie-eilish-is-destroying-our-country-and-everything-we-care-about-according-to-leaked-trump-admin-doc/news/",
+      "https://www.nme.com/news/music/trump-admin-says-billie-eilish-is-destroying-our-country-and-everything-we-care-about-2803852",
+      "https://www.complex.com/music/a/tracewilliamcowen/leaked-trump-admin-document-billie-eilish-destroying-our-country",
+      "https://www.thefader.com/2020/10/29/report-trump-admin-document-says-billie-eilish-is-destroying-our-country-and-everything-we-care-about"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201101145631/https://nypost.com/2020/10/30/washington-post-wrongly-claims-trump-officials-criticized-billie-eilish/"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 11
+    }
+  },
+  {
+    "claim_id": 2,
+    "mode": "agentic",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.64,
+    "cited": [
+      "e18",
+      "e19",
+      "e52",
+      "e8",
+      "e1"
+    ],
+    "retrieved_urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/30679368/",
+      "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Nepal.html",
+      "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Nepal.html",
+      "https://www.aljazeera.com/news/2020/10/27/saudi-arabia-condemns-prophets-cartoons-ami-france-turkey-row",
+      "https://www.bbc.com/news/world-europe-54692485",
+      "https://www.npr.org/2017/07/06/535745466/king-macron-french-president-earns-comparisons-to-napoleon",
+      "https://deadline.com/2020/05/donald-trump-twitter-coronavirus-1202943746/",
+      "https://www.rfi.fr/en/france/20201026-erdogan-calls-on-eu-leaders-to-end-macron-led-hate-campaign-against-muslims-jews-lynching-merkel-conte",
+      "https://www.rfi.fr/en/france/20201026-pakistan-condemns-france-s-systematic-islamophobia-as-cartoons-row-deepens-imran-khan",
+      "https://www.aa.com.tr/en/world/muslim-world-unites-against-france/2020875"
+    ],
+    "gold_urls": [
+      "https://www.aljazeera.com/news/2020/10/26/french-president-comments-over-islam-keep-sparking-outrage",
+      "https://web.archive.org/web/20210905081440/https://twitter.com/ImranKhanPTI/status/1320286665785704448",
+      "https://web.archive.org/web/20210629013122/https://twitter.com/PakConsulateFr/status/1322495811993903104"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 15
+    }
+  },
+  {
+    "claim_id": 2,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.93,
+    "cited": [
+      "e0",
+      "e3",
+      "e12",
+      "e14"
+    ],
+    "retrieved_urls": [
+      "https://newscomworld.com/2020/10/27/imran-khan-risking-the-future-of-pakistanis-in-france/",
+      "https://factcheck.afp.com/busting-coronavirus-myths",
+      "http://hrlibrary.umn.edu/undocs/1816-2008.html",
+      "https://www.snopes.com/fact-check/trump-deletes-global-warning-claim/",
+      "https://www.dawn.com/news/1220317",
+      "https://factcheck.afp.com/busting-coronavirus-myths",
+      "https://fas.org/publication/weekly-covid-19-disinformation-report-for-august-14-plandemic-to-scamdemic/",
+      "https://www.usa.gov/deportation",
+      "https://www.voanews.com/a/europe_pakistani-pm-french-leader-stoking-islamophobia/6197586.html",
+      "https://www.france24.com/en/20130404-pakistan-deports-three-french-jihad-suspects-afghanistan"
+    ],
+    "gold_urls": [
+      "https://www.aljazeera.com/news/2020/10/26/french-president-comments-over-islam-keep-sparking-outrage",
+      "https://web.archive.org/web/20210905081440/https://twitter.com/ImranKhanPTI/status/1320286665785704448",
+      "https://web.archive.org/web/20210629013122/https://twitter.com/PakConsulateFr/status/1322495811993903104"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 1,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.86,
+    "cited": [
+      "e14",
+      "e16",
+      "e17",
+      "e10",
+      "e9",
+      "e11"
+    ],
+    "retrieved_urls": [
+      "https://www.hotnewhiphop.com/337775-trump-admin-says-billie-eilish-is-destroying-the-country-in-leaked-docs-news",
+      "https://www.thefader.com/2020/10/30/billie-eilish-gotv-ad-texas",
+      "https://www.newshub.co.nz/home/entertainment/2020/10/trump-administration-accuses-billie-eilish-of-destroying-our-country-in-bizarre-leaked-document.html",
+      "https://www.businessinsider.nl/the-trump-administration-accused-billie-eilish-of-destroying-our-country-and-everything-we-care-about-in-newly-leaked-documents/",
+      "https://finance.yahoo.com/news/trump-administration-claimed-billie-eilish-214141314.html",
+      "https://www.stereogum.com/2104276/billie-eilish-is-destroying-our-country-and-everything-we-care-about-according-to-leaked-trump-admin-doc/news/",
+      "https://www.nme.com/news/music/trump-admin-says-billie-eilish-is-destroying-our-country-and-everything-we-care-about-2803852",
+      "https://www.complex.com/music/a/tracewilliamcowen/leaked-trump-admin-document-billie-eilish-destroying-our-country",
+      "https://www.thefader.com/2020/10/29/report-trump-admin-document-says-billie-eilish-is-destroying-our-country-and-everything-we-care-about",
+      "https://www.justjared.com/2020/10/29/trump-administration-official-accused-billie-eilish-of-destroying-our-country/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201101145631/https://nypost.com/2020/10/30/washington-post-wrongly-claims-trump-officials-criticized-billie-eilish/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 13
+    }
+  },
+  {
+    "claim_id": 0,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.97,
+    "cited": [
+      "e9",
+      "e14",
+      "e7",
+      "e0",
+      "e2"
+    ],
+    "retrieved_urls": [
+      "https://maclalala2.wordpress.com/2011/06/24/%E3%81%9F%E3%81%8B%E3%81%8C%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%9E%E3%83%B3%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB%E3%82%B8%E3%82%A7%E3%83%BC/",
+      "https://maclalala2.wordpress.com/2011/06/24/%E3%81%9F%E3%81%8B%E3%81%8C%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%9E%E3%83%B3%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AB%E3%82%B8%E3%82%A7%E3%83%BC/",
+      "https://fruitmaven.com/2010/12/pitmaston-pineapple-apple/",
+      "https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/",
+      "https://www.snopes.com/fact-check/false-sean-connery-letter-to-apple/",
+      "https://www.dailymail.co.uk/news/article-2006317/Sean-Connery-letter-Steve-Jobs-rejecting-offer-appear-Apple-ad-revealed-fake.html",
+      "https://www.businessinsider.com/james-bond-sean-connery-steve-jobs-apple-letter-2011-6",
+      "https://www.cnet.com/culture/fake-sean-connery-letter-to-steve-jobs-goes-viral/",
+      "https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/",
+      "https://www.dailymail.co.uk/news/article-2006317/Sean-Connery-letter-Steve-Jobs-rejecting-offer-appear-Apple-ad-revealed-fake.html"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201129141238/https://scoopertino.com/exposed-the-imac-disaster-that-almost-was/",
+      "https://web.archive.org/web/20201202085933/https://scoopertino.com/about-scoopertino/"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 14
+    }
+  },
+  {
+    "claim_id": 3,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e33",
+      "e31",
+      "e32"
+    ],
+    "retrieved_urls": [
+      "https://www.npr.org/2019/07/05/738970664/unesco-adds-ruins-of-ancient-babylon-to-its-list-of-world-heritage-sites",
+      "https://www.pbs.org/newshour/politics/u-s-and-israel-officially-withdraw-from-unesco",
+      "https://www.cnn.com/travel/article/unesco-sites-alien-theory/index.html",
+      "https://www.wikiwand.com/en/Nadar_(caste)",
+      "https://books.google.com/books/about/Brewing_and_Distilling_Castes.html?id=IzpmngEACAAJ",
+      "https://www.thecitizen.in/index.php/en/NewsDetail/index/8/9663/History-Of-Womens-Caste-Struggle-Removed-by-CBSE",
+      "https://1rupeematrimony.com/hindu-nadar-matrimonial",
+      "https://bioanth.org/about/position-statements/aapa-statement-race-and-racism-2019/",
+      "https://www.news-medical.net/news/20200122/Oldest-African-DNA-on-record-shines-light-on-the-deep-human-past.aspx",
+      "https://www.ojp.gov/pdffiles1/nij/grants/228091.pdf"
+    ],
+    "gold_urls": [
+      "https://www.familytreedna.com/groups/nadar/about/background",
+      "https://www.independent.co.uk/news/science/world-s-most-ancient-race-traced-in-dna-study-1677113.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 14
+    }
+  },
+  {
+    "claim_id": 5,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.84,
+    "cited": [
+      "e54",
+      "e35",
+      "e46",
+      "e13",
+      "e27"
+    ],
+    "retrieved_urls": [
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6279465/",
+      "https://www.dhs.gov/sites/default/files/publications/SMWG_Countering-False-Info-Social-Media-Disasters-Emergencies_Mar2018-508.pdf",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7343248/",
+      "https://www.bbc.com/news/world-middle-east-43697084",
+      "https://news.stanford.edu/2017/01/18/stanford-study-examines-fake-news-2016-presidential-election/",
+      "https://www.mandiant.com/resources/blog/information-operations-fabricated-personas-to-promote-iranian-interests",
+      "https://www.gmfus.org/news/playing-putins-hands-white-helmets-douma-and-how-us-failures-become-russian-opportunities",
+      "https://mitsloan.mit.edu/ideas-made-to-matter/mit-sloan-research-about-social-media-misinformation-and-elections",
+      "https://www.hrw.org/news/2014/06/20/dispatches-white-phosphorus-white-lies-or-what",
+      "https://www.mandiant.com/resources/blog/information-operations-fabricated-personas-to-promote-iranian-interests"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210302193538/https://www.theguardian.com/world/2020/apr/06/report-set-to-blame-syria-chemical-attacks-on-bashar-al-assad"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 4,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e2",
+      "e3",
+      "e11",
+      "e15",
+      "e16",
+      "e1"
+    ],
+    "retrieved_urls": [
+      "https://www.justice.gov/opa/pr/minnesota-based-hospice-provider-pay-18-million-alleged-false-claims-medicare-patients-who",
+      "https://www.justice.gov/opa/pr/chemed-corp-and-vitas-hospice-services-agree-pay-75-million-resolve-false-claims-act",
+      "https://www.justice.gov/opa/pr/minnesota-based-hospice-provider-pay-18-million-alleged-false-claims-medicare-patients-who",
+      "https://www.lawmbg.com/cases/mbg-represents-whistleblower-in-largest-false-claims-act-hospice-settlement-in-history/",
+      "https://frohsinbarger.com/frohsin-barger-the-largest-false-claims-act-hospice-settlement-in-history/",
+      "https://frohsinbarger.com/",
+      "https://www.justice.gov/opa/pr/chemed-corp-and-vitas-hospice-services-agree-pay-75-million-resolve-false-claims-act",
+      "https://oig.hhs.gov/fraud/enforcement/chemed-corp-and-vitas-hospice-services-agree-to-pay-75-million-to-resolve-false-claims-act-allegations-relating-to-billing-for-ineligible-patients-and-inflated-levels-of-care/",
+      "https://www.politifact.com/factchecks/2019/nov/01/facebook-posts/post-says-rep-matt-gaetz-has-numerous-duis-wrong/",
+      "https://www.politifact.com/factchecks/2019/nov/01/facebook-posts/post-says-rep-matt-gaetz-has-numerous-duis-wrong/"
+    ],
+    "gold_urls": [
+      "https://erau.edu/gaetz-aerospace-institute/about/don-gaetz",
+      "https://www.celebritynetworth.com/richest-politicians/republicans/don-gaetz-net-worth/",
+      "https://web.archive.org/web/20210713185816/http://ir.chemed.com/news-releases/news-release-details/roto-rooter-inc-completes-merger-vitas-healthcare-corporation"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 6
+    }
+  },
+  {
+    "claim_id": 3,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e24",
+      "e34",
+      "e35",
+      "e7",
+      "e1"
+    ],
+    "retrieved_urls": [
+      "https://www.ndtv.com/chennai-news/jayalalithaa-makes-rare-public-appearance-to-honour-nadar-community-leader-1209255",
+      "https://eidolon.pub/why-i-teach-about-race-and-ethnicity-in-the-classical-world-ade379722170",
+      "https://eidolon.pub/why-i-teach-about-race-and-ethnicity-in-the-classical-world-ade379722170",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4326674/",
+      "https://en.wikipedia.org/wiki/K._Kamaraj",
+      "https://www.library.upenn.edu/news/diversity-stacks-ethnicity",
+      "https://www.pbs.org/newshour/politics/u-s-and-israel-officially-withdraw-from-unesco",
+      "https://www.npr.org/2019/07/05/738970664/unesco-adds-ruins-of-ancient-babylon-to-its-list-of-world-heritage-sites",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4326674/",
+      "https://www.unesco.org/en/history"
+    ],
+    "gold_urls": [
+      "https://www.familytreedna.com/groups/nadar/about/background",
+      "https://www.independent.co.uk/news/science/world-s-most-ancient-race-traced-in-dna-study-1677113.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 5,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.63,
+    "cited": [
+      "e14",
+      "e22",
+      "e24",
+      "e36",
+      "e37",
+      "e47",
+      "e49",
+      "e51",
+      "e52",
+      "e53",
+      "e55"
+    ],
+    "retrieved_urls": [
+      "https://www.state.gov/wp-content/uploads/2020/06/2020-10C-Report-Unclassified-Version-for-H.pdf",
+      "https://armscontrolcenter.org/fact-sheet-chemical-weapons/",
+      "https://www.opcw.org/chemical-weapons-convention",
+      "http://collections.unu.edu/eserv/UNU:2466/pdf9789280811230.pdf",
+      "https://www.opcw.org/media-centre/news/2019/11/conference-states-parties-adopts-decisions-amend-chemical-weapons",
+      "https://walterdorn.net/17-compliance-provisions-in-the-chemical-weapons-convention",
+      "https://www.acs.org/content/dam/acsorg/events/program-in-a-box/documents/2016-global-security/cw-inspections.pdf",
+      "https://www.nti.org/education-center/treaties-and-regimes/organization-for-the-prohibition-of-chemical-weapons/",
+      "https://www.opcw.org/media-centre/news/2019/03/opcw-issues-fact-finding-mission-report-chemical-weapons-use-allegation",
+      "https://www.theguardian.com/world/2020/apr/08/syrian-regime-blamed-for-using-sarin-gas-in-landmark-opcw-report"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210302193538/https://www.theguardian.com/world/2020/apr/06/report-set-to-blame-syria-chemical-attacks-on-bashar-al-assad"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 15
+    }
+  },
+  {
+    "claim_id": 4,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e1",
+      "e2",
+      "e11",
+      "e15",
+      "e16",
+      "e18"
+    ],
+    "retrieved_urls": [
+      "https://www.justice.gov/opa/pr/minnesota-based-hospice-provider-pay-18-million-alleged-false-claims-medicare-patients-who",
+      "https://frohsinbarger.com/frohsin-barger-the-largest-false-claims-act-hospice-settlement-in-history/",
+      "https://www.justice.gov/opa/pr/chemed-corp-and-vitas-hospice-services-agree-pay-75-million-resolve-false-claims-act",
+      "https://www.lawsuitlegal.com/hospice-fraud.php",
+      "https://bergermontague.com/nations-largest-hospice-chain-faces-false-claims-act-lawsuit-for-medicare-fraud/",
+      "https://frohsinbarger.com/frohsin-barger-the-largest-false-claims-act-hospice-settlement-in-history/",
+      "https://www.tampabay.com/florida-politics/buzz/2019/11/04/politifact-facebook-post-says-matt-gaetz-has-numerous-duis-its-wrong/",
+      "https://people.com/politics/matt-gaetz-tells-story-boy-he-raised-as-a-son/",
+      "https://www.factcheck.org/2019/10/misleading-posts-target-gop-rep-matt-gaetz/",
+      "https://scholarship.law.upenn.edu/faculty_scholarship/409/"
+    ],
+    "gold_urls": [
+      "https://erau.edu/gaetz-aerospace-institute/about/don-gaetz",
+      "https://www.celebritynetworth.com/richest-politicians/republicans/don-gaetz-net-worth/",
+      "https://web.archive.org/web/20210713185816/http://ir.chemed.com/news-releases/news-release-details/roto-rooter-inc-completes-merger-vitas-healthcare-corporation"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 15
+    }
+  },
+  {
+    "claim_id": 6,
+    "mode": "agentic",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Supported",
+    "confidence": 0.9,
+    "cited": [
+      "e10",
+      "e11",
+      "e12",
+      "e13",
+      "e6",
+      "e21"
+    ],
+    "retrieved_urls": [
+      "https://sos.tn.gov/tsla/guides/vital-records-at-the-library-and-archives",
+      "https://www.whitehouse.gov/",
+      "https://www.usda.gov/sites/default/files/documents/29aFS2022Notes.pdf",
+      "https://www.cdc.gov/mmwr/volumes/69/wr/mm6913e2.htm",
+      "https://www.cdc.gov/nchs/nvss/index.htm",
+      "https://lla.la.gov/PublicReports.nsf/0/4F5FDDC33B767F188625753D0066DA18/$FILE/00008376.pdf",
+      "https://thehill.com/policy/healthcare/518866-biden-blames-covid-19-on-trump-it-is-what-it-is-because-you-are-who-you-are/",
+      "https://www.nbcnews.com/news/nbcblk/joe-biden-didn-t-just-compromise-segregationists-he-fought-their-n1021626",
+      "https://www.dol.gov/agencies/whd/pandemic/ffcra-employee-paid-leave",
+      "https://www.factcheck.org/2020/05/factchecking-bidens-breakfast-club-interview/"
+    ],
+    "gold_urls": [
+      "https://injuryfacts.nsc.org/home-and-community/safety-topics/covid-19-cases-in-the-united-states/",
+      "https://www.statnews.com/2020/06/19/faster-response-prevented-most-us-covid-19-deaths/",
+      "https://www.calculator.net/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 8,
+    "mode": "agentic",
+    "label5": "CONFLICT",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.83,
+    "cited": [
+      "e7",
+      "e21",
+      "e24",
+      "e25",
+      "e22",
+      "e20",
+      "e27"
+    ],
+    "retrieved_urls": [
+      "https://www.supremecourt.gov/opinions/19pdf/19a1016_o759.pdf",
+      "https://www.supremecourt.gov/opinions/19pdf/19a1016_o759.pdf",
+      "https://www.flsenate.gov/Laws/Statutes/2018/Chapter104",
+      "https://www.doncio.navy.mil/chips/ArticleDetails.aspx?ID=14354",
+      "https://www.factcheck.org/2020/10/nothing-untoward-about-counting-ballots-after-election-day/",
+      "https://www.factcheck.org/2020/10/nothing-untoward-about-counting-ballots-after-election-day/",
+      "https://www.politifact.com/factchecks/2020/apr/09/donald-trump/donald-trumps-dubious-claim-thousands-are-conspiri/",
+      "https://www.usatoday.com/story/news/factcheck/2020/10/30/fact-check-some-mail-ballots-arriving-post-election-day-count/6075311002/",
+      "https://www.npr.org/2020/09/23/916012284/rule-changes-in-swing-states-mean-more-votes-will-count-results-may-take-longer",
+      "https://www.cbsnews.com/philadelphia/news/city-officials-reject-trumps-claims-of-election-cheating-in-philadelphia/"
+    ],
+    "gold_urls": [
+      "https://www.sos.ca.gov/elections/voter-registration/vote-mail",
+      "https://calmatters.org/politics/california-election-2020/2020/03/california-primary-election-results-delayed/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 3,
+      "tool_calls": 5
+    }
+  },
+  {
+    "claim_id": 7,
+    "mode": "agentic",
+    "label5": "SUPPORT",
+    "pred_label": "Supported",
+    "gold_label": "Supported",
+    "confidence": 0.97,
+    "cited": [
+      "e40",
+      "e0",
+      "e2",
+      "e3",
+      "e9",
+      "e11"
+    ],
+    "retrieved_urls": [
+      "https://www.snopes.com/fact-check/trump-taxes-smart/",
+      "https://www.snopes.com/fact-check/trump-taxes-smart/",
+      "https://www.bbc.co.uk/news/technology-54319948",
+      "https://www.bbc.com/news/technology-54319948",
+      "https://www.aljazeera.com/news/2020/9/27/donald-trump-paid-no-income-tax-in-10-of-last-15-years-ny-times",
+      "https://www.cbsnews.com/news/trump-tax-returns-new-york-times-report/",
+      "https://www.cbsnews.com/news/trump-taxes-returns-takeaways/",
+      "https://apnews.com/article/donald-trump-business-ny-state-wire-ap-top-news-nyc-wire-f0e2af5f9f99de9d30dc6b9097121188",
+      "https://www.npr.org/2020/09/27/917566141/trump-dismisses-new-york-times-reporting-that-he-paid-little-in-federal-income-t",
+      "https://www.nbcnews.com/storyline/2016-presidential-debates/presidential-debate-donald-trump-s-remark-about-paying-taxes-raises-n655261"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210212182804/https://www.nytimes.com/2020/09/29/us/trump-750-taxes.html",
+      "https://web.archive.org/web/20210212190344/https://www.cnbc.com/2016/09/26/trump-brags-about-not-paying-taxes-that-makes-me-smart.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 11
+    }
+  },
+  {
+    "claim_id": 6,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Supported",
+    "confidence": 0.92,
+    "cited": [
+      "e1",
+      "e4",
+      "e5",
+      "e6",
+      "e9",
+      "e20",
+      "e24",
+      "e45",
+      "e7"
+    ],
+    "retrieved_urls": [
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7525014/",
+      "https://www.cdc.gov/nchs/nvss/deaths.htm",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7525014/",
+      "https://www.cdc.gov/nchs/nvss/vsrr/covid19/index.htm",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7537575/",
+      "https://academic.oup.com/jtm/article/27/7/taaa192/5922349",
+      "https://www.hhs.gov/overdose-prevention/",
+      "https://www.statista.com/statistics/1170530/coronavirus-deaths-in-africa/",
+      "https://www.authorea.com/users/225424/articles/445869-comparing-the-ihme-covid-19-health-service-utilization-forecasting-team-s-predicted-cumulative-covid-19-deaths-to-actual-deaths",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7330834/"
+    ],
+    "gold_urls": [
+      "https://injuryfacts.nsc.org/home-and-community/safety-topics/covid-19-cases-in-the-united-states/",
+      "https://www.statnews.com/2020/06/19/faster-response-prevented-most-us-covid-19-deaths/",
+      "https://www.calculator.net/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 14
+    }
+  },
+  {
+    "claim_id": 8,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.92,
+    "cited": [
+      "e1",
+      "e2",
+      "e3",
+      "e4",
+      "e6",
+      "e7",
+      "e8",
+      "e13",
+      "e29",
+      "e33",
+      "e36",
+      "e5",
+      "e27",
+      "e30"
+    ],
+    "retrieved_urls": [
+      "https://www.factcheck.org/2020/10/nothing-untoward-about-counting-ballots-after-election-day/",
+      "https://bipartisanpolicy.org/report/counting-the-vote-during-the-2020-election/",
+      "https://spectrumlocalnews.com/nys/watertown/news/2016/10/4/helping-soldiers-understand-voting-process",
+      "https://www.ncsl.org/elections-and-campaigns/canvass-certification-and-contested-election-deadlines-and-voter-intent-laws",
+      "https://vote.phila.gov/ballot-drop-off/",
+      "https://www.statesman.com/story/news/politics/elections/2020/10/29/fact-check-is-counting-ballots-weeks-after-election-day-illegal/114534454/",
+      "https://abcnews.go.com/Politics/step-step-trumps-falsehoods-mail-voting-analysis/story?id=73354979",
+      "https://www.nbcnews.com/politics/elections/online-vulnerable-experts-find-nearly-three-dozen-u-s-voting-n1112436",
+      "https://www.supremecourt.gov/opinions/19pdf/19a1016_o759.pdf",
+      "https://www.amazon.com/Method-Madness-Donald-Inspired-Inaugurated/dp/1250202809"
+    ],
+    "gold_urls": [
+      "https://www.sos.ca.gov/elections/voter-registration/vote-mail",
+      "https://calmatters.org/politics/california-election-2020/2020/03/california-primary-election-results-delayed/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 7,
+    "mode": "agentic_unweighted",
+    "label5": "SUPPORT",
+    "pred_label": "Supported",
+    "gold_label": "Supported",
+    "confidence": 0.98,
+    "cited": [
+      "e10",
+      "e13",
+      "e21",
+      "e30"
+    ],
+    "retrieved_urls": [
+      "https://www.aljazeera.com/news/2020/9/27/donald-trump-paid-no-income-tax-in-10-of-last-15-years-ny-times",
+      "https://www.beaconjournal.com/story/news/2020/09/27/donald-trump-taxes-750-president-election/3556964001/",
+      "https://whyy.org/articles/trumps-tax-revelation-could-tarnish-image-that-fueled-rise/",
+      "https://www.npr.org/2020/09/27/917566141/trump-dismisses-new-york-times-reporting-that-he-paid-little-in-federal-income-t",
+      "https://www.businessinsider.com/video-trump-tells-clinton-2016-he-smart-pay-no-tax-2020-9",
+      "https://whyy.org/articles/ny-times-trump-paid-750-in-us-income-taxes-in-2016-2017/",
+      "https://apnews.com/article/donald-trump-business-ny-state-wire-ap-top-news-nyc-wire-f0e2af5f9f99de9d30dc6b9097121188",
+      "https://www.breitbart.com/economy/2020/10/01/carney-new-york-times-is-wrong-trump-paid-millions-taxes-2017/1000/",
+      "https://www.snopes.com/fact-check/trump-taxes-smart/",
+      "https://www.denverpost.com/2016/09/28/appalled-by-trumps-boast-on-not-paying-taxes/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210212182804/https://www.nytimes.com/2020/09/29/us/trump-750-taxes.html",
+      "https://web.archive.org/web/20210212190344/https://www.cnbc.com/2016/09/26/trump-brags-about-not-paying-taxes-that-makes-me-smart.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 10,
+    "mode": "agentic",
+    "label5": "SUPPORT",
+    "pred_label": "Supported",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.98,
+    "cited": [
+      "e0",
+      "e19",
+      "e29"
+    ],
+    "retrieved_urls": [
+      "https://www.snopes.com/fact-check/trump-nuke-hurricanes/",
+      "https://www.snopes.com/fact-check/donald-trump-global-warming-hoax/",
+      "https://www.politifact.com/factchecks/2016/jun/03/hillary-clinton/yes-donald-trump-did-call-climate-change-chinese-h/",
+      "https://www.snopes.com/fact-check/donald-trump-global-warming-hoax/",
+      "https://www.politifact.com/factchecks/2016/jun/03/hillary-clinton/yes-donald-trump-did-call-climate-change-chinese-h/",
+      "http://www.cnn.com/2019/08/26/politics/donald-trump-nuclear-bombs-hurricanes/index.html&quot;",
+      "https://www.cbsnews.com/news/trump-says-climate-change-not-a-hoax-but-questions-if-its-manmade/",
+      "https://thehill.com/policy/energy-environment/477548-trump-says-nothings-a-hoax-about-climate-change/",
+      "https://www.foxnews.com/politics/trump-says-malfunctioning-teleprompter-to-blame-for-airport-gaffe-in-july-4-speech",
+      "https://www.usatoday.com/story/news/politics/2019/07/04/independence-day-donald-trump-trips-up-revolutionary-war-history/1638531001/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210212183744/https://www.axios.com/trump-nuclear-bombs-hurricanes-97231f38-2394-4120-a3fa-8c9cf0e3f51c.html",
+      "https://www.nbcnews.com/politics/donald-trump/trump-blames-teleprompter-revolutionary-war-airports-flub-n1026931"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 3,
+      "tool_calls": 4
+    }
+  },
+  {
+    "claim_id": 9,
+    "mode": "agentic",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Not Enough Evidence",
+    "confidence": 0.91,
+    "cited": [
+      "e27",
+      "e11",
+      "e22",
+      "e31",
+      "e14"
+    ],
+    "retrieved_urls": [
+      "https://stats.oecd.org/index.aspx?DataSetCode=PDB_LV",
+      "https://www.bea.gov/data/gdp/gdp-industry",
+      "https://trumpwhitehouse.archives.gov/articles/great-american-recovery-third-quarter-gdp-blows-past-expectations/",
+      "https://stats.oecd.org/index.aspx?queryid=33940",
+      "https://stats.oecd.org/index.aspx?queryid=350",
+      "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD",
+      "https://trumpwhitehouse.archives.gov/articles/great-american-recovery-third-quarter-gdp-blows-past-expectations/",
+      "https://obamawhitehouse.archives.gov/blog/2014/12/23/third-estimate-gdp-third-quarter-2014",
+      "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG",
+      "https://www.bea.gov/news/2020/gross-domestic-product-third-quarter-2020-advance-estimate"
+    ],
+    "gold_urls": [
+      "https://www.stlouisfed.org/on-the-economy/2017/april/us-manufacturing-really-declining"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 6
+    }
+  },
+  {
+    "claim_id": 12,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e9",
+      "e50",
+      "e40",
+      "e12",
+      "e0",
+      "e1"
+    ],
+    "retrieved_urls": [
+      "https://www.fns.usda.gov/cnpp/usda-food-plans-cost-food-monthly-reports",
+      "https://www.tn.gov/news/2007/2/25/tda-implements-new-rules-to-allow-safe-home-food-preparation.html",
+      "https://www.fns.usda.gov/cnpp/usda-food-plans-cost-food-monthly-reports",
+      "https://www.fns.usda.gov/cnpp/usda-food-plans-cost-food-monthly-reports",
+      "https://www.nyc.gov/site/agriculture/faqs/frequently-asked-questions.page",
+      "http://blumenauer.house.gov/the-food-and-farm-act",
+      "https://www.usda.gov/media/blog/2020/08/13/good-samaritan-act-provides-liability-protection-food-donations",
+      "https://www.nist.gov/blogs/manufacturing-innovation-blog/food-safety-modernization-act-nutshell",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5302274/",
+      "https://www.bennet.senate.gov/public/index.cfm/2010/11/bennet-statement-on-senate-passage-of-food-safety-bill"
+    ],
+    "gold_urls": [
+      "https://www.parliament.nz/en/pb/bills-and-laws/bills-proposed-laws/document/00DBHOH_BILL9974_1/food-bill",
+      "https://archive.ph/jqW1g#selection-1753.196-1753.231",
+      "https://archive.ph/jqW1g#selection-1541.0-1541.28",
+      "https://archive.ph/jqW1g#selection-1931.0-1931.145",
+      "https://archive.ph/jqW1g#selection-1541.0-1541.28",
+      "http://www.nzlii.org/nz/legis/consol_act/fa201457/",
+      "https://www.beehive.govt.nz/release/greens-wrong-food-bill"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 10,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.98,
+    "cited": [
+      "e0",
+      "e15",
+      "e23",
+      "e47"
+    ],
+    "retrieved_urls": [
+      "https://www.tmz.com/2019/07/04/president-trump-revolutionary-war-salute-to-america-speech-airports/",
+      "https://www.inquirer.com/politics/nation/trump-speech-july-4th-airports-revolutionary-war-twitter-memes-20190705.html",
+      "https://www.scarymommy.com/trump-revolutionary-airports-reacts",
+      "https://www.bbc.co.uk/news/world-us-canada-49471093",
+      "https://www.bbc.com/news/world-us-canada-49471093",
+      "https://www.dailymail.co.uk/news/article-7217519/It-went-KAPUT-Trump-blames-teleprompter-claim-Revolutionary-War-army-captured-AIRPORTS.html",
+      "https://www.cbsnews.com/texas/news/pence-breaks-with-trump-says-humans-affect-climate-change/",
+      "https://www.dailymail.co.uk/news/article-7215523/Trump-claims-army-took-airports-Revolutionary-War.html",
+      "https://www.snopes.com/fact-check/trump-revolutionary-war-airports/",
+      "https://www.usatoday.com/story/news/politics/2019/07/04/independence-day-donald-trump-trips-up-revolutionary-war-history/1638531001/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210212183744/https://www.axios.com/trump-nuclear-bombs-hurricanes-97231f38-2394-4120-a3fa-8c9cf0e3f51c.html",
+      "https://www.nbcnews.com/politics/donald-trump/trump-blames-teleprompter-revolutionary-war-airports-flub-n1026931"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 3,
+      "tool_calls": 14
+    }
+  },
+  {
+    "claim_id": 12,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e25",
+      "e11",
+      "e17",
+      "e3",
+      "e15",
+      "e2"
+    ],
+    "retrieved_urls": [
+      "https://www.beehive.govt.nz/release/food-bill-make-food-safer-%E2%80%93-not-restrict-small-traders",
+      "https://www.mpi.govt.nz/news/media-releases/no-peas-no-weevil-ban-now-in-place-in-wairarapa/",
+      "https://leg.mt.gov/bills/2021/SB0199/SB0199_X.pdf",
+      "https://www.avalara.com/blog/en/north-america/2016/06/trees-plants-and-flowers-whats-taxable.html",
+      "https://www.avalara.com/blog/en/north-america/2016/06/trees-plants-and-flowers-whats-taxable.html",
+      "https://www.nyc.gov/site/agriculture/faqs/frequently-asked-questions.page",
+      "https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/about+us/legislation/food+legislation/food+legislation",
+      "https://www.mda.state.mn.us/providing-safe-locally-grown-produce-commercial-food-establishments-general-public",
+      "https://www.mda.state.mn.us/providing-safe-locally-grown-produce-commercial-food-establishments-general-public",
+      "https://www.food.gov.uk/safety-hygiene/food-safety-for-community-cooking-and-food-banks"
+    ],
+    "gold_urls": [
+      "https://www.parliament.nz/en/pb/bills-and-laws/bills-proposed-laws/document/00DBHOH_BILL9974_1/food-bill",
+      "https://archive.ph/jqW1g#selection-1753.196-1753.231",
+      "https://archive.ph/jqW1g#selection-1541.0-1541.28",
+      "https://archive.ph/jqW1g#selection-1931.0-1931.145",
+      "https://archive.ph/jqW1g#selection-1541.0-1541.28",
+      "http://www.nzlii.org/nz/legis/consol_act/fa201457/",
+      "https://www.beehive.govt.nz/release/greens-wrong-food-bill"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 11
+    }
+  },
+  {
+    "claim_id": 9,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Not Enough Evidence",
+    "confidence": 0.91,
+    "cited": [
+      "e24",
+      "e20",
+      "e16",
+      "e3"
+    ],
+    "retrieved_urls": [
+      "https://trumpwhitehouse.archives.gov/articles/great-american-recovery-third-quarter-gdp-blows-past-expectations/",
+      "https://www.pgpf.org/blog/2023/04/real-gdp-falls-a-record-breaking-329-in-second-quarter",
+      "https://usafacts.org/articles/gdp-grew-74-third-quarter-2020-remains-lower-it-was-last-year/",
+      "https://www.bea.gov/resources/learning-center/what-to-know-gdp",
+      "https://www.presidency.ucsb.edu/documents/trump-campaign-press-release-record-economic-growth-record-recovery",
+      "https://democrats-budget.house.gov/resources/reports/president-trump-has-failed-american-economy",
+      "https://tradingeconomics.com/country-list/gdp-growth-rate",
+      "https://www.bea.gov/news/2020/gross-domestic-product-third-quarter-2020-advance-estimate",
+      "https://www.bea.gov/data/gdp/gdp-industry",
+      "https://trumpwhitehouse.archives.gov/articles/great-american-recovery-third-quarter-gdp-blows-past-expectations/"
+    ],
+    "gold_urls": [
+      "https://www.stlouisfed.org/on-the-economy/2017/april/us-manufacturing-really-declining"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 17
+    }
+  },
+  {
+    "claim_id": 13,
+    "mode": "agentic",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Supported",
+    "confidence": 0.92,
+    "cited": [
+      "e34",
+      "e35",
+      "e40",
+      "e22",
+      "e4",
+      "e1",
+      "e48"
+    ],
+    "retrieved_urls": [
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7588721/",
+      "https://pubmed.ncbi.nlm.nih.gov/32246890/",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7518963/",
+      "https://pubmed.ncbi.nlm.nih.gov/29140516/",
+      "https://pubmed.ncbi.nlm.nih.gov/35218279/",
+      "https://pubmed.ncbi.nlm.nih.gov/33047556/",
+      "https://pubmed.ncbi.nlm.nih.gov/33347937/",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7191274/",
+      "https://stacks.cdc.gov/view/cdc/90553",
+      "https://stacks.cdc.gov/view/cdc/87542"
+    ],
+    "gold_urls": [
+      "https://www.ox.ac.uk/news/2020-07-08-oxford-covid-19-study-face-masks-and-coverings-work-act-now"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 13
+    }
+  },
+  {
+    "claim_id": 14,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e0",
+      "e1",
+      "e3",
+      "e4",
+      "e27"
+    ],
+    "retrieved_urls": [
+      "https://www.aljazeera.com/news/2020/8/6/un-discusses-kashmir-for-third-time-since-india-ended-autonomy",
+      "https://www.bbc.com/news/world-south-asia-16069078",
+      "https://m.economictimes.com/news/politics-and-nation/jammu-and-kashmir-removed-from-list-of-disputes-under-un/articleshow/6927150.cms",
+      "https://www.thehindu.com/news/national/Jammu-and-Kashmir-out-of-U.N.-list-of-disputes/article15687886.ece",
+      "https://www.ndtv.com/india-news/jammu-and-kashmir-removed-from-list-of-disputes-under-un-439267",
+      "https://www.aa.com.tr/en/analysis/kashmir-and-the-un-security-council/1971039",
+      "https://www.dawn.com/news/1578012",
+      "https://www.indiatoday.in/india/story/india-calls-for-permanently-removing-jammu-and-kashmir-issue-under-outdated-agenda-item-from-unsc-1717641-2020-09-02",
+      "https://m.timesofindia.com/india/unsc-doesnt-list-jk-as-dispute/articleshow/6931920.cms",
+      "https://www.securitycouncilreport.org/un_documents_type/security-council-resolutions/?ctype=Jammu%20and%20Kashmir&cbtype=jammu-and-kashmir"
+    ],
+    "gold_urls": [
+      "https://www.crisisgroup.org/asia/south-asia/kashmir/310-raising-stakes-jammu-and-kashmir",
+      "https://web.archive.org/web/20210608054144/https://www.undocs.org/en/S/2020/10/Add.40"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 15,
+    "mode": "agentic",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Not Enough Evidence",
+    "confidence": 0.91,
+    "cited": [
+      "e6",
+      "e51",
+      "e13",
+      "e33",
+      "e37"
+    ],
+    "retrieved_urls": [
+      "https://www.ojp.gov/pdffiles1/nij/grants/215475.pdf",
+      "https://www.blm.gov/sites/default/files/documents/files/SAP%202016%20%28508%20Final%29.pdf",
+      "https://www.gao.gov/assets/700/690770.pdf",
+      "https://www.gao.gov/assets/ggd-95-30.pdf",
+      "https://www.dhs.gov/sites/default/files/publications/18_0918_DHS_Cohort_Outcomes_Report.pdf",
+      "https://www.dhs.gov/xlibrary/assets/statistics/publications/ois-smuggling-wp.pdf",
+      "https://portal.cops.usdoj.gov/resourcecenter/content.ashx/cops-p369-pub.pdf",
+      "https://ops.fhwa.dot.gov/freight/infrastructure/gb/index.htm",
+      "https://www.dhs.gov/sites/default/files/publications/17_0914_estimates-of-border-security.pdf",
+      "https://www.dhs.gov/xlibrary/assets/statistics/publications/ois-smuggling-wp.pdf"
+    ],
+    "gold_urls": [
+      "Metadata",
+      "https://www.wsj.com/articles/the-border-wall-mile-by-mile-11550152535",
+      "https://www.bbc.com/news/world-us-canada-46824649",
+      "https://www.bbc.com/news/world-us-canada-46824649",
+      "https://www.cbp.gov/newsroom/stats/southwest-land-border-encounters",
+      "https://www.nfid.org/infectious-diseases/coronaviruses/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 15
+    }
+  },
+  {
+    "claim_id": 13,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Supported",
+    "confidence": 0.96,
+    "cited": [
+      "e14",
+      "e16",
+      "e17",
+      "e20",
+      "e30",
+      "e38",
+      "e3"
+    ],
+    "retrieved_urls": [
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7191274/",
+      "https://pubmed.ncbi.nlm.nih.gov/32497510/",
+      "https://www.medrxiv.org/content/10.1101/2020.03.30.20047217v2",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7263814/",
+      "https://pubmed.ncbi.nlm.nih.gov/35218279/",
+      "https://pubmed.ncbi.nlm.nih.gov/32473312/",
+      "https://www.medrxiv.org/content/10.1101/2020.05.01.20087064v1",
+      "https://pubmed.ncbi.nlm.nih.gov/33347937/",
+      "https://www.theguardian.com/world/2020/apr/07/face-masks-cannot-stop-healthy-people-getting-covid-19-says-who",
+      "https://le.utah.gov/publicweb/BRISCJK/PublicWeb/43178/43178.html"
+    ],
+    "gold_urls": [
+      "https://www.ox.ac.uk/news/2020-07-08-oxford-covid-19-study-face-masks-and-coverings-work-act-now"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 16
+    }
+  },
+  {
+    "claim_id": 14,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.95,
+    "cited": [
+      "e0",
+      "e1",
+      "e2",
+      "e44",
+      "e10",
+      "e13",
+      "e25",
+      "e26",
+      "e30",
+      "e37"
+    ],
+    "retrieved_urls": [
+      "https://www.ndtv.com/india-news/india-calls-for-removing-j-k-issue-from-un-security-council-outdated-agenda-item-2288953",
+      "https://www.indiatoday.in/india/story/india-calls-for-permanently-removing-jammu-and-kashmir-issue-under-outdated-agenda-item-from-unsc-1717641-2020-09-02",
+      "https://www.indiatoday.in/india/story/india-calls-for-permanently-removing-jammu-and-kashmir-issue-under-outdated-agenda-item-from-unsc-1717641-2020-09-02",
+      "https://www.refworld.org/docid/3b00f23d10.html",
+      "http://scroll.in/article/817144/the-un-in-kashmir-a-potted-history-of-resolutions-that-led-nowhere",
+      "https://na.gov.pk/en/pressrelease_detail.php?id=2389",
+      "https://www.securitycouncilreport.org/un-documents/eritrea/",
+      "https://m.timesofindia.com/india/unsc-doesnt-list-jk-as-dispute/articleshow/6931920.cms",
+      "https://mofa.gov.pk/pakistan-rejects-indian-protest-against-gilgit-baltistan-order-2018-and-its-claim-over-indian-occupied-jammu-kashmir",
+      "https://www.hinduamerican.org/wp-content/uploads/2020/01/Kashmir-Conflict-History-brief-HAF.pdf"
+    ],
+    "gold_urls": [
+      "https://www.crisisgroup.org/asia/south-asia/kashmir/310-raising-stakes-jammu-and-kashmir",
+      "https://web.archive.org/web/20210608054144/https://www.undocs.org/en/S/2020/10/Add.40"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 14
+    }
+  },
+  {
+    "claim_id": 15,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Not Enough Evidence",
+    "confidence": 0.88,
+    "cited": [
+      "e24",
+      "e14",
+      "e8",
+      "e35",
+      "e18"
+    ],
+    "retrieved_urls": [
+      "https://www.dhs.gov/xlibrary/assets/statistics/publications/ois-smuggling-wp.pdf",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1483852/",
+      "https://www.dhs.gov/news/2020/10/29/border-wall-system-deployed-effective-and-disrupting-criminals-and-smugglers",
+      "https://www.govinfo.gov/content/pkg/GAOREPORTS-GGD-99-44/html/GAOREPORTS-GGD-99-44.htm",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5049707/",
+      "https://www.migrationpolicy.org/sites/default/files/publications/BorderMetrics-FINAL.pdf",
+      "https://www.gao.gov/assets/gao-06-770.pdf",
+      "https://www.dhs.gov/sites/default/files/publications/17_0914_estimates-of-border-security.pdf",
+      "https://secure-media.collegeboard.org/apc/ap12_human_geography_q1.pdf",
+      "https://www.indianagunowners.com/threads/the-president-trump-immigration-thread.431333/page-141"
+    ],
+    "gold_urls": [
+      "Metadata",
+      "https://www.wsj.com/articles/the-border-wall-mile-by-mile-11550152535",
+      "https://www.bbc.com/news/world-us-canada-46824649",
+      "https://www.bbc.com/news/world-us-canada-46824649",
+      "https://www.cbp.gov/newsroom/stats/southwest-land-border-encounters",
+      "https://www.nfid.org/infectious-diseases/coronaviruses/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 16,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.97,
+    "cited": [
+      "e0",
+      "e2",
+      "e7",
+      "e13",
+      "e56"
+    ],
+    "retrieved_urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/32639930/",
+      "https://pubmed.ncbi.nlm.nih.gov/33347937/",
+      "https://pubmed.ncbi.nlm.nih.gov/32835043/",
+      "https://pubmed.ncbi.nlm.nih.gov/32497510/",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7497125/",
+      "https://pubmed.ncbi.nlm.nih.gov/32787926/",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7413047/",
+      "https://pubmed.ncbi.nlm.nih.gov/33347937/",
+      "https://pubmed.ncbi.nlm.nih.gov/33087517/",
+      "https://pubmed.ncbi.nlm.nih.gov/32569870/"
+    ],
+    "gold_urls": [
+      "https://www.nature.com/articles/s41591-020-0843-2?error=cookies_not_supported&code=06c46169-a951-475f-84e1-3761c88a0a71",
+      "https://www.ucsf.edu/news/2020/06/417906/still-confused-about-masks-heres-science-behind-how-face-masks-prevent"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 11
+    }
+  },
+  {
+    "claim_id": 17,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e33",
+      "e32",
+      "e11",
+      "e25",
+      "e30"
+    ],
+    "retrieved_urls": [
+      "https://elections.cdn.sos.ca.gov/pdfs/covid-19-resources/votesafe-usps.pdf",
+      "https://www.fvap.gov/eo/overview/sending-ballots",
+      "https://elections.cdn.sos.ca.gov/pdfs/covid-19-resources/votesafe-usps.pdf",
+      "http://www.sos.alabama.gov/alabama-votes/voter/military-overseas-voting",
+      "https://www.fvap.gov/uploads/FVAP/Outreach-Materials/EOMediaToolkitInstructions.pdf",
+      "https://georgia.gov/vote-in-person-election-day",
+      "https://myvote.wi.gov/en-us/",
+      "https://www.supremecourt.gov/DocketPDF/20/20A53/155043/20200928103631405_No.___EmergencyApplicationForStay.pdf",
+      "https://www.ca4.uscourts.gov/opinions/202104R1.P.pdf",
+      "https://www.sos.texas.gov/elections/laws/advisory2017-20.shtml"
+    ],
+    "gold_urls": [
+      "https://elections.maryland.gov/elections/2020/index.html",
+      "https://elections.maryland.gov/elections/2020/index.html",
+      "https://oag.dc.gov/sites/default/files/2020-10/Wise-v-Circosta-Amicus.pdf",
+      "https://projects.fivethirtyeight.com/how-to-vote-2020/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 6
+    }
+  },
+  {
+    "claim_id": 18,
+    "mode": "agentic",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.94,
+    "cited": [
+      "e41",
+      "e3",
+      "e5",
+      "e14",
+      "e26"
+    ],
+    "retrieved_urls": [
+      "https://www.sos.wa.gov/elections/elections-calendar/dates-and-deadlines",
+      "https://www.parkercountytx.com/478/Ballots-by-Mail",
+      "https://www.vote.org/voter-registration-deadlines/",
+      "https://www.townofchelmsford.us/237/Elections-Voting-Campaign-Finance",
+      "https://about.usps.com/postal-bulletin/2014/pb22391/html/cover_003.htm",
+      "https://app.leg.wa.gov/wac/default.aspx?cite=434-250-120",
+      "https://chicagoelections.gov/voting/vote-mail",
+      "https://www.supremecourt.gov/opinions/19pdf/19a1016_o759.pdf",
+      "https://www.supremecourt.gov/opinions/20pdf/20a66wdiff_20e4.pdf",
+      "https://www.supremecourt.gov/opinions/19pdf/19a1016_o759.pdf"
+    ],
+    "gold_urls": [
+      "https://www.buzzfeednews.com/article/addybaird/vote-by-mail-state-deadlines",
+      "https://www.cbsnews.com/news/wisconsin-election-supreme-court-rules-againt-absentee-ballots-after-election-day/",
+      "https://www.facebook.com/GilbertLiz/photos/a.356148997800555/3549940058421417"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 10
+    }
+  },
+  {
+    "claim_id": 17,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.96,
+    "cited": [
+      "e10",
+      "e11",
+      "e13",
+      "e15",
+      "e20"
+    ],
+    "retrieved_urls": [
+      "https://www.usatoday.com/in-depth/news/2020/10/09/how-make-sure-your-mail-ballot-counted-not-discarded-spoiled/3576638001/",
+      "https://ballotpedia.org/Do_absentee/mail-in_ballots_take_longer_to_count_than_in-person_ballots%3F_(2020)",
+      "https://www.npr.org/2020/09/23/916012284/rule-changes-in-swing-states-mean-more-votes-will-count-results-may-take-longer",
+      "https://abcnews.go.com/Politics/mail-voting-rules-key-swing-states-leave-ballots/story?id=72374784",
+      "https://www.npr.org/2020/10/19/922411176/supreme-court-rules-pennsylvania-can-count-ballots-received-after-election-day",
+      "https://ballotpedia.org/Do_absentee/mail-in_ballots_take_longer_to_count_than_in-person_ballots%3F_(2020)",
+      "https://www.nbcphiladelphia.com/news/politics/decision-2020/voters-guide-november-3-election-pennsylvania-new-jersey-delaware-registering-to-vote-mail-in-ballots-drop-boxes/2555537/",
+      "https://chicagoelections.gov/voting/vote-mail",
+      "https://www.vote.org/absentee-ballot-deadlines/",
+      "https://www.naco.org/articles/supreme-court-allows-pennsylvania-count-ballots-three-days-after-election-day"
+    ],
+    "gold_urls": [
+      "https://elections.maryland.gov/elections/2020/index.html",
+      "https://elections.maryland.gov/elections/2020/index.html",
+      "https://oag.dc.gov/sites/default/files/2020-10/Wise-v-Circosta-Amicus.pdf",
+      "https://projects.fivethirtyeight.com/how-to-vote-2020/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 17
+    }
+  },
+  {
+    "claim_id": 16,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e55",
+      "e47",
+      "e32",
+      "e53",
+      "e37"
+    ],
+    "retrieved_urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/32497510/",
+      "https://pubmed.ncbi.nlm.nih.gov/32497510/",
+      "https://pubmed.ncbi.nlm.nih.gov/32473312/",
+      "https://pubmed.ncbi.nlm.nih.gov/23498357/",
+      "https://pubmed.ncbi.nlm.nih.gov/32497510/",
+      "https://pubmed.ncbi.nlm.nih.gov/33087517/",
+      "https://pubmed.ncbi.nlm.nih.gov/32973285/",
+      "https://pubmed.ncbi.nlm.nih.gov/33347937/",
+      "https://pubmed.ncbi.nlm.nih.gov/33347937/",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7413047/"
+    ],
+    "gold_urls": [
+      "https://www.nature.com/articles/s41591-020-0843-2?error=cookies_not_supported&code=06c46169-a951-475f-84e1-3761c88a0a71",
+      "https://www.ucsf.edu/news/2020/06/417906/still-confused-about-masks-heres-science-behind-how-face-masks-prevent"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 18
+    }
+  },
+  {
+    "claim_id": 18,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.95,
+    "cited": [
+      "e0",
+      "e2",
+      "e12",
+      "e20"
+    ],
+    "retrieved_urls": [
+      "https://www.democracydocket.com/analysis/mailing-in-your-vote-important-dates/",
+      "https://www.crf-usa.org/r/civics-on-call/vote-by-mail-vote-by-mail-election-controversy-in-the-time-of-the-coronavirus",
+      "https://app.leg.wa.gov/wac/default.aspx?cite=434-250-120",
+      "https://www.buzzfeednews.com/article/addybaird/vote-by-mail-state-deadlines",
+      "https://abcnews.go.com/Politics/mail-voting-rules-key-swing-states-leave-ballots/story?id=72374784",
+      "https://calmatters.org/politics/elections/2018/11/california-chose-delayed-vote-results/",
+      "https://ballotpedia.org/Do_absentee/mail-in_ballots_take_longer_to_count_than_in-person_ballots%3F_(2020)",
+      "https://ballotpedia.org/Do_absentee/mail-in_ballots_take_longer_to_count_than_in-person_ballots%3F_(2020)",
+      "https://chicagoelections.gov/voting/vote-mail",
+      "https://www.vote.org/absentee-ballot-deadlines/"
+    ],
+    "gold_urls": [
+      "https://www.buzzfeednews.com/article/addybaird/vote-by-mail-state-deadlines",
+      "https://www.cbsnews.com/news/wisconsin-election-supreme-court-rules-againt-absentee-ballots-after-election-day/",
+      "https://www.facebook.com/GilbertLiz/photos/a.356148997800555/3549940058421417"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 17
+    }
+  },
+  {
+    "claim_id": 21,
+    "mode": "agentic",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.78,
+    "cited": [
+      "e23",
+      "e0",
+      "e15",
+      "e16",
+      "e48"
+    ],
+    "retrieved_urls": [
+      "https://www.maine.gov/sos/cec/elec/voter-info/appE-other-states-additional.pdf",
+      "https://sslc.gov/212/Elections-Voting",
+      "https://www.archives.gov/publications/prologue/2016/winter/15th-amend-nicholas",
+      "https://elections.maryland.gov/voting/provisional_voting.html",
+      "https://sos.tn.gov/elections/faqs",
+      "https://www.cbsnews.com/news/trump-suggests-delaying-election-over-unsubstantiated-claims-about-vote-by-mail/",
+      "https://www.cbsnews.com/boston/news/mitt-romney-i-did-not-vote-for-president-trump/",
+      "https://circle.tufts.edu/2020-election-center",
+      "https://www.sltrib.com/news/politics/2020/08/01/while-president-trump/",
+      "https://www.deseret.com/utah/2020/8/18/21372318/utah-facts-vote-by-mail-post-office-delays-president-donald-trump-postal-service-ballots"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201119224000/https://hermancain.com/instagram-testimony-people-showing-vote-told-already-voted/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 11
+    }
+  },
+  {
+    "claim_id": 22,
+    "mode": "agentic",
+    "label5": "SUPPORT",
+    "pred_label": "Supported",
+    "gold_label": "Refuted",
+    "confidence": 0.96,
+    "cited": [
+      "e0",
+      "e2",
+      "e7"
+    ],
+    "retrieved_urls": [
+      "https://www.sos.ca.gov/administration/regulations/current-regulations/elections/vote-mail-ballot-drop-boxes-and-drop-locations",
+      "https://vote.mahoningcountyoh.gov/",
+      "https://www.como.gov/utilities/columbias-solid-waste-utility/single-family-home-trash-and-recycling/",
+      "https://www.rockvillemd.gov/2258/Ballot-Information",
+      "https://www.phila.gov/services/trash-recycling-city-upkeep/",
+      "https://www.phila.gov/2020-08-04-a-philadelphia-residents-guide-to-reducing-waste-at-home/",
+      "https://www.brennancenter.org/our-work/research-reports/how-security-features-prevent-vote-mail-misconduct",
+      "https://www.ncsl.org/elections-and-campaigns/voter-id",
+      "https://www.multco.us/elections/official-ballot-drop-sites",
+      "https://myhatboro.org/public-works/trash-collection/"
+    ],
+    "gold_urls": [
+      "https://www.instagram.com/p/CG2aethncKr/?utm_source=ig_embed"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 20,
+    "mode": "agentic",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.96,
+    "cited": [
+      "e3",
+      "e0",
+      "e1",
+      "e10"
+    ],
+    "retrieved_urls": [
+      "https://www.census.gov/newsroom/stories/india-independence-day.html",
+      "https://factcheck.afp.com/busting-coronavirus-myths",
+      "https://factcheck.afp.com/busting-coronavirus-myths",
+      "https://www.bbc.com/news/world-asia-india-48882053",
+      "https://www.bbc.co.uk/news/world-asia-india-48882053",
+      "https://www.bbc.com/news/world-asia-32246547",
+      "https://timesofindia.indiatimes.com/times-fact-check",
+      "https://www.ndtv.com/india-news/mps-chant-modi-modi-over-tax-exemptions-1986769",
+      "https://www.dawn.com/news/1587131",
+      "https://facthunt.in/posts/1044/Fact-Check:-No,-the-news-about-Tablighi-Jamaat-members-spitting-and-misbehaving-is-not-fake"
+    ],
+    "gold_urls": [
+      "https://www.dawn.com/news/1587131"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 15
+    }
+  },
+  {
+    "claim_id": 21,
+    "mode": "agentic_unweighted",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.74,
+    "cited": [
+      "e24",
+      "e27",
+      "e36",
+      "e0",
+      "e29"
+    ],
+    "retrieved_urls": [
+      "https://www.kuer.org/politics-government/2020-10-20/everything-you-need-to-know-about-voting-in-utah-during-the-2020-general-election",
+      "https://www.summitcounty.org/281/Voter-Registration-Elections",
+      "https://www.rockthevote.org/how-to-vote/utah/",
+      "https://www.deseret.com/utah/2020/8/18/21372318/utah-facts-vote-by-mail-post-office-delays-president-donald-trump-postal-service-ballots",
+      "https://aitogether.org/utah-voter-guide/",
+      "https://www.washco.utah.gov/departments/clerk-auditor/election-info/vote-center-locations/",
+      "https://www.vote.org/state/utah/",
+      "https://www.vote.org/absentee-ballot/utah/",
+      "https://slco.org/clerk/elections/faqs/",
+      "https://slco.org/clerk/elections/voter-registration/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201119224000/https://hermancain.com/instagram-testimony-people-showing-vote-told-already-voted/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 22,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e0",
+      "e1",
+      "e10"
+    ],
+    "retrieved_urls": [
+      "https://www.inquirer.com/politics/election/election-2020-ballot-box-trash-can-ad-philadelphia-union-league-foundation-20201023.html",
+      "https://www.inquirer.com/politics/election/election-2020-ballot-box-trash-can-ad-philadelphia-union-league-foundation-20201023.html",
+      "https://delcopa.gov/publicrelations/releases/2020/subaruparkvoterservicecenter.html",
+      "https://streetsmartphl.phila.gov/",
+      "https://www.amazon.com/Displays2go-Suggestion-Countertop-Acrylic-RBHS/dp/B005Q9FZWS",
+      "https://www.amazon.com/Stealing-Elections-Voter-Threatens-Democracy/dp/1594030618",
+      "https://www.inquirer.com/politics/election/election-2020-ballot-box-trash-can-ad-philadelphia-union-league-foundation-20201023.html",
+      "https://www.cbsnews.com/news/trump-campaign-tapes-voters-pennsylvania-drop-boxes/",
+      "https://seventy.org/uploads/attachments/cl320e7385lnk6fnpwt3nihwb-updated-pollworker-guide-occ-70.pdf",
+      "https://seventy.org/uploads/attachments/cl320e7385lnk6fnpwt3nihwb-updated-pollworker-guide-occ-70.pdf"
+    ],
+    "gold_urls": [
+      "https://www.instagram.com/p/CG2aethncKr/?utm_source=ig_embed"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 20,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e2",
+      "e13",
+      "e4"
+    ],
+    "retrieved_urls": [
+      "https://www.altnews.in/were-modi-modi-slogans-raised-in-pakistan-parliament-india-tv-tv9-bharatvarsh-misreport/",
+      "https://www.altnews.in/were-modi-modi-slogans-raised-in-pakistan-parliament-india-tv-tv9-bharatvarsh-misreport/",
+      "https://thelogicalindian.com/fact-check/pm-narendra-modi-battlefield-soldier-salary-viral-video-22023",
+      "https://facthunt.in/posts/1484/Truth-behind-the-viral-picture-showing-French-Teacher-who-was-beheaded-for",
+      "https://www.thequint.com/news/webqoof/no-people-in-balochistan-did-not-celebrate-narendra-modi-win-fact-check",
+      "https://www.altnews.in/were-modi-modi-slogans-raised-in-pakistan-parliament-india-tv-tv9-bharatvarsh-misreport/",
+      "https://timesofindia.indiatimes.com/times-fact-check",
+      "https://facthunt.in/posts/1484/Truth-behind-the-viral-picture-showing-French-Teacher-who-was-beheaded-for",
+      "https://thelogicalindian.com/fact-check/pm-narendra-modi-battlefield-soldier-salary-viral-video-22023",
+      "https://facthunt.in/posts/1484/Truth-behind-the-viral-picture-showing-French-Teacher-who-was-beheaded-for"
+    ],
+    "gold_urls": [
+      "https://www.dawn.com/news/1587131"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 14
+    }
+  },
+  {
+    "claim_id": 27,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e10",
+      "e24",
+      "e28",
+      "e42",
+      "e19",
+      "e21"
+    ],
+    "retrieved_urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/8594665/",
+      "https://pubmed.ncbi.nlm.nih.gov/25877758/",
+      "https://www.justice.gov/usao-sdny/pr/west-african-man-charged-fraudulently-obtaining-12-million-global-fund-fight-aids",
+      "https://pubmed.ncbi.nlm.nih.gov/7771600/",
+      "https://pubmed.ncbi.nlm.nih.gov/11706649/",
+      "https://pubmed.ncbi.nlm.nih.gov/15106149/",
+      "https://pubmed.ncbi.nlm.nih.gov/15106149/",
+      "https://pubmed.ncbi.nlm.nih.gov/12460393/",
+      "https://pubmed.ncbi.nlm.nih.gov/25877758/",
+      "https://www.cdc.gov/malaria/malaria_worldwide/reduction/itn.html"
+    ],
+    "gold_urls": [
+      "http://vikaspedia.in/health/diseases/vector-borne-diseases/treatment-and-use-of-insecticide-treated-mosquito-nets",
+      "http://vikaspedia.in/health/diseases/vector-borne-diseases/treatment-and-use-of-insecticide-treated-mosquito-nets"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 31,
+    "mode": "agentic",
+    "label5": "SUPPORT",
+    "pred_label": "Supported",
+    "gold_label": "Supported",
+    "confidence": 0.99,
+    "cited": [
+      "e1",
+      "e0",
+      "e3",
+      "e13",
+      "e14",
+      "e7",
+      "e17"
+    ],
+    "retrieved_urls": [
+      "https://www.supremecourt.gov/publicinfo/press/oath/oath_barrett.aspx",
+      "https://www.supremecourt.gov/visiting/exhibitions/LadyLawyers/section4.aspx",
+      "https://www.judiciary.senate.gov/press/rep/releases/chairman-graham-announces-hearing-dates-for-judge-barretts-supreme-court-nomination",
+      "https://www.cnn.com/2020/10/01/us/amy-coney-barrett-fast-facts/index.html",
+      "https://apnews.com/article/election-2020-donald-trump-virus-outbreak-ruth-bader-ginsburg-amy-coney-barrett-82a02a618343c98b80ca2b6bf9eafe07",
+      "https://apnews.com/article/election-2020-donald-trump-virus-outbreak-ruth-bader-ginsburg-amy-coney-barrett-82a02a618343c98b80ca2b6bf9eafe07",
+      "https://apnews.com/article/election-2020-virus-outbreak-donald-trump-confirmation-hearings-health-63a2f915b62cf3281f66e80fea9c20e1",
+      "https://ballotpedia.org/Amy_Coney_Barrett_confirmation_hearings_and_votes",
+      "https://ballotpedia.org/Supreme_Court_vacancy,_2020",
+      "https://fedsoc.org/contributors/amy-barrett-1"
+    ],
+    "gold_urls": [
+      "https://edition.cnn.com/politics/live-news/amy-coney-barrett-senate-confirmation-vote/index.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 3,
+      "tool_calls": 4
+    }
+  },
+  {
+    "claim_id": 29,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e0",
+      "e1",
+      "e3",
+      "e6",
+      "e13",
+      "e19"
+    ],
+    "retrieved_urls": [
+      "https://thewire.in/media/fact-check-viral-durga-puja-screenshot",
+      "https://www.altnews.in/the-wire-did-not-disrespect-durga-excerpt-from-2016-article-misrepresented/",
+      "https://thelogicalindian.com/app-lite/fact-check/wire-demeans-goddess-durga-24521?hasShare=1",
+      "https://www.thequint.com/news/webqoof/excerpt-shared-without-context-to-label-the-wire-as-anti-hindu",
+      "https://www.boomlive.in/tags/the-wire-on-durga-puja",
+      "https://thelogicalindian.com/fact-check/wire-demeans-goddess-durga-24521",
+      "https://www.boomlive.in/fake-news/cropped-screenshot-of-the-wire-article-on-durga-puja-is-misleading-10354",
+      "https://thelogicalindian.com/fact-check/wire-demeans-goddess-durga-24521",
+      "https://hindupost.in/media/runs-funds-hinduphobic-anti-bharat-media-like-wire/",
+      "https://thewire.in/politics/mahishasura-and-the-minister"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201101134920/https://thewire.in/politics/mahishasura-and-the-minister",
+      "https://web.archive.org/web/20201101134920/https://thewire.in/politics/mahishasura-and-the-minister"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 31,
+    "mode": "agentic_unweighted",
+    "label5": "SUPPORT",
+    "pred_label": "Supported",
+    "gold_label": "Supported",
+    "confidence": 0.98,
+    "cited": [
+      "e0",
+      "e1",
+      "e2",
+      "e11",
+      "e17",
+      "e19"
+    ],
+    "retrieved_urls": [
+      "https://ballotpedia.org/Amy_Coney_Barrett_confirmation_hearings_and_votes",
+      "https://ballotpedia.org/Supreme_Court_vacancy,_2020",
+      "https://www.judiciary.senate.gov/press/rep/releases/senate-confirms-amy-coney-barrett-to-the-supreme-court",
+      "https://fedsoc.org/contributors/amy-barrett-1",
+      "https://millercenter.org/the-presidency/presidential-speeches/october-26-2020-swearing-ceremony-honorable-amy-coney-barrett",
+      "https://www.supremecourt.gov/publicinfo/press/oath/oath_barrett.aspx",
+      "https://supreme.justia.com/justices/amy-coney-barrett/",
+      "https://apnews.com/article/election-2020-donald-trump-virus-outbreak-ruth-bader-ginsburg-amy-coney-barrett-82a02a618343c98b80ca2b6bf9eafe07",
+      "https://trumpwhitehouse.archives.gov/articles/senate-confirms-amy-coney-barrett-supreme-court/",
+      "https://cmsedit.cbn.com/cbnnews/2020/october/senate-votes-to-confirm-amy-coney-barrett-as-associate-justice-to-the-us-supreme-court"
+    ],
+    "gold_urls": [
+      "https://edition.cnn.com/politics/live-news/amy-coney-barrett-senate-confirmation-vote/index.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 3,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 27,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e6",
+      "e7",
+      "e8",
+      "e11",
+      "e13",
+      "e17",
+      "e22"
+    ],
+    "retrieved_urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/25877758/",
+      "https://pubmed.ncbi.nlm.nih.gov/8594665/",
+      "https://parasitesandvectors.biomedcentral.com/articles/10.1186/s13071-018-2783-y",
+      "https://www.cebap.org/storage/cebap/remoortel-2015-the-effectiveness-of-insecticide-treated-and-untreated.pdf",
+      "https://pubmed.ncbi.nlm.nih.gov/11706649/",
+      "https://pubmed.ncbi.nlm.nih.gov/12460393/",
+      "https://pubmed.ncbi.nlm.nih.gov/25877758/",
+      "https://www.cochrane.org/CD000363/INFECTN_insecticide-treated-nets-preventing-malaria",
+      "https://pubmed.ncbi.nlm.nih.gov/15106149/",
+      "https://www.scientificamerican.com/article/bed-nets-with-insecticide-cut-spread-of-mosquito-borne-diseases-despite-resistant-bugs/"
+    ],
+    "gold_urls": [
+      "http://vikaspedia.in/health/diseases/vector-borne-diseases/treatment-and-use-of-insecticide-treated-mosquito-nets",
+      "http://vikaspedia.in/health/diseases/vector-borne-diseases/treatment-and-use-of-insecticide-treated-mosquito-nets"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 3,
+      "tool_calls": 11
+    }
+  },
+  {
+    "claim_id": 29,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.97,
+    "cited": [
+      "e0",
+      "e1",
+      "e3",
+      "e4",
+      "e12",
+      "e22"
+    ],
+    "retrieved_urls": [
+      "https://thewire.in/politics/mahishasura-and-the-minister",
+      "https://thewire.in/media/fact-check-viral-durga-puja-screenshot",
+      "https://thelogicalindian.com/fact-check/wire-demeans-goddess-durga-24521",
+      "https://facthunt.in/posts/691/Do-tribal-people-really-believe-that-Goddess-Durga-was-a-sex-worker",
+      "https://www.thehindubusinessline.com/news/national/irani-raises-jnu-pamphlet-ruckus-in-house/article64339807.ece",
+      "https://www.thequint.com/news/webqoof/excerpt-shared-without-context-to-label-the-wire-as-anti-hindu",
+      "https://www.boomlive.in/fake-news/cropped-screenshot-of-the-wire-article-on-durga-puja-is-misleading-10354",
+      "https://thewire.in/media/fact-check-viral-durga-puja-screenshot",
+      "https://www.thequint.com/news/webqoof/excerpt-shared-without-context-to-label-the-wire-as-anti-hindu",
+      "https://thelogicalindian.com/app-lite/fact-check/wire-demeans-goddess-durga-24521?hasShare=1"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201101134920/https://thewire.in/politics/mahishasura-and-the-minister",
+      "https://web.archive.org/web/20201101134920/https://thewire.in/politics/mahishasura-and-the-minister"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 17
+    }
+  },
+  {
+    "claim_id": 32,
+    "mode": "agentic",
+    "label5": "SUPPORT",
+    "pred_label": "Supported",
+    "gold_label": "Supported",
+    "confidence": 0.99,
+    "cited": [
+      "e0"
+    ],
+    "retrieved_urls": [
+      "https://www.cbsnews.com/news/murdochs-new-york-post-endorses-hillary/",
+      "https://www.cbsnews.com/newyork/news/sarah-palin-donal-trump-endorsement-tabloids/",
+      "https://www.cbsnews.com/newyork/news/nypd-police-benevolent-association-endorses-president-trump/",
+      "https://takingnote.blogs.nytimes.com/2016/09/27/how-new-york-times-endorsements-happen/",
+      "https://www.cbsnews.com/losangeles/news/trump-2020-re-election-bid/",
+      "https://www.cbsnews.com/news/in-new-hampshire-and-iowa-trump-eyes-2020-re-election-as-midterms-loom/",
+      "https://www.cnn.com/2020/01/19/politics/new-york-times-endorsement-amy-klobuchar-elizabeth-warren/index.html",
+      "https://www.cbsnews.com/news/new-york-times-endorses-two-candidates-for-presidency-for-first-time/",
+      "https://www.theguardian.com/media/2016/sep/24/hillary-clinton-endorsement-new-york-times-donald-trump-elizabeth-warren",
+      "https://www.nbcnews.com/id/wbna46297078"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210119183455/https://nypost.com/2020/10/26/the-new-york-post-endorses-president-donald-j-trump-for-re-election/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 33,
+    "mode": "agentic",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.91,
+    "cited": [
+      "e1",
+      "e35",
+      "e32"
+    ],
+    "retrieved_urls": [
+      "https://www.cdc.gov/flu/fluvaxview/nifs-estimates-sept2020.htm",
+      "https://www.cdc.gov/flu/about/burden/how-cdc-estimates.htm",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7043386/",
+      "https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/articles/analysisofdeathregistrationsnotinvolvingcoronaviruscovid19englandandwales28december2019to1may2020/technicalannex",
+      "https://www.cdc.gov/flu/vaccines-work/why-cdc-estimates.htm",
+      "https://www.cdc.gov/flu/spotlights/2019-2020/2019-20-pediatric-flu-deaths.htm",
+      "https://www.cdc.gov/flu/about/burden/past-seasons.html",
+      "https://www.nyc.gov/assets/doh/downloads/pdf/chi/chi-39-3.pdf",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7643742/",
+      "https://pubmed.ncbi.nlm.nih.gov/20798667/"
+    ],
+    "gold_urls": [
+      "https://archive.ph/iA8lL",
+      "Metadata",
+      "https://web.archive.org/web/20210308170503/https://www.cdc.gov/flu/weekly/overview.htm//",
+      "https://web.archive.org/web/20210310020652im_/https://healthfeedback.org/wp-content/uploads/2020/10/recorded-number-flu-deaths.png"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 13
+    }
+  },
+  {
+    "claim_id": 34,
+    "mode": "agentic",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Supported",
+    "confidence": 0.76,
+    "cited": [
+      "e48",
+      "e1",
+      "e10",
+      "e20",
+      "e26",
+      "e32",
+      "e39"
+    ],
+    "retrieved_urls": [
+      "https://www.europarl.europa.eu/meetdocs/2004_2009/documents/fd/droi20080218_councilpress_95034/DROI20080218_councilpress_95034EN.pdf",
+      "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32020D1132",
+      "https://eur-lex.europa.eu/legal-content/en/TXT/HTML/?uri=CELEX:32019D1341",
+      "https://2001-2009.state.gov/s/ct/rls/rpt/fto/2682.htm",
+      "https://2001-2009.state.gov/s/ct/rls/fs/08/103392.htm",
+      "https://2009-2017.state.gov/j/ct/rls/crt/2002/html/19991.htm",
+      "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32020D1132",
+      "https://eur-lex.europa.eu/legal-content/en/TXT/HTML/?uri=CELEX:32019D1341",
+      "https://www.gao.gov/assets/gao-15-629.pdf",
+      "https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=celex:32001E0931"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210116025723/https://www.state.gov/foreign-terrorist-organizations/",
+      "https://web.archive.org/web/20210116025723/https://www.state.gov/foreign-terrorist-organizations/",
+      "https://web.archive.org/web/20210124041112/https://ofsistorage.blob.core.windows.net/publishlive/ConList.pdf",
+      "https://web.archive.org/web/20210124041112/https://ofsistorage.blob.core.windows.net/publishlive/ConList.pdf",
+      "https://www.legislation.gov.au/Details/C2019G00862",
+      "https://web.archive.org/web/20210120070334/https://eur-lex.europa.eu/legal-content/en/TXT/?uri=CELEX:32020D1132",
+      "https://www.police.govt.nz/sites/default/files/publications/designated-entities-12-october-2020.pdf",
+      "https://www.police.govt.nz/sites/default/files/publications/designated-entities-12-october-2020.pdf",
+      "https://web.archive.org/web/20210116025723/https://www.state.gov/foreign-terrorist-organizations/",
+      "https://eur-lex.europa.eu/legal-content/en/TXT/?uri=CELEX%3A32020D1132"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 13
+    }
+  },
+  {
+    "claim_id": 32,
+    "mode": "agentic_unweighted",
+    "label5": "SUPPORT",
+    "pred_label": "Supported",
+    "gold_label": "Supported",
+    "confidence": 0.98,
+    "cited": [
+      "e2",
+      "e0",
+      "e1",
+      "e4",
+      "e5"
+    ],
+    "retrieved_urls": [
+      "https://takingnote.blogs.nytimes.com/2016/09/27/how-new-york-times-endorsements-happen/",
+      "https://www.cnn.com/2020/01/19/politics/new-york-times-endorsement-amy-klobuchar-elizabeth-warren/index.html",
+      "https://www.allsides.com/news-source/new-york-times-opinion-media-bias",
+      "https://www.inquirer.com/opinion/commentary/endorsement-2020-new-york-times-20200121.html",
+      "https://www.cnn.com/2020/01/19/politics/new-york-times-endorsement-amy-klobuchar-elizabeth-warren/index.html",
+      "https://www.theguardian.com/us-news/2020/oct/19/joe-biden-rolling-stone-magazine-endorsement",
+      "https://nymag.com/intelligencer/2016/04/new-york-post-endorses-trump.html",
+      "https://slate.com/news-and-politics/2016/04/new-york-post-endorses-trump-disagrees-with-him-on-pretty-much-everything.html",
+      "https://nypost.com/2020/10/26/the-new-york-post-endorses-president-donald-j-trump-for-re-election/",
+      "https://ballotpedia.org/New_York_Post"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210119183455/https://nypost.com/2020/10/26/the-new-york-post-endorses-president-donald-j-trump-for-re-election/"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 33,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.98,
+    "cited": [
+      "e1",
+      "e26",
+      "e0",
+      "e35",
+      "e2",
+      "e6"
+    ],
+    "retrieved_urls": [
+      "https://abcnews.go.com/Health/1300-people-died-flu-year/story?id=67754182",
+      "https://www.nyc.gov/assets/doh/downloads/pdf/chi/chi-39-3.pdf",
+      "https://www.statista.com/chart/23129/estimated-number-of-deaths-due-to-influenza-in-the-us/",
+      "https://www.cdc.gov/flu/about/burden/why-cdc-estimates.htm",
+      "https://healthfeedback.org/claimreview/2020-has-seen-a-number-of-flu-cases-and-deaths-comparable-to-previous-years/",
+      "https://www.maine.gov/dhhs/mecdc/archive_press_releases.shtml",
+      "https://www.cdc.gov/flu/vaccines-work/why-cdc-estimates.htm",
+      "https://weekly.chinacdc.cn/en/article/id/e53946e2-c6c4-41e9-9a9b-fea8db1a8f51",
+      "https://msdh.ms.gov/msdhsite/index.cfm/14,8358,199,829,pdf/Influenza_Report_2019-2020_WK51.pdf",
+      "https://healthfeedback.org/claimreview/covid-19-is-among-the-leading-causes-of-death-worldwide-so-far-in-2020-but-beware-of-incomplete-graphs/"
+    ],
+    "gold_urls": [
+      "https://archive.ph/iA8lL",
+      "Metadata",
+      "https://web.archive.org/web/20210308170503/https://www.cdc.gov/flu/weekly/overview.htm//",
+      "https://web.archive.org/web/20210310020652im_/https://healthfeedback.org/wp-content/uploads/2020/10/recorded-number-flu-deaths.png"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 14
+    }
+  },
+  {
+    "claim_id": 34,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Supported",
+    "confidence": 0.96,
+    "cited": [
+      "e26",
+      "e11",
+      "e19",
+      "e33"
+    ],
+    "retrieved_urls": [
+      "https://2001-2009.state.gov/s/ct/rls/fs/2003/17067.htm",
+      "https://www.jewishvirtuallibrary.org/designation-of-foreign-terrorist-organizations-2004",
+      "https://www.fema.gov/sites/default/files/2020-08/fema_dam-safety_inundation-mapping-flood-risks.pdf",
+      "https://www.lawfaremedia.org/article/what-does-terrorist-designation-mean",
+      "https://2017-2021.state.gov/reports/country-reports-on-terrorism-2019/",
+      "https://2009-2017.state.gov/j/ct/rls/crt/2014/239413.htm",
+      "https://myattorneyusa.com/foreign-terrorist-organization-designation-for-al-nursah-front-amended",
+      "https://www.grassley.senate.gov/news/news-releases/grassley-vitter-demand-answers-clintons-refusal-name-boko-haram-terrorist",
+      "https://2009-2017.state.gov/t/isn/ndf/",
+      "https://en.wikipedia.org/wiki/United_States_Department_of_State_list_of_Foreign_Terrorist_Organizations"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210116025723/https://www.state.gov/foreign-terrorist-organizations/",
+      "https://web.archive.org/web/20210116025723/https://www.state.gov/foreign-terrorist-organizations/",
+      "https://web.archive.org/web/20210124041112/https://ofsistorage.blob.core.windows.net/publishlive/ConList.pdf",
+      "https://web.archive.org/web/20210124041112/https://ofsistorage.blob.core.windows.net/publishlive/ConList.pdf",
+      "https://www.legislation.gov.au/Details/C2019G00862",
+      "https://web.archive.org/web/20210120070334/https://eur-lex.europa.eu/legal-content/en/TXT/?uri=CELEX:32020D1132",
+      "https://www.police.govt.nz/sites/default/files/publications/designated-entities-12-october-2020.pdf",
+      "https://www.police.govt.nz/sites/default/files/publications/designated-entities-12-october-2020.pdf",
+      "https://web.archive.org/web/20210116025723/https://www.state.gov/foreign-terrorist-organizations/",
+      "https://eur-lex.europa.eu/legal-content/en/TXT/?uri=CELEX%3A32020D1132"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 14
+    }
+  },
+  {
+    "claim_id": 35,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e49",
+      "e48",
+      "e51",
+      "e47",
+      "e53",
+      "e26"
+    ],
+    "retrieved_urls": [
+      "https://cordis.europa.eu/article/id/415930-trending-science-why-covid-19-conspiracy-theories-spread-faster-than-the-pandemic",
+      "https://pubmed.ncbi.nlm.nih.gov/32387617/",
+      "https://www.cdc.gov/mmwr/volumes/69/wr/mm6908e1.htm",
+      "https://www.who.int/news-room/commentaries/detail/transmission-of-sars-cov-2-implications-for-infection-prevention-precautions",
+      "https://www.who.int/europe/emergencies/situations/covid-19",
+      "https://www.factcheck.org/2020/04/conspiracy-theory-misinterprets-goals-of-gates-foundation/",
+      "https://www.snopes.com/fact-check/bill-gates-brief-cia-in-2005/",
+      "https://fullfact.org/health/event-201-coronavirus-pandemic/",
+      "https://www.politifact.com/article/2020/apr/14/fact-checking-facebook-conspiracy-about-bill-gates/",
+      "https://fullfact.org/health/event-201-coronavirus-pandemic/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201201040410/https://emergency.cdc.gov/han/han00426.asp"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 35,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e1",
+      "e4",
+      "e11",
+      "e19",
+      "e42",
+      "e43",
+      "e27"
+    ],
+    "retrieved_urls": [
+      "https://www.usatoday.com/story/news/factcheck/2020/03/26/fact-check-bill-gates-backed-pandemic-exercise-didnt-predict-covid-19/5081854002/",
+      "https://www.abc.net.au/news/2020-06-13/coronacheck-more-bill-gates-conspiracy-theories-covid-19/12299920",
+      "https://www.usatoday.com/story/news/factcheck/2020/03/26/fact-check-bill-gates-backed-pandemic-exercise-didnt-predict-covid-19/5081854002/",
+      "https://www.usatoday.com/story/news/health/2020/06/05/coronavirus-vaccine-bill-gates-microchip-conspiracy-theory-false/3146133001/",
+      "https://centerforhealthsecurity.org/our-work/tabletop-exercises/event-201-pandemic-tabletop-exercise",
+      "https://www.groundup.org.za/article/beware-these-fake-claims-about-covid-19/",
+      "https://www.usatoday.com/story/news/factcheck/2020/06/12/fact-check-bill-gates-isnt-planning-implant-microchips-via-vaccines/3171405001/",
+      "https://www.usatoday.com/story/news/factcheck/2020/08/25/fact-check-plandemic-sequel-makes-false-claims-bill-gates/5627223002/",
+      "https://www.cnbc.com/2020/07/22/bill-gates-denies-conspiracy-theories-that-say-he-wants-to-use-coronavirus-vaccines-to-implant-tracking-devices.html",
+      "https://www.usatoday.com/story/news/factcheck/2020/06/12/fact-check-bill-gates-isnt-planning-implant-microchips-via-vaccines/3171405001/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201201040410/https://emergency.cdc.gov/han/han00426.asp"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 13
+    }
+  },
+  {
+    "claim_id": 36,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Supported",
+    "confidence": 0.98,
+    "cited": [
+      "e12",
+      "e9",
+      "e1"
+    ],
+    "retrieved_urls": [
+      "https://www.maine.gov/sos/cec/elec/results/results18.html",
+      "https://www.thenation.com/article/archive/scott-walker-wisconsin-republicans-democracy/",
+      "https://en.wikipedia.org/wiki/2018_United_States_House_of_Representatives_elections_in_Wisconsin",
+      "https://en.wikipedia.org/wiki/2018_United_States_House_of_Representatives_elections_in_Wisconsin",
+      "https://en.wikipedia.org/wiki/2018_United_States_House_of_Representatives_elections",
+      "https://www.usatoday.com/story/news/factcheck/2020/04/10/fact-check-did-wis-lawmaker-robin-vos-get-more-ppe-polls/5133825002/",
+      "https://onewisconsinnow.org/robin-vos/",
+      "https://www.fox6now.com/news/boss-vos-as-walker-exits-robin-vos-ready-to-become-most-powerful-republican-in-wisconsin",
+      "https://www.cbs58.com/news/vos-emerges-as-wisconsin-republican-leader-as-walker-gets-ready-to-step-down",
+      "https://www.fox6now.com/news/boss-vos-as-walker-exits-robin-vos-ready-to-become-most-powerful-republican-in-wisconsin"
+    ],
+    "gold_urls": [
+      "https://www.fox6now.com/news/boss-vos-as-walker-exits-robin-vos-ready-to-become-most-powerful-republican-in-wisconsin",
+      "https://www.cbs58.com/news/vos-emerges-as-wisconsin-republican-leader-as-walker-gets-ready-to-step-down",
+      "https://www.cbs58.com/news/vos-emerges-as-wisconsin-republican-leader-as-walker-gets-ready-to-step-down"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 37,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e0",
+      "e1",
+      "e4",
+      "e7"
+    ],
+    "retrieved_urls": [
+      "https://www.nbcnews.com/tech/tech-news/inside-campaign-pizzagate-hunter-biden-n1244331",
+      "https://www.delawareonline.com/story/news/2019/04/01/coons-addresses-photo-biden-daughter-during-2015-swearing/3333267002/",
+      "https://www.delawareonline.com/story/news/2019/04/01/coons-addresses-photo-biden-daughter-during-2015-swearing/3333267002/",
+      "https://consequence.net/2020/10/borat-movie-rudy-giuliani/",
+      "https://www.delawareonline.com/story/news/2018/09/28/delaware-senator-chris-coons/1456569002/",
+      "https://chicago.suntimes.com/politics/2015/1/11/18588995/sen-chris-coons-my-daughter-doesn-t-think-the-vice-president-is-creepy",
+      "http://biggs.house.gov/media/in-the-news/hunter-biden-laptop-claims-5-fast-facts-you-need-know",
+      "https://www.loc.gov/item/lcwaN0006750/",
+      "https://www.politifact.com/factchecks/2020/oct/20/facebook-posts/fact-checking-unproven-claims-about-hunter-biden-a/",
+      "https://www.politifact.com/factchecks/2020/oct/20/facebook-posts/fact-checking-unproven-claims-about-hunter-biden-a/"
+    ],
+    "gold_urls": [
+      "https://www.google.com/search?q=Did+the+Breitbart+News+report+that+the+daughter+of+Delaware+Democratic+Senator+Chris+Coons+and+seven+other+underaged+girls+were+featured+on+Hunter+Biden%27s+laptop%3F&sourceid=chrome&ie=UTF-8",
+      "https://web.archive.org/web/20201127225251/https://twitter.com/LaurenWitzkeDE/status/1320053164641538048?ref_src=twsrc%5Etfw"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 11
+    }
+  },
+  {
+    "claim_id": 38,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e0",
+      "e1",
+      "e2"
+    ],
+    "retrieved_urls": [
+      "https://www.politifact.com/article/2020/oct/19/fact-checking-claims-about-hunter-biden-joe-biden-/",
+      "https://www.politifact.com/factchecks/2020/oct/20/facebook-posts/fact-checking-unproven-claims-about-hunter-biden-a/",
+      "https://www.usatoday.com/story/news/factcheck/2020/10/27/fact-check-rumors-hunter-biden-dead-4-chan-hoax/3754066001/",
+      "https://www.usatoday.com/story/news/factcheck/2020/10/27/fact-check-rumors-hunter-biden-dead-4-chan-hoax/3754066001/",
+      "https://www.usatoday.com/story/news/factcheck/2020/10/27/fact-check-rumors-hunter-biden-dead-4-chan-hoax/3754066001/",
+      "https://www.cbsnews.com/news/trump-beau-hunter-biden-presidential-debate/",
+      "https://apnews.com/article/cd7d717ab72b486a946602ca6c27280c",
+      "https://apnews.com/article/joe-biden-europe-business-c49555d51eb243e09a42f7577fc5937f",
+      "https://www.cnn.com/2017/03/01/politics/joe-biden-hunter-beau/index.html",
+      "https://www.rollingstone.com/culture/culture-news/hunter-biden-twitter-facebook-election-conspiracy-theories-1077735/"
+    ],
+    "gold_urls": [
+      "Metadata",
+      "https://it.wikipedia.org/wiki/Hunter_Biden"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 36,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Supported",
+    "confidence": 0.95,
+    "cited": [
+      "e31",
+      "e35",
+      "e38",
+      "e17"
+    ],
+    "retrieved_urls": [
+      "https://co.trempealeau.wi.us/departments/service_departments/county_clerk/elections.php",
+      "https://en.wikipedia.org/wiki/2018_United_States_House_of_Representatives_elections_in_Wisconsin",
+      "https://www.thenation.com/article/archive/scott-walker-wisconsin-republicans-democracy/",
+      "https://en.wikipedia.org/wiki/2019_Canadian_federal_election",
+      "https://en.wikipedia.org/wiki/2018_United_States_House_of_Representatives_elections_in_Wisconsin",
+      "https://www.fec.gov/documents/2705/federalelections2018.pdf",
+      "https://electionresults.sos.state.mn.us/20181106",
+      "https://www.jsonline.com/story/news/politics/elections/2018/11/08/wisconsin-election-did-redistricting-limit-dem-inroads-legislature/1919288002/",
+      "https://www.cramer.senate.gov/biography",
+      "https://www.fec.gov/documents/2705/federalelections2018.pdf"
+    ],
+    "gold_urls": [
+      "https://www.fox6now.com/news/boss-vos-as-walker-exits-robin-vos-ready-to-become-most-powerful-republican-in-wisconsin",
+      "https://www.cbs58.com/news/vos-emerges-as-wisconsin-republican-leader-as-walker-gets-ready-to-step-down",
+      "https://www.cbs58.com/news/vos-emerges-as-wisconsin-republican-leader-as-walker-gets-ready-to-step-down"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 11
+    }
+  },
+  {
+    "claim_id": 38,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e0",
+      "e1",
+      "e2",
+      "e3",
+      "e21"
+    ],
+    "retrieved_urls": [
+      "https://www.usatoday.com/story/news/factcheck/2020/10/27/fact-check-rumors-hunter-biden-dead-4-chan-hoax/3754066001/",
+      "https://www.usatoday.com/story/news/factcheck/2020/10/27/fact-check-rumors-hunter-biden-dead-4-chan-hoax/3754066001/",
+      "https://www.usatoday.com/story/news/factcheck/2020/10/27/fact-check-rumors-hunter-biden-dead-4-chan-hoax/3754066001/",
+      "https://www.nbcphiladelphia.com/news/national-international/inside-the-campaign-to-pizzagate-hunter-biden/2572108/",
+      "https://en.wikipedia.org/wiki/File:R._Hunter_Biden_at_Center_for_Strategic_%26_International_Studies,_smiling.jpg",
+      "https://www.presidency.ucsb.edu/documents/trump-campaign-press-release-fact-shady-foreign-sources-threw-money-deadbeat-hunter-biden",
+      "https://people.com/politics/hunter-biden-interview-addiction-rehab-divorce-new-wife/",
+      "https://nypost.com/2020/10/16/texts-show-raw-intimate-exchange-between-joe-and-hunter-biden/",
+      "https://www.vox.com/2020/10/22/21529237/hunter-biden-debate-laptop-tony-bobulinski",
+      "https://www.businessinsider.com/hunter-biden-china-business-connections-everything-we-know-2019-10"
+    ],
+    "gold_urls": [
+      "Metadata",
+      "https://it.wikipedia.org/wiki/Hunter_Biden"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 14
+    }
+  },
+  {
+    "claim_id": 37,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e0",
+      "e11",
+      "e33",
+      "e8",
+      "e1"
+    ],
+    "retrieved_urls": [
+      "https://www.google.com/search?q=Did+the+Breitbart+News+report+that+the+daughter+of+Delaware+Democratic+Senator+Chris+Coons+and+seven+other+underaged+girls+were+featured+on+Hunter+Biden%27s+laptop%3F&sourceid=chrome&ie=UTF-8",
+      "https://www.bostonherald.com/2020/10/24/howie-carr-in-the-media-if-it-hurts-trump-it-leads/",
+      "https://ground.news/article/d3c74388-e567-47f9-b709-c5721ccd1b10",
+      "https://www.dailymail.co.uk/news/article-8861635/FBI-taken-possession-Hunter-Bidens-laptops.html",
+      "https://www.hollywoodlanews.com/hunter-biden-topless-14-year-old-girl-photos/",
+      "https://www.dailymail.co.uk/news/article-8861635/FBI-taken-possession-Hunter-Bidens-laptops.html",
+      "https://www.businessinsider.com/fbi-nothing-to-add-ratcliffe-claim-hunter-biden-laptop-russia-2020-10",
+      "https://www.washingtonexaminer.com/news/fbi-and-doj-do-not-believe-hunter-biden-laptop-part-of-russian-disinformation-campaign",
+      "https://www.anneapplebaum.com/2020/10/23/the-smears-against-biden-dont-need-to-make-any-sense/",
+      "https://testset.io/2020/10/20/the-hunter-biden-laptop-scandal-is-a-giant-nothing-burger/"
+    ],
+    "gold_urls": [
+      "https://www.google.com/search?q=Did+the+Breitbart+News+report+that+the+daughter+of+Delaware+Democratic+Senator+Chris+Coons+and+seven+other+underaged+girls+were+featured+on+Hunter+Biden%27s+laptop%3F&sourceid=chrome&ie=UTF-8",
+      "https://web.archive.org/web/20201127225251/https://twitter.com/LaurenWitzkeDE/status/1320053164641538048?ref_src=twsrc%5Etfw"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 17
+    }
+  },
+  {
+    "claim_id": 39,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e0",
+      "e4",
+      "e11",
+      "e37",
+      "e44",
+      "e52"
+    ],
+    "retrieved_urls": [
+      "https://dph.illinois.gov/topics-services/diseases-and-conditions/respiratory-disease/diseases/covid19.html",
+      "https://cdphe.colorado.gov/covid-19",
+      "https://dph.illinois.gov/topics-services/diseases-and-conditions/respiratory-disease/diseases/covid19.html",
+      "https://www.foxnews.com/tech/coronavirus-5g-conspiracy-theory-debunked",
+      "https://www.bbc.com/news/world-europe-48616174",
+      "https://www.bbc.com/news/52168096",
+      "https://www.bbc.co.uk/news/52168096",
+      "https://allianceforscience.org/blog/2020/04/covid-top-10-current-conspiracy-theories/",
+      "https://www.theverge.com/2020/4/16/21224097/verizon-ceo-hans-vestberg-5g-conspiracy-theories-evidence",
+      "https://newsnetwork.mayoclinic.org/discussion/debunking-covid-19-myths/"
+    ],
+    "gold_urls": [
+      "https://www.pcmag.com/news/no-5g-is-not-causing-coronavirus-or-anything-else",
+      "https://www.reuters.com/article/uk-factcheck-coronavirus-5g-idUSKBN22P22I",
+      "https://www.ucc.org/daily_covid_19_brief_issue_62/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 14
+    }
+  },
+  {
+    "claim_id": 40,
+    "mode": "agentic",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Refuted",
+    "confidence": 0.79,
+    "cited": [
+      "e1",
+      "e2",
+      "e3",
+      "e5",
+      "e6",
+      "e8",
+      "e9"
+    ],
+    "retrieved_urls": [
+      "https://www.c-span.org/video/?477336-1/joe-jill-biden-campaign-luzerne-county-pennsylvania",
+      "https://people.com/politics/joe-biden-campaign-concert-featuring-cher-bon-jovi-more/",
+      "https://jewishjournal.com/israel/302150/bon-jovi-performs-in-tel-aviv-despite-bds-pressure/",
+      "https://7paisleypumpkins.com/",
+      "https://www.mydallaspost.com/news/42483/hundreds-of-trump-supporters-rally-in-advance-of-biden-visit",
+      "https://www.timesleader.com/news/807372/hundreds-of-trump-supporters-rally-in-advance-of-biden-visit",
+      "http://mathcentral.uregina.ca/QQ/database/QQ.09.07/h/jose1.html",
+      "https://boingboing.net/2020/10/23/bon-jovi-to-campaign-with-joe-biden.html",
+      "https://spectrumlocalnews.com/ap-top-news/2020/10/24/the-latest-trump-voting-in-florida-bon-jovi-joining-biden",
+      "https://www.pennlive.com/nation-world/2020/10/democratic-presidential-candidate-joe-biden-joined-by-jon-bon-jovi-in-pa-watch-live.html"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210119213354/https://www.nbcphiladelphia.com/news/politics/decision-2020/bon-jovi-plays-at-biden-event-after-candidate-visits-bucks-county/2572756/",
+      "https://web.archive.org/web/20210120012518/https://www.pennlive.com/news/2020/10/joe-biden-works-pennsylvania-saturday-with-stops-in-the-vote-rich-philly-burbs-and-reddening-luzerne-county-which-broke-for-trump-in-2016.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 11
+    }
+  },
+  {
+    "claim_id": 42,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Supported",
+    "confidence": 0.95,
+    "cited": [
+      "e41",
+      "e14",
+      "e26",
+      "e31"
+    ],
+    "retrieved_urls": [
+      "https://www.politifact.com/factchecks/list/?category=&ruling=mostly-true&speaker=facebook-posts",
+      "https://le.utah.gov/publicweb/BRISCJK/PublicWeb/43194/43194.html",
+      "https://apnews.com/article/241443b1c69a48c1824f043517b5197a",
+      "https://apnews.com/article/241443b1c69a48c1824f043517b5197a",
+      "https://apnews.com/article/race-and-ethnicity-oregon-racial-injustice-salem-portland-6b8b03efb6d69d4b84e89dbbb6666f24",
+      "https://www.latimes.com/california/story/2020-06-05/eric-garcetti-lapd-budget-cuts-10000-officers-protests",
+      "https://www.cbsnews.com/news/black-lives-matter-protests-ensue-outside-trumps-keep-america-great-rally-in-tulsa-2020-06-20/",
+      "https://www.cbsnews.com/news/black-lives-matter-graffiti-scrawled-trump-international-hotel-dc/",
+      "https://www.the-sun.com/news/992088/blue-lives-matter-racist-flag-blm-protests/",
+      "https://www.bsdvt.org/2018/02/19/black-lives-matter-flag-raised-at-burlington-high-school/"
+    ],
+    "gold_urls": [
+      "https://www.reformer.com/opinion/letters/letter-racist-symbolism-behind-the-blue-lives-matter-flag/article_ebf0cd26-2791-513a-8372-96edf1c48ae4.html",
+      "https://web.archive.org/web/20210525130943im_/https://www.gannett-cdn.com/-mm-/2887f5d7d58a75a6437c45e987fd994202334aff/c=0-156-3000-1844/local/-/media/2020/10/17/Rockford/ghows_gallery_ei-IR-201019800-593e424c.jpg?width=660&height=372&fit=crop&format=pjpg&auto=webp"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 14
+    }
+  },
+  {
+    "claim_id": 39,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e0",
+      "e1",
+      "e11",
+      "e12",
+      "e13"
+    ],
+    "retrieved_urls": [
+      "https://www.icnirp.org/en/activities/news/news-article/covid-19.html",
+      "https://www.gov.uk/guidance/5g-and-coronavirus-covid-19",
+      "https://www.ucc.org/daily_covid_19_brief_issue_62/",
+      "https://www.latrobe.edu.au/news/articles/2020/opinion/5g-and-covid-19-conspiracy-theories",
+      "https://medicalxpress.com/news/2020-07-linking-5g-covid-swiftly-debunked.html",
+      "https://www.usatoday.com/story/news/factcheck/2020/04/23/fact-check-5-g-technology-not-linked-coronavirus/3006152001/",
+      "https://www.forbes.com/sites/ashoka/2020/04/09/fact-checking-stories-about-covid-19-how-a-world-wide-network-of-scientists-is-kept-very-busy/",
+      "https://www.livescience.com/5g-coronavirus-conspiracy-theory-debunked.html",
+      "https://theconversation.com/no-5g-radiation-doesnt-cause-or-spread-the-coronavirus-saying-it-does-is-destructive-135695",
+      "https://www.ucc.org/daily_covid_19_brief_issue_62/"
+    ],
+    "gold_urls": [
+      "https://www.pcmag.com/news/no-5g-is-not-causing-coronavirus-or-anything-else",
+      "https://www.reuters.com/article/uk-factcheck-coronavirus-5g-idUSKBN22P22I",
+      "https://www.ucc.org/daily_covid_19_brief_issue_62/"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 13
+    }
+  },
+  {
+    "claim_id": 40,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.86,
+    "cited": [
+      "e1",
+      "e2",
+      "e11"
+    ],
+    "retrieved_urls": [
+      "https://people.com/politics/joe-biden-campaign-concert-featuring-cher-bon-jovi-more/",
+      "https://blabbermouth.net/news/foo-fighters-and-jon-bon-jovi-to-appear-at-star-studded-concert-in-support-of-biden-campaign",
+      "https://www.rollingstone.com/music/music-news/foo-fighters-pink-cher-jon-bon-jovi-joe-biden-virtual-event-tonight-1080868/",
+      "https://www.gettyimages.com/detail/news-photo/supporters-of-president-donald-trump-line-the-road-as-the-news-photo/1229264268?adppopup=true",
+      "https://www.rollingstone.com/music/music-features/bon-jovi-album-kaepernick-football-1069260/",
+      "https://www.c-span.org/video/?460193-1/joe-biden-campaign-rally-pittsburgh",
+      "https://www.inquisitr.com/3294648/lourdes-valentin-miami-wedding-singer-doesnt-understand-the-backlash-over-bon-jovi-duet",
+      "https://patch.com/new-jersey/summit/election-2012-jon-bon-jovi-to-perform-in-iowa-city-atc3b631accf",
+      "https://people.com/music/jon-bon-jovi-wife-dorothea-40-year-love-story/",
+      "https://rockerinfo.wordpress.com/2009/01/01/history-bon-jovi/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210119213354/https://www.nbcphiladelphia.com/news/politics/decision-2020/bon-jovi-plays-at-biden-event-after-candidate-visits-bucks-county/2572756/",
+      "https://web.archive.org/web/20210120012518/https://www.pennlive.com/news/2020/10/joe-biden-works-pennsylvania-saturday-with-stops-in-the-vote-rich-philly-burbs-and-reddening-luzerne-county-which-broke-for-trump-in-2016.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 42,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Supported",
+    "confidence": 0.88,
+    "cited": [
+      "e14",
+      "e7",
+      "e30"
+    ],
+    "retrieved_urls": [
+      "https://www.gmtoday.com/news/trump-motivates-voters-at-rally-in-waukesha/article_2892d1e4-1672-11eb-ad98-63985d599b31.html",
+      "https://harpers.org/archive/2018/07/a-flag-for-trumps-america/",
+      "https://www.fox6now.com/news/makes-me-sick-protester-seen-stomping-on-american-flag-outside-trump-town-hall-at-uwm",
+      "https://www.fox5dc.com/news/nellies-sports-bar-responds-to-controversy-for-flying-blue-lives-matter-flag",
+      "https://www.gmtoday.com/the_freeman/news/thousands-line-up-outside-of-waukesha-trump-rally/article_95d1575e-1662-11eb-987f-2385b740a133.html",
+      "https://urbanmilwaukee.com/pressrelease/billboard-warning-of-trump-super-spreader-event-goes-up-in-waukesha-ahead-of-trump-rally/",
+      "https://www.reformer.com/opinion/letters/letter-racist-symbolism-behind-the-blue-lives-matter-flag/article_ebf0cd26-2791-513a-8372-96edf1c48ae4.html",
+      "https://www.fox6now.com/news/makes-me-sick-protester-seen-stomping-on-american-flag-outside-trump-town-hall-at-uwm",
+      "https://theintercept.com/2020/06/06/police-brutality-protests-blue-lives-matter/",
+      "https://www.standard.net/opinion/standard-deviations/2019/jun/16/standard-deviations-flag-desecration-is-flag-desecration-no-matter-who-does-it/"
+    ],
+    "gold_urls": [
+      "https://www.reformer.com/opinion/letters/letter-racist-symbolism-behind-the-blue-lives-matter-flag/article_ebf0cd26-2791-513a-8372-96edf1c48ae4.html",
+      "https://web.archive.org/web/20210525130943im_/https://www.gannett-cdn.com/-mm-/2887f5d7d58a75a6437c45e987fd994202334aff/c=0-156-3000-1844/local/-/media/2020/10/17/Rockford/ghows_gallery_ei-IR-201019800-593e424c.jpg?width=660&height=372&fit=crop&format=pjpg&auto=webp"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 47,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.98,
+    "cited": [
+      "e12",
+      "e23",
+      "e31",
+      "e6",
+      "e1",
+      "e15"
+    ],
+    "retrieved_urls": [
+      "https://www.usatoday.com/story/news/factcheck/2020/06/19/fact-check-joe-biden-doesnt-want-ban-all-fracking-only-new-permits/3215253001/",
+      "https://abcnews.go.com/Politics/read-full-transcript-joe-bidens-abc-news-town/story?id=73643517",
+      "https://www.cbsnews.com/pittsburgh/news/joe-biden-pittsburgh-speech-president-trump-violence/",
+      "https://www.nbcnews.com/politics/2020-election/democratic-debate-transcript-july-31-2019-n1038016",
+      "https://www.rev.com/blog/transcripts/donald-trump-phoenix-arizona-speech-transcript-turning-point-usa",
+      "https://www.rev.com/blog/transcripts/joe-biden-pittsburgh-speech-transcript-august-31",
+      "https://www.uagetinvolved.org/content/joe-biden-i-am-not-banning-fracking",
+      "https://www.dallasnews.com/news/politics/2020/09/04/fact-check-would-biden-ban-fracking-as-trump-claims-no/",
+      "https://www.politifact.com/factchecks/2020/mar/20/facebook-posts/debate-joe-biden-said-no-more-oil-drilling-and-no-/",
+      "https://www.politifact.com/factchecks/2020/oct/12/blog-posting/no-video-harris-2019-doesnt-prove-she-lied-about-f/"
+    ],
+    "gold_urls": [
+      "http://transcripts.cnn.com/TRANSCRIPTS/1907/31/se.02.html",
+      "https://web.archive.org/web/20210419040526/https://www.c-span.org/debates/",
+      "https://pittsburgh.cbslocal.com/2020/04/20/joe-biden-talks-fracking-coronavirus-and-president-donald-trump/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 45,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e48",
+      "e49",
+      "e22",
+      "e0",
+      "e1",
+      "e8",
+      "e53"
+    ],
+    "retrieved_urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/32448358/",
+      "https://pubmed.ncbi.nlm.nih.gov/11783688/",
+      "https://pubmed.ncbi.nlm.nih.gov/25415157/",
+      "https://pubmed.ncbi.nlm.nih.gov/31974670/",
+      "https://pubmed.ncbi.nlm.nih.gov/29097178/",
+      "https://pubmed.ncbi.nlm.nih.gov/30786254/",
+      "https://pubmed.ncbi.nlm.nih.gov/32448358/",
+      "https://pubmed.ncbi.nlm.nih.gov/12869126/",
+      "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7307749/",
+      "https://pubmed.ncbi.nlm.nih.gov/31529790/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201026050315/https://pubmed.ncbi.nlm.nih.gov/29097178/",
+      "Metadata"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 11
+    }
+  },
+  {
+    "claim_id": 46,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.96,
+    "cited": [
+      "e38",
+      "e11",
+      "e37",
+      "e54",
+      "e58",
+      "e60",
+      "e7"
+    ],
+    "retrieved_urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/31927308/",
+      "https://pubmed.ncbi.nlm.nih.gov/26908660/",
+      "https://pubmed.ncbi.nlm.nih.gov/31927308/",
+      "https://pubmed.ncbi.nlm.nih.gov/26908660/",
+      "https://pubmed.ncbi.nlm.nih.gov/19579737/",
+      "https://www.ncbi.nlm.nih.gov/books/NBK310513/",
+      "https://www.ncbi.nlm.nih.gov/books/NBK310522/",
+      "https://pubmed.ncbi.nlm.nih.gov/17374818/",
+      "https://pubmed.ncbi.nlm.nih.gov/22895933/",
+      "https://pubmed.ncbi.nlm.nih.gov/29097178/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201111203457/https://www.who.int/elena/titles/full_recommendations/cord_clamping/en/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 17
+    }
+  },
+  {
+    "claim_id": 47,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.98,
+    "cited": [
+      "e2",
+      "e5",
+      "e8",
+      "e33",
+      "e34",
+      "e11",
+      "e24",
+      "e15"
+    ],
+    "retrieved_urls": [
+      "https://www.presidency.ucsb.edu/documents/trump-campaign-press-release-joe-biden-would-destroy-american-energy-dominance",
+      "https://www.newsweek.com/fact-check-does-joe-biden-support-green-new-deal-fracking-ban-1537291",
+      "https://www.foxbusiness.com/lifestyle/biden-fracking-snl-saturday-night-live-harris",
+      "https://news.yahoo.com/should-fracking-be-banned-180220130.html",
+      "https://www.fractracker.org/resources/oil-and-gas-101/health-environmental-effects-of-fracking/",
+      "https://www.foxbusiness.com/markets/biden-fracking-policy-us-economy-impact",
+      "https://www.cnn.com/2020/10/23/politics/biden-fracking-fact-check/index.html",
+      "https://www.politifact.com/factchecks/2020/mar/20/facebook-posts/debate-joe-biden-said-no-more-oil-drilling-and-no-/",
+      "https://www.politifact.com/factchecks/2020/mar/20/facebook-posts/debate-joe-biden-said-no-more-oil-drilling-and-no-/",
+      "https://grist.org/politics/why-wont-biden-ban-fracking-speech-pennsylvania/"
+    ],
+    "gold_urls": [
+      "http://transcripts.cnn.com/TRANSCRIPTS/1907/31/se.02.html",
+      "https://web.archive.org/web/20210419040526/https://www.c-span.org/debates/",
+      "https://pittsburgh.cbslocal.com/2020/04/20/joe-biden-talks-fracking-coronavirus-and-president-donald-trump/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 13
+    }
+  },
+  {
+    "claim_id": 46,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e0",
+      "e1",
+      "e3",
+      "e5",
+      "e7",
+      "e23",
+      "e31"
+    ],
+    "retrieved_urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/17374818/",
+      "https://pubmed.ncbi.nlm.nih.gov/17374818/",
+      "https://pubmed.ncbi.nlm.nih.gov/29097178/",
+      "https://www.rcog.org.uk/guidance/browse-all-guidance/scientific-impact-papers/clamping-of-the-umbilical-cord-and-placental-transfusion-scientific-impact-paper-no-14",
+      "https://www.cochrane.org/CD004074/PREG_effect-timing-umbilical-cord-clamping-term-infants-mother-and-baby-outcomes",
+      "https://www.medicalnewstoday.com/articles/263181",
+      "https://www.ncbi.nlm.nih.gov/books/NBK310522/",
+      "https://pubmed.ncbi.nlm.nih.gov/30780101/",
+      "https://pubmed.ncbi.nlm.nih.gov/22089242/",
+      "https://pubmed.ncbi.nlm.nih.gov/28114607/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201111203457/https://www.who.int/elena/titles/full_recommendations/cord_clamping/en/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 3,
+      "tool_calls": 11
+    }
+  },
+  {
+    "claim_id": 45,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e20",
+      "e14",
+      "e15",
+      "e29"
+    ],
+    "retrieved_urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/11783688/",
+      "https://pubmed.ncbi.nlm.nih.gov/26819134/",
+      "https://pubmed.ncbi.nlm.nih.gov/29097178/",
+      "https://sph.unc.edu/wp-content/uploads/sites/112/2019/08/CGBI-4-Delayed-Cord-Clamping-2019.pdf",
+      "https://sph.unc.edu/wp-content/uploads/sites/112/2019/08/CGBI-Ten-Steps-Tear-Sheets-2019-Final.pdf",
+      "https://www.medscape.com/viewarticle/873622",
+      "https://brieflands.com/articles/ijp-6570",
+      "https://pubmed.ncbi.nlm.nih.gov/32448358/",
+      "https://www.cochrane.org/CD004074/PREG_effect-timing-umbilical-cord-clamping-term-infants-mother-and-baby-outcomes",
+      "https://pubmed.ncbi.nlm.nih.gov/29097178/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201026050315/https://pubmed.ncbi.nlm.nih.gov/29097178/",
+      "Metadata"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 13
+    }
+  },
+  {
+    "claim_id": 48,
+    "mode": "agentic",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.91,
+    "cited": [
+      "e36",
+      "e8",
+      "e16",
+      "e25"
+    ],
+    "retrieved_urls": [
+      "https://pubmed.ncbi.nlm.nih.gov/32437052/",
+      "https://www.cdc.gov/mmwr/volumes/69/wr/mm6912e2.htm",
+      "https://covid19.nih.gov/",
+      "https://www.cdc.gov/coronavirus/2019-ncov/vaccines/vaccine-benefits.html",
+      "https://www.cdc.gov/coronavirus/2019-ncov/vaccines/vaccine-benefits.html",
+      "https://cdphe.colorado.gov/covid-19",
+      "https://www.cdc.gov/mmwr/volumes/69/wr/mm6924e2.htm",
+      "https://www.ssa.gov/ndf/documents/NDF%20Talk%20Jacobs%20Final.pdf",
+      "https://www.who.int/news-room/commentaries/detail/estimating-mortality-from-covid-19",
+      "https://www.cnn.com/2020/04/04/health/recovery-coronavirus-tracking-data-explainer/index.html"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201124072107mp_/https://coronavirus.jhu.edu/map.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 49,
+    "mode": "agentic",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.86,
+    "cited": [
+      "e3",
+      "e4",
+      "e16",
+      "e17",
+      "e19"
+    ],
+    "retrieved_urls": [
+      "https://19january2021snapshot.epa.gov/ghgemissions/inventory-us-greenhouse-gas-emissions-and-sinks",
+      "https://data.worldbank.org/indicator/EN.ATM.CO2E.PC",
+      "https://19january2021snapshot.epa.gov/sites/static/files/2020-04/documents/us-ghg-inventory-1990-2018-data-highlights.pdf",
+      "https://www.epa.gov/sites/default/files/2020-04/documents/us-ghg-inventory-1990-2018-data-highlights.pdf",
+      "https://19january2021snapshot.epa.gov/ghgemissions/inventory-us-greenhouse-gas-emissions-and-sinks",
+      "https://www.epa.gov/sites/default/files/2020-04/documents/us-ghg-inventory-2020-main-text.pdf",
+      "https://www.epa.gov/sites/default/files/2020-04/documents/ghg-emission-factors-hub.pdf",
+      "https://www.epa.gov/sites/default/files/2019-04/documents/us-ghg-inventory-2019-main-text.pdf",
+      "https://19january2021snapshot.epa.gov/sites/static/files/2020-04/documents/us-ghg-inventory-1990-2018-data-highlights.pdf",
+      "https://www.epa.gov/sites/default/files/2020-04/documents/us-ghg-inventory-1990-2018-data-highlights.pdf"
+    ],
+    "gold_urls": [
+      "https://www.nytimes.com/2019/12/03/climate/carbon-dioxide-emissions.html",
+      "https://web.archive.org/web/20210126090743/https://www.epa.gov/sites/production/files/2020-04/documents/us-ghg-inventory-2020-main-text.pdf",
+      "https://www.metmuseum.org/toah/hd/uspr/hd_uspr.htm",
+      "https://web.archive.org/web/20210126090743/https://www.epa.gov/sites/production/files/2020-04/documents/us-ghg-inventory-2020-main-text.pdf"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 50,
+    "mode": "agentic",
+    "label5": "NEI",
+    "pred_label": "Not Enough Evidence",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.61,
+    "cited": [
+      "e0",
+      "e2",
+      "e5",
+      "e6",
+      "e10",
+      "e11",
+      "e12",
+      "e21"
+    ],
+    "retrieved_urls": [
+      "https://www.politifact.com/factchecks/2020/mar/20/facebook-posts/debate-joe-biden-said-no-more-oil-drilling-and-no-/",
+      "https://www.factcheck.org/2020/06/misleading-ad-targets-biden-on-fossil-fuels-fracking/",
+      "https://www.politifact.com/factchecks/2020/mar/20/facebook-posts/debate-joe-biden-said-no-more-oil-drilling-and-no-/",
+      "https://www.politifact.com/factchecks/2020/mar/20/facebook-posts/debate-joe-biden-said-no-more-oil-drilling-and-no-/",
+      "https://www.cnn.com/2020/10/23/politics/biden-fracking-fact-check/index.html",
+      "https://apnews.com/article/election-2020-ap-fact-check-joe-biden-donald-trump-pennsylvania-fa798602a357d0f4a765739e36f4f82b",
+      "https://www.cnn.com/2020/10/23/politics/biden-fracking-fact-check/index.html",
+      "https://www.bbc.com/news/world-us-canada-51799366",
+      "https://www.bbc.com/news/world-us-canada-51799366",
+      "https://www.usatoday.com/story/news/politics/elections/2020/08/31/twitter-flags-trump-campaigns-out-context-video-joe-biden/3450140001/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201101032342/https://blog.twitter.com/en_us/topics/company/2020/2020-election-changes.html",
+      "https://web.archive.org/web/20201101024709/https://blog.twitter.com/en_us/topics/company/2020/2020-election-changes.html",
+      "https://web.archive.org/web/20201101024709/https://blog.twitter.com/en_us/topics/company/2020/2020-election-changes.html",
+      "https://web.archive.org/web/20201101024709/https://blog.twitter.com/en_us/topics/company/2020/2020-election-changes.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 13
+    }
+  },
+  {
+    "claim_id": 49,
+    "mode": "agentic_unweighted",
+    "label5": "CONFLICT",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.93,
+    "cited": [
+      "e11",
+      "e12",
+      "e13",
+      "e14",
+      "e0",
+      "e29",
+      "e1"
+    ],
+    "retrieved_urls": [
+      "https://19january2021snapshot.epa.gov/ghgemissions/inventory-us-greenhouse-gas-emissions-and-sinks",
+      "https://www.epa.gov/newsreleases/latest-inventory-us-greenhouse-gas-emissions-and-sinks-shows-long-term-reductions",
+      "https://19january2021snapshot.epa.gov/sites/static/files/2020-04/documents/us-ghg-inventory-1990-2018-data-highlights.pdf",
+      "https://www.epa.gov/sites/default/files/2020-04/documents/us-ghg-inventory-1990-2018-data-highlights.pdf",
+      "https://www.epa.gov/newsreleases/latest-inventory-us-greenhouse-gas-emissions-and-sinks-shows-long-term-reductions",
+      "https://19january2021snapshot.epa.gov/sites/static/files/2020-04/documents/us-ghg-inventory-1990-2018-data-highlights.pdf",
+      "https://www.epa.gov/sites/default/files/2020-04/documents/us-ghg-inventory-1990-2018-data-highlights.pdf",
+      "https://19january2021snapshot.epa.gov/ghgemissions/inventory-us-greenhouse-gas-emissions-and-sinks",
+      "https://blog.ucsusa.org/josh-goldman/us-global-warming-emissions-under-president-trump-3-striking-findings-from-new-epa-report/",
+      "https://www.epa.gov/sites/default/files/2020-04/documents/ghg-emission-factors-hub.pdf"
+    ],
+    "gold_urls": [
+      "https://www.nytimes.com/2019/12/03/climate/carbon-dioxide-emissions.html",
+      "https://web.archive.org/web/20210126090743/https://www.epa.gov/sites/production/files/2020-04/documents/us-ghg-inventory-2020-main-text.pdf",
+      "https://www.metmuseum.org/toah/hd/uspr/hd_uspr.htm",
+      "https://web.archive.org/web/20210126090743/https://www.epa.gov/sites/production/files/2020-04/documents/us-ghg-inventory-2020-main-text.pdf"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 16
+    }
+  },
+  {
+    "claim_id": 48,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.83,
+    "cited": [
+      "e21",
+      "e22",
+      "e19",
+      "e4",
+      "e7",
+      "e47"
+    ],
+    "retrieved_urls": [
+      "https://ourworldindata.org/coronavirus",
+      "https://pesquisa.bvsalud.org/global-literature-on-novel-coronavirus-2019-ncov/resource/pt/covidwho-327134",
+      "https://www.cebm.net/covid-19/global-covid-19-case-fatality-rates/",
+      "https://pubmed.ncbi.nlm.nih.gov/32542429/",
+      "https://pubmed.ncbi.nlm.nih.gov/33026101/",
+      "https://aacrjournals.org/cancerdiscovery/article/10/10/1514/6370/Utilization-of-COVID-19-Treatments-and-Clinical",
+      "https://www.mayoclinic.org/healthy-lifestyle/adult-health/expert-answers/sitting/faq-20058005",
+      "https://aacrjournals.org/cancerdiscovery/article/10/10/1514/6370/Utilization-of-COVID-19-Treatments-and-Clinical",
+      "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3591068",
+      "https://jamanetwork.com/journals/jama/fullarticle/2765184"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201124072107mp_/https://coronavirus.jhu.edu/map.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 13
+    }
+  },
+  {
+    "claim_id": 50,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.95,
+    "cited": [
+      "e19",
+      "e21",
+      "e24",
+      "e26",
+      "e28",
+      "e31",
+      "e38"
+    ],
+    "retrieved_urls": [
+      "https://www.washingtonexaminer.com/magazine-washington-briefing/968947/twitter-faces-fire-from-democrats-and-republicans-over-media-policy/",
+      "https://www.washingtonexaminer.com/magazine-washington-briefing/968947/twitter-faces-fire-from-democrats-and-republicans-over-media-policy/",
+      "https://www.timesofisrael.com/twitter-flags-trumps-tweet-of-doctored-racist-baby-video/",
+      "https://news.sky.com/story/video-retweeted-by-donald-trump-becomes-first-ever-to-be-labelled-manipulated-by-twitter-11953641",
+      "https://www.factcheck.org/2020/07/video-doesnt-show-biden-hosting-black-face-skit/",
+      "https://www.cbsnews.com/news/steve-scalise-republican-house-twitter-video-flagged-manipulated/",
+      "https://www.nbcnews.com/tech/social-media/facebook-twitter-put-warning-label-edited-video-biden-n1153506",
+      "https://www.theguardian.com/us-news/2020/sep/04/donald-trump-campaign-doctoring-joe-biden-videos-manipulated-media-twitter",
+      "https://www.usatoday.com/story/news/politics/elections/2020/08/31/twitter-flags-trump-campaigns-out-context-video-joe-biden/3450140001/",
+      "https://www.newsweek.com/video-resurfaces-kamala-harris-saying-she-wants-ban-fracking-after-saying-biden-will-not-during-1537304"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201101032342/https://blog.twitter.com/en_us/topics/company/2020/2020-election-changes.html",
+      "https://web.archive.org/web/20201101024709/https://blog.twitter.com/en_us/topics/company/2020/2020-election-changes.html",
+      "https://web.archive.org/web/20201101024709/https://blog.twitter.com/en_us/topics/company/2020/2020-election-changes.html",
+      "https://web.archive.org/web/20201101024709/https://blog.twitter.com/en_us/topics/company/2020/2020-election-changes.html"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 14
+    }
+  },
+  {
+    "claim_id": 51,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.97,
+    "cited": [
+      "e22",
+      "e12",
+      "e14",
+      "e1"
+    ],
+    "retrieved_urls": [
+      "https://th.usembassy.gov/summary-of-the-u-s-presidential-election-process/",
+      "https://th.usembassy.gov/swing-states-importance/",
+      "https://www.bloomberg.com/news/features/2018-03-15/this-multibillion-dollar-corporation-is-controlled-by-a-penniless-yoga-superstar",
+      "https://www.thehindu.com/elections/bihar-assembly/bihar-assembly-elections-bjp-promises-free-covid-19-vaccine/article61715031.ece",
+      "https://www.livemint.com/elections/assembly-elections/bihar-polls-bjp-poll-manifesto-promises-19-lakh-jobs-free-covid-19-vaccination-11603345873665.html",
+      "https://web-archive-org.translate.goog/web/20210121222119/https://www.jagran.com/elections/bihar-vidhan-sabha-nirmala-sitharaman-said-the-promise-of-free-covid-vaccine-in-bihar-election-manifesto-is-absolutely-correct-20947267.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp",
+      "https://www.indiatvnews.com/opinion/news-bihar-election-2020-poll-promises-jobs-development-standards-of-living-bjp-rjd-jdu-ljp-pm-modi-659069",
+      "https://www.indiatoday.in/elections/bihar-assembly-polls-2020",
+      "https://news.abplive.com/news/india/bihar-election-2020-bihar-news-nirmala-sitharaman-bjp-free-coronavirus-covid-19-vaccine-funny-reactions-1370919",
+      "https://www.newsclick.in/Bihar-Elections-BJP-Promises-Free-COVID-19-Vaccines-Opposition-%23-VaccinePolitics"
+    ],
+    "gold_urls": [
+      "https://web-archive-org.translate.goog/web/20210121222119/https://www.jagran.com/elections/bihar-vidhan-sabha-nirmala-sitharaman-said-the-promise-of-free-covid-vaccine-in-bihar-election-manifesto-is-absolutely-correct-20947267.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 14
+    }
+  },
+  {
+    "claim_id": 52,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e2",
+      "e4",
+      "e10",
+      "e26",
+      "e16"
+    ],
+    "retrieved_urls": [
+      "https://www.europarl.europa.eu/RegData/etudes/BRIE/2015/569014/EPRS_BRI(2015)569014_EN.pdf",
+      "https://www.europarl.europa.eu/RegData/etudes/BRIE/2015/569014/EPRS_BRI(2015)569014_EN.pdf",
+      "https://www.elibrary.imf.org/view/book/9781589065338/ch01.xml",
+      "https://www.imf.org/en/About/Factsheets/IMF-at-a-Glance",
+      "https://www.imf.org/en/About",
+      "https://www.europarl.europa.eu/RegData/etudes/BRIE/2016/581969/EPRS_BRI(2016)581969_EN.pdf",
+      "https://www.worldbank.org/en/archive/home",
+      "https://www.worldbank.org/en/news/feature/2012/07/26/getting_to_know_theworldbank",
+      "https://pubmed.ncbi.nlm.nih.gov/11176994/",
+      "https://www.worldbank.org/en/archive/access-the-catalog"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201113200103/http://www.officialgazette.gov.ph/featured/the-fall-of-the-dictatorship/",
+      "https://web.archive.org/web/20210127061518/https://www.biography.com/political-figure/jos%C3%A9-rizal",
+      "https://web.archive.org/web/20210127061518/https://www.worldbank.org/en/about/archives/history#:~:text=Conceived%20in%201944%20at%20the,1947%20for%20post%2Dwar%20reconstruction"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 53,
+    "mode": "agentic",
+    "label5": "SUPPORT",
+    "pred_label": "Supported",
+    "gold_label": "Supported",
+    "confidence": 0.91,
+    "cited": [
+      "e9",
+      "e0",
+      "e2",
+      "e37"
+    ],
+    "retrieved_urls": [
+      "http://judiciary.house.gov/media/in-the-news/smoking-gun-email-reveals-how-hunter-biden-introduced-ukrainian-businessman-to-vp",
+      "http://biggs.house.gov/media/press-releases/congressman-biggs-leads-letter-fbi-director-wray-about-hunter-bidens-alleged",
+      "https://www.politifact.com/article/2020/oct/19/fact-checking-claims-about-hunter-biden-joe-biden-/",
+      "https://www.politifact.com/factchecks/2019/may/07/viral-image/fact-checking-joe-biden-hunter-biden-and-ukraine/",
+      "https://www.foxnews.com/us/documents-show-alleged-hunter-biden-signature-fbi-contacts-with-computer-store-owner",
+      "https://www.foxnews.com/politics/hunter-biden-emails-documents-alleged-signature-fbi-paperwork",
+      "https://www.foxnews.com/politics/laptop-hunter-biden-linked-fbi-money-laundering-probe",
+      "https://apnews.com/united-states-presidential-election-9d4595ba4f3140c6bb6a3473a91f4a4c",
+      "https://apnews.com/article/joe-biden-europe-business-c49555d51eb243e09a42f7577fc5937f",
+      "https://www.npr.org/2019/09/24/763502822/what-were-the-bidens-doing-in-ukraine-5-questions-answered"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210304085240mp_/https://www.foxnews.com/politics/fbi-purported-hunter-biden-laptop-sources"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 51,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e10",
+      "e22",
+      "e17",
+      "e29"
+    ],
+    "retrieved_urls": [
+      "https://www.financialexpress.com/india-news/bihar-assembly-election-2020-nirmala-sitharaman-to-release-bjps-manifesto-today-live-updates/2111239/",
+      "https://news.abplive.com/news/india/bihar-election-2020-bihar-news-nirmala-sitharaman-bjp-free-coronavirus-covid-19-vaccine-funny-reactions-1370919",
+      "https://www.newsclick.in/Bihar-Elections-BJP-Promises-Free-COVID-19-Vaccines-Opposition-%23-VaccinePolitics",
+      "https://web-archive-org.translate.goog/web/20210121222119/https://www.jagran.com/elections/bihar-vidhan-sabha-nirmala-sitharaman-said-the-promise-of-free-covid-vaccine-in-bihar-election-manifesto-is-absolutely-correct-20947267.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp",
+      "https://news.abplive.com/news/india/bihar-election-2020-bihar-news-nirmala-sitharaman-bjp-free-coronavirus-covid-19-vaccine-funny-reactions-1370919",
+      "https://www.indiatvnews.com/opinion/news-bihar-election-2020-poll-promises-jobs-development-standards-of-living-bjp-rjd-jdu-ljp-pm-modi-659069",
+      "https://www.thehindu.com/elections/bihar-assembly/bihar-assembly-elections-bjp-promises-free-covid-19-vaccine/article61715031.ece",
+      "https://www.thehindu.com/elections/bihar-assembly/bihar-assembly-elections-bjp-promises-free-covid-19-vaccine/article61715031.ece",
+      "https://www.indiatoday.in/elections/bihar-assembly-polls-2020",
+      "https://m.economictimes.com/news/elections/assembly-elections/bihar/bjp-manifesto-promises-free-covid-vaccination-for-all-in-bihar/articleshow/78803517.cms"
+    ],
+    "gold_urls": [
+      "https://web-archive-org.translate.goog/web/20210121222119/https://www.jagran.com/elections/bihar-vidhan-sabha-nirmala-sitharaman-said-the-promise-of-free-covid-vaccine-in-bihar-election-manifesto-is-absolutely-correct-20947267.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 53,
+    "mode": "agentic_unweighted",
+    "label5": "SUPPORT",
+    "pred_label": "Supported",
+    "gold_label": "Supported",
+    "confidence": 0.96,
+    "cited": [
+      "e0",
+      "e2",
+      "e8",
+      "e29",
+      "e11"
+    ],
+    "retrieved_urls": [
+      "https://www.dailymail.co.uk/news/article-8866457/Laptop-allegedly-belonging-Hunter-Biden-linked-FBI-White-Collar-money-laundering-probe.html",
+      "https://www.thedailybeast.com/fbi-examining-hunter-bidens-laptop-as-foreign-op-contradicting-john-ratcliffe-trumps-intel-czar",
+      "https://theweek.com/108458/hunter-biden-laptop-linked-to-fbi-money-laundering-probe",
+      "https://posey.house.gov/news/documentsingle.aspx?DocumentID=396828",
+      "https://www.foxnews.com/politics/laptop-hunter-biden-linked-fbi-money-laundering-probe",
+      "https://www.congress.gov/118/meeting/house/115294/documents/HHRG-118-FD00-20230209-SD021.pdf",
+      "https://news.yahoo.com/fbi-reportedly-possession-hunter-biden-122918024.html",
+      "https://www.businessinsider.com/fbi-nothing-to-add-ratcliffe-claim-hunter-biden-laptop-russia-2020-10",
+      "https://www.congress.gov/118/meeting/house/115294/documents/HHRG-118-FD00-20230209-SD014.pdf",
+      "https://news.yahoo.com/hunter-biden-purported-laptop-connected-120252142.html"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210304085240mp_/https://www.foxnews.com/politics/fbi-purported-hunter-biden-laptop-sources"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 3,
+      "tool_calls": 10
+    }
+  },
+  {
+    "claim_id": 52,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e31",
+      "e32",
+      "e39",
+      "e10",
+      "e20",
+      "e21"
+    ],
+    "retrieved_urls": [
+      "https://www.britannica.com/money/topic/International-Monetary-Fund",
+      "https://www.imf.org/external/pubs/ft/aa/index.htm",
+      "https://www.europarl.europa.eu/RegData/etudes/BRIE/2015/569014/EPRS_BRI(2015)569014_EN.pdf",
+      "https://www.investopedia.com/terms/i/imf.asp",
+      "https://www.bbc.com/news/business-17493655",
+      "https://www.brettonwoodsproject.org/2019/01/art-320747/",
+      "https://2001-2009.state.gov/r/pa/ho/time/wwii/98681.htm",
+      "https://en.wikipedia.org/wiki/Bretton_Woods_Conference",
+      "https://www.imf.org/external/pubs/ft/aa/pdf/aa.pdf",
+      "https://www.imf.org/en/About"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201113200103/http://www.officialgazette.gov.ph/featured/the-fall-of-the-dictatorship/",
+      "https://web.archive.org/web/20210127061518/https://www.biography.com/political-figure/jos%C3%A9-rizal",
+      "https://web.archive.org/web/20210127061518/https://www.worldbank.org/en/about/archives/history#:~:text=Conceived%20in%201944%20at%20the,1947%20for%20post%2Dwar%20reconstruction"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 15
+    }
+  },
+  {
+    "claim_id": 54,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.99,
+    "cited": [
+      "e14",
+      "e1",
+      "e4",
+      "e0",
+      "e11"
+    ],
+    "retrieved_urls": [
+      "https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/bulletins/uktrade/august2020",
+      "https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/bulletins/uktrade/august2020",
+      "https://curia.europa.eu/juris/document/document_print.jsf?docid=212842&text=&dir=&doclang=EN&part=1&occ=first&mode=lst&pageIndex=0&cid=593705",
+      "https://www.cedefop.europa.eu/en/news/skillsnet-e-bulletin-april-august-2020",
+      "https://www.opindia.com/2020/10/pankaj-pachauri-fake-news-fact-check-india-exports-to-china/",
+      "https://theprint.in/india/no-proposal-to-withdraw-most-favoured-nation-status-of-china-govt-tells-parliament/508339/",
+      "https://gjepc.org/solitaire/indias-gem-jewellery-exports-recover-to-1-76-billion-in-august-2020/",
+      "https://www.eepcindia.org/files/EEA-171026105312.pdf",
+      "https://www.a2ztaxcorp.com/piyush-goyal-no-proposal-to-make-india-the-export-hub-of-apple-products/",
+      "https://www.businesstoday.in/latest/economy-politics/story/setback-for-china-india-bans-import-of-air-conditioners-with-refrigerants-276021-2020-10-16"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201101024850/https://www.businesstoday.in/current/economy-politics/imports-from-china-decline-by-27-63-during-april-august-2020-piyush-goyal/story/416674.html",
+      "https://timesofindia.indiatimes.com/business/india-business/indias-imports-from-china-dip-27-63-during-april-august-piyush-goyal/articleshow/78237856.cms",
+      "https://web.archive.org/web/20201108092805/https://timesofindia.indiatimes.com/business/india-business/indias-imports-from-china-dip-27-63-during-april-august-piyush-goyal/articleshow/78237856.cms"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 55,
+    "mode": "agentic",
+    "label5": "CONFLICT",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.9,
+    "cited": [
+      "e36",
+      "e37",
+      "e39",
+      "e1",
+      "e17"
+    ],
+    "retrieved_urls": [
+      "https://www.cdc.gov/nchs/nvss/vsrr/covid19/health_disparities.htm",
+      "https://www.gao.gov/products/gao-20-635sp",
+      "https://www.cdc.gov/nchs/nvss/deaths.htm",
+      "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports",
+      "https://www.gao.gov/assets/gao-20-635sp.pdf",
+      "https://www.cdc.gov/nchs/nvss/deaths.htm",
+      "https://www.nj.gov/health/chs/covid/",
+      "https://www.who.int/docs/default-source/coronaviruse/situation-reports/20200831-weekly-epi-update-3.pdf",
+      "https://www.who.int/docs/default-source/coronaviruse/situation-reports/20200831-weekly-epi-update-3.pdf",
+      "https://www.imf.org/en/Blogs/Articles/2020/06/02/blog060220-how-the-great-lockdown-saved-lives"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210301024135/https://www.dhs.wisconsin.gov/covid-19/deaths.htm",
+      "https://web.archive.org/web/20210301024135/https://www.dhs.wisconsin.gov/covid-19/deaths.htm"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 11
+    }
+  },
+  {
+    "claim_id": 57,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Supported",
+    "confidence": 0.98,
+    "cited": [
+      "e0",
+      "e1",
+      "e2",
+      "e3",
+      "e8"
+    ],
+    "retrieved_urls": [
+      "https://www.politifact.com/personalities/nathan-mcmurray/",
+      "https://ecode360.com/documents/GR0053/public/466406368.pdf",
+      "https://spectrumlocalnews.com/nys/buffalo/politics/2018/01/10/nate-mcmurray-to-announce-candidacy-for-congress",
+      "https://www.chronogram.com/river-newsroom/meet-nate-mcmurray-the-happy-warrior-vying-to-unseat-new-yorks-most-corrupt-congressman-18194443",
+      "https://buffalonews.com/news/local/nathan-mcmurray-from-unknown-long-shot-to-serious-contender/article_a9163bc1-d04a-51ac-b0b9-2d0aaa78cb7a.html",
+      "https://teamster.org/2020/06/western-new-york-teamsters-endorse-nate-mcmurray-for-congress/",
+      "https://www.wnypapers.com/news/article/2017/12/30/130990/grand-island-sees-progress-growth-in-2017",
+      "https://www.cityandstateny.com/politics/2018/08/democrat-nate-mcmurray-hails-from-an-island-of-dreams/178199/",
+      "https://buffalonews.com/news/local/the-long-and-winding-district-a-trip-through-new-yorks-27th/article_4906fb6a-afab-59da-a034-45a020b1b099.html",
+      "https://www.wkbw.com/news/local-news/major-development-project-with-1-000-new-jobs-proposed-for-grand-island"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20220322021746/https://buffalonews.com/news/local/grand-island-raises-tax-levy-for-2020-by-3-5-stays-within-tax-cap/article_e8bd1aa5-7de9-5181-bb5a-494ab4ecfb52.html",
+      "https://ecode360.com/documents/GR0053/public/466406368.pdf",
+      "https://ecode360.com/documents/GR0053/public/466406368.pdf"
+    ],
+    "retrieval_category": "retrieved",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 54,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.98,
+    "cited": [
+      "e11",
+      "e12",
+      "e1",
+      "e3",
+      "e0"
+    ],
+    "retrieved_urls": [
+      "https://facthunt.in/posts/1471/A-video-of-a-woman-brutally-beaten-by-cops-is-from-UP's-Pratapgarh",
+      "https://www.businesstoday.in/latest/economy-politics/story/setback-for-china-india-bans-import-of-air-conditioners-with-refrigerants-276021-2020-10-16",
+      "https://www.opindia.com/2020/10/pankaj-pachauri-fake-news-fact-check-india-exports-to-china/",
+      "https://theprint.in/india/no-proposal-to-withdraw-most-favoured-nation-status-of-china-govt-tells-parliament/508339/",
+      "https://www.eastasiaforum.org/2010/09/08/indias-trade-deficits-with-china-and-australia/",
+      "https://www.semiconductors.org/indias-ic-imports-grew-dramatically-in-2018-and-u-s-china-trade-tensions-could-be-a-reason/",
+      "https://www.cnbc.com/2020/07/07/why-india-cannot-disengage-from-china-despite-geopolitical-tensions.html",
+      "https://gjepc.org/solitaire/indias-gem-jewellery-exports-recover-to-1-76-billion-in-august-2020/",
+      "https://theprint.in/india/no-proposal-to-withdraw-most-favoured-nation-status-of-china-govt-tells-parliament/508339/",
+      "https://www.a2ztaxcorp.com/piyush-goyal-no-proposal-to-make-india-the-export-hub-of-apple-products/"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201101024850/https://www.businesstoday.in/current/economy-politics/imports-from-china-decline-by-27-63-during-april-august-2020-piyush-goyal/story/416674.html",
+      "https://timesofindia.indiatimes.com/business/india-business/indias-imports-from-china-dip-27-63-during-april-august-piyush-goyal/articleshow/78237856.cms",
+      "https://web.archive.org/web/20201108092805/https://timesofindia.indiatimes.com/business/india-business/indias-imports-from-china-dip-27-63-during-april-august-piyush-goyal/articleshow/78237856.cms"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 55,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.93,
+    "cited": [
+      "e0",
+      "e1",
+      "e2",
+      "e11",
+      "e20",
+      "e24",
+      "e28",
+      "e30"
+    ],
+    "retrieved_urls": [
+      "https://www.cdc.gov/nchs/nvss/vsrr/covid19/index.htm",
+      "https://www.who.int/docs/default-source/coronaviruse/situation-reports/20200831-weekly-epi-update-3.pdf",
+      "https://www.cdc.gov/nchs/nvss/vsrr/covid19/index.htm",
+      "https://ourworldindata.org/grapher/cumulative-deaths-and-cases-covid-19",
+      "https://www.cdc.gov/nchs/nvss/vsrr/covid19/health_disparities.htm",
+      "https://www.cdc.gov/nchs/nvss/vsrr/covid19/index.htm",
+      "https://ourworldindata.org/grapher/daily-covid-cases-deaths",
+      "https://www.cdc.gov/nchs/nvss/vsrr/covid19/health_disparities.htm",
+      "https://pubmed.ncbi.nlm.nih.gov/33060261/",
+      "https://ourworldindata.org/grapher/cumulative-covid-deaths-region"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210301024135/https://www.dhs.wisconsin.gov/covid-19/deaths.htm",
+      "https://web.archive.org/web/20210301024135/https://www.dhs.wisconsin.gov/covid-19/deaths.htm"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 10
+    }
+  },
+  {
+    "claim_id": 58,
+    "mode": "agentic",
+    "label5": "SUPPORT",
+    "pred_label": "Supported",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.97,
+    "cited": [
+      "e20",
+      "e23",
+      "e12",
+      "e16",
+      "e31"
+    ],
+    "retrieved_urls": [
+      "https://www.forbes.com/sites/danielcassady/2020/10/19/the-us-has-thrown-out-faulty-ventilators-russia-sent-as-pandemic-aid/",
+      "https://apnews.com/article/ap-top-news-virus-outbreak-st-petersburg-international-news-health-b4950726aea5b4ec33a0f4d8fa76cb40",
+      "https://apnews.com/article/ap-top-news-virus-outbreak-st-petersburg-international-news-health-b4950726aea5b4ec33a0f4d8fa76cb40",
+      "https://www.cnn.com/2020/05/12/europe/russia-dmitry-peskov-putin-coronavirus-intl/index.html",
+      "https://www.cnbc.com/2020/05/20/us-sends-200-ventilators-to-russia-as-coronavirus-crisis-deepens.html",
+      "https://www.cnbc.com/2020/05/13/russian-ventilators-sent-to-us-held-after-st-petersburg-hospital-fire.html",
+      "https://www.aa.com.tr/en/health/russia-sends-medical-aid-to-us-to-help-fight-covid-19/1788290",
+      "https://unsdg.un.org/sites/default/files/2020-05/Policy-Brief-A-Disability-Inclusive-Response-to-COVID-19.pdf",
+      "https://www.occrp.org/en/daily/11898-fearing-covid-19-russian-oligarchs-buy-their-own-ventilators",
+      "https://uscpublicdiplomacy.org/blog/common-good-russia%E2%80%99s-public-diplomacy-during-covid-19-era"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210718091632/https://www.nytimes.com/2020/04/02/world/europe/coronavirus-us-russia-aid.html",
+      "https://web.archive.org/web/20210718091632/https://www.state.gov/u-s-purchase-of-needed-supplies-from-russia/",
+      "https://web.archive.org/web/20210718091632/https://www.buzzfeednews.com/article/christopherm51/fema-russia-ventilators-coronavirus?fbclid=IwAR0NDhdqILPthpTHGNnmK_-8yH7CjmyDtbo81pzlHEVVKI9loXMnfI9uVas"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 59,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Not Enough Evidence",
+    "confidence": 0.97,
+    "cited": [
+      "e15",
+      "e17",
+      "e18",
+      "e22",
+      "e1",
+      "e4"
+    ],
+    "retrieved_urls": [
+      "https://www.theguardian.com/money/2015/dec/19/contactless-payments-card-fraud-after-cancellation-bank-account",
+      "https://nypost.com/2020/08/18/multi-state-santander-scam-sparks-staten-island-manhunt/",
+      "https://www.thesun.co.uk/money/5805664/santander-warns-customers-about-new-text-message-scam-which-could-hand-your-bank-details-to-criminals/",
+      "https://www.nbcnewyork.com/news/local/crime-and-courts/alleged-large-scale-scam-targets-santander-bank-atms-across-multiple-nj-towns/2573245/",
+      "https://www.securitymagazine.com/articles/93120-large-scale-scam-targets-santander-bank-atms",
+      "https://nypost.com/2020/08/19/video-shows-scammers-getting-free-money-from-santander-bank-atms/",
+      "https://www.zdnet.com/article/tens-of-suspects-arrested-for-cashing-out-santander-atms-using-software-glitch/",
+      "https://www.santander.co.uk/about-santander/media-centre/press-releases/santander-brings-innovative-new-anti-fraud-measures-to-mobile-app",
+      "https://www.nj.com/news/2020/08/dozens-arrested-in-widespread-atm-theft-scam.html",
+      "https://www.santanderbank.com/personal/banking/checking/debitchip"
+    ],
+    "gold_urls": [
+      "https://twitter.com/santanderukhelp/status/1359776098544988160"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 4,
+      "tool_calls": 9
+    }
+  },
+  {
+    "claim_id": 57,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Supported",
+    "confidence": 0.91,
+    "cited": [
+      "e1",
+      "e19",
+      "e21"
+    ],
+    "retrieved_urls": [
+      "https://www.tiverton.ri.gov/departments/taxassessor/taxrolls.php",
+      "https://banff.ca/CivicAlerts.aspx?AID=631",
+      "https://www.grandisland.org/about-grand-island/community-profile.html",
+      "https://banff.ca/CivicAlerts.aspx?AID=631",
+      "https://www.salestaxhandbook.com/nebraska/rates/grand-island",
+      "https://buffalonews.com/news/local/raises-for-elected-officials-including-supervisor-in-tonawanda-budget-plan/article_c0e2ea60-2bf3-5741-a4ea-f28203d59da9.html",
+      "https://snohomishcountywa.gov/5167/Assessor",
+      "https://www.tax.ny.gov/pdf/publications/orpts/capguidelines.pdf",
+      "https://dor.wa.gov/sites/default/files/2022-02/HomeOwn.pdf",
+      "https://journalstar.com/news/local/first-phase-of-construction-begins-for-grand-island-tollbooth-removal/article_4b8c5ef2-469a-5b95-8164-9d7a2ab99867.html"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20220322021746/https://buffalonews.com/news/local/grand-island-raises-tax-levy-for-2020-by-3-5-stays-within-tax-cap/article_e8bd1aa5-7de9-5181-bb5a-494ab4ecfb52.html",
+      "https://ecode360.com/documents/GR0053/public/466406368.pdf",
+      "https://ecode360.com/documents/GR0053/public/466406368.pdf"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 11
+    }
+  },
+  {
+    "claim_id": 58,
+    "mode": "agentic_unweighted",
+    "label5": "SUPPORT",
+    "pred_label": "Supported",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.98,
+    "cited": [
+      "e19",
+      "e4",
+      "e10",
+      "e13",
+      "e18"
+    ],
+    "retrieved_urls": [
+      "https://www.theguardian.com/world/2020/apr/01/coronavirus-russia-sends-plane-full-of-medical-supplies-to-us",
+      "https://www.aa.com.tr/en/health/russia-sends-medical-aid-to-us-to-help-fight-covid-19/1788290",
+      "https://www.cnbc.com/2020/05/20/us-sends-200-ventilators-to-russia-as-coronavirus-crisis-deepens.html",
+      "https://www.forbes.com/sites/danielcassady/2020/10/19/the-us-has-thrown-out-faulty-ventilators-russia-sent-as-pandemic-aid/",
+      "https://www.aljazeera.com/news/2020/3/26/russia-latest-country-to-receive-coronavirus-kits-from-jack-ma",
+      "https://www.npr.org/sections/coronavirus-live-updates/2020/05/21/860143691/u-s-sends-ventilators-to-russia-in-5-6-million-coronavirus-aid-package",
+      "https://www.kuow.org/stories/u-s-sends-ventilators-to-russia-in-5-6-million-coronavirus-aid-package",
+      "https://www.cbsnews.com/news/russia-welcomes-us-ventilators-coronavirus-good-will-usaid-banned-by-moscow/",
+      "https://www.forbes.com/sites/danielcassady/2020/10/19/the-us-has-thrown-out-faulty-ventilators-russia-sent-as-pandemic-aid/",
+      "https://www.nbcnews.com/politics/donald-trump/russian-plane-coronavirus-medical-gear-lands-u-s-after-trump-n1174436"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20210718091632/https://www.nytimes.com/2020/04/02/world/europe/coronavirus-us-russia-aid.html",
+      "https://web.archive.org/web/20210718091632/https://www.state.gov/u-s-purchase-of-needed-supplies-from-russia/",
+      "https://web.archive.org/web/20210718091632/https://www.buzzfeednews.com/article/christopherm51/fema-russia-ventilators-coronavirus?fbclid=IwAR0NDhdqILPthpTHGNnmK_-8yH7CjmyDtbo81pzlHEVVKI9loXMnfI9uVas"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 3,
+      "tool_calls": 13
+    }
+  },
+  {
+    "claim_id": 60,
+    "mode": "agentic",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.97,
+    "cited": [
+      "e1",
+      "e12",
+      "e0"
+    ],
+    "retrieved_urls": [
+      "https://www.eastsussex.gov.uk/education-learning/schools/school-life/school-meals/free-school-meals",
+      "https://www.oldham.gov.uk/info/100001/help_with_benefits_and_money/1120/universal_credit",
+      "https://assets.publishing.service.gov.uk/media/5f8074fb8fa8f50454ce9339/20201009_JSSC_Factsheet_FINAL_EG_1516_002_.pdf",
+      "https://www.essex.gov.uk/schools-and-learning/schools/free-school-meals",
+      "http://www.local.gov.uk/job-support-scheme",
+      "https://www.flintshire.gov.uk/en/Business/Advice-and-guidance/COVID-19-SUPPORT-AND-ADVICE-FOR-SELF-EMPLOYED.aspx",
+      "https://www.liverpoolcityregion-ca.gov.uk/news/11710-2",
+      "https://www.cps.gov.uk/legal-guidance/coronavirus-local-coronavirus-regulations-tier-2",
+      "https://www.cps.gov.uk/legal-guidance/coronavirus-local-coronavirus-regulations-tier-2",
+      "https://hr.nih.gov/sites/default/files/public/documents/2019-12/ETDGuidelines.pdf"
+    ],
+    "gold_urls": [
+      "https://www.bbc.com/news/explainers-52135342",
+      "https://www.bbc.co.uk/news/uk-politics-54492574",
+      "https://www.englandandcompany.co.uk/briefing-15-15th-october/",
+      "Metadata",
+      "https://www.englandandcompany.co.uk/briefing-15-15th-october/",
+      "https://www.englandandcompany.co.uk/briefing-15-15th-october/",
+      "https://www.englandandcompany.co.uk/briefing-15-15th-october/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 5,
+      "tool_calls": 10
+    }
+  },
+  {
+    "claim_id": 59,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Not Enough Evidence",
+    "confidence": 0.91,
+    "cited": [
+      "e18",
+      "e24",
+      "e33",
+      "e14",
+      "e9"
+    ],
+    "retrieved_urls": [
+      "https://www3.mtb.com/help-center/top-banking-tasks/report-replace-mt-card",
+      "https://childsupport.ny.gov/dcse/debitcard.html",
+      "https://forums.digitalspy.com/discussion/1381693/how-long-should-a-replacement-bank-card-take",
+      "https://www.santanderbank.com/personal/checking/simply-right-checking",
+      "https://forums.digitalspy.com/discussion/1381693/how-long-should-a-replacement-bank-card-take",
+      "https://www.experian.com/blogs/ask-experian/scam-alert-fake-banking-apps-tricking-consumers/",
+      "https://www.bankingdive.com/news/santander-atm-glitch-prepaid-debit-card/583877/",
+      "https://www.cbsnews.com/minnesota/news/anyone-can-become-a-victim-attorney-targeted-in-sophisticated-bank-scam/",
+      "https://www.santander.co.uk/about-santander/media-centre/press-releases/santander-launches-new-payment-process-to-combat-the-rise-in-payment-scams",
+      "https://community.ricksteves.com/travel-forum/tourist-scams/cc-info-intercepted-when-booking-hotel-by-email"
+    ],
+    "gold_urls": [
+      "https://twitter.com/santanderukhelp/status/1359776098544988160"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 61,
+    "mode": "agentic",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Refuted",
+    "confidence": 0.89,
+    "cited": [
+      "e23",
+      "e25",
+      "e35",
+      "e3",
+      "e2",
+      "e24",
+      "e12"
+    ],
+    "retrieved_urls": [
+      "https://sos.oregon.gov/elections/Pages/electionforms.aspx",
+      "https://dnr.wisconsin.gov/permits/registrations/OHM",
+      "https://www.epa.gov/enforcement/harley-davidson-clean-air-act-settlement",
+      "https://leg.mt.gov/bills/mca/title_0610/chapter_0010/part_0010/section_0010/0610-0010-0010-0010.html",
+      "https://www.nytimes.com/interactive/2020/us/elections/kamala-harris.html",
+      "https://apnews.com/article/virus-outbreak-election-2020-ap-top-news-race-and-ethnicity-ca-state-wire-5ac8fff8bbe1c70479604e3ff62ecb10",
+      "https://www.cbsnews.com/news/dwayne-johnson-the-rock-joe-biden-kamala-harris-endorsement/",
+      "https://www.cnn.com/2020/03/10/politics/kamala-harris-joe-biden/index.html",
+      "https://www.npr.org/2020/08/11/897427306/in-historic-pick-joe-biden-taps-kamala-harris-to-be-his-running-mate",
+      "https://www.bbc.com/news/topics/czyymgqmn6dt"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201017152200/https://twitter.com/USWBat/status/1317485582252187648"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 60,
+    "mode": "agentic_unweighted",
+    "label5": "PARTIAL",
+    "pred_label": "Conflicting Evidence/Cherrypicking",
+    "gold_label": "Conflicting Evidence/Cherrypicking",
+    "confidence": 0.91,
+    "cited": [
+      "e0",
+      "e3",
+      "e34",
+      "e41"
+    ],
+    "retrieved_urls": [
+      "https://www.gov.uk/government/news/job-support-scheme-expanded-to-firms-required-to-close-due-to-covid-restrictions",
+      "https://www.sempar.co.uk/job-support-scheme-expanded-to-firms-required-to-close-due-to-covid-restrictions/",
+      "https://www.theguardian.com/uk-news/2020/oct/09/new-furlough-scheme-how-does-it-work-and-who-will-benefit",
+      "https://ogletree.com/insights-resources/blog-posts/uk-chancellor-announces-expansion-of-job-support-scheme/",
+      "https://www.linkedin.com/pulse/covid-19-what-support-out-business-anthony-o-keefe",
+      "https://www.linkedin.com/pulse/covid-19-update-chancellors-winter-economy-plan-job-support-lloyd",
+      "https://www.theguardian.com/politics/live/2020/oct/12/uk-coronavirus-news-boris-johnson-local-covid-restrictions-three-tier?page=with:block-5f84a30c8f085792eabf89ea",
+      "https://www.carersuk.org/help-and-advice/financial-support/benefits-for-carers-who-are-working-age/universal-credit/",
+      "https://www.addleshawgoddard.com/en/insights/insights-briefings/2020/employment/localised-job-support-scheme-announced/",
+      "https://ersa.org.uk/about/employmentprogrammes/"
+    ],
+    "gold_urls": [
+      "https://www.bbc.com/news/explainers-52135342",
+      "https://www.bbc.co.uk/news/uk-politics-54492574",
+      "https://www.englandandcompany.co.uk/briefing-15-15th-october/",
+      "Metadata",
+      "https://www.englandandcompany.co.uk/briefing-15-15th-october/",
+      "https://www.englandandcompany.co.uk/briefing-15-15th-october/",
+      "https://www.englandandcompany.co.uk/briefing-15-15th-october/"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 12
+    }
+  },
+  {
+    "claim_id": 61,
+    "mode": "agentic_unweighted",
+    "label5": "REFUTE",
+    "pred_label": "Refuted",
+    "gold_label": "Refuted",
+    "confidence": 0.92,
+    "cited": [
+      "e19",
+      "e20",
+      "e32",
+      "e35",
+      "e42"
+    ],
+    "retrieved_urls": [
+      "https://olioiniowa.com/blog/milwaukee-harley-davidson-museum/",
+      "https://olioiniowa.com/blog/milwaukee-harley-davidson-museum/",
+      "https://www.motorcyclecruiser.com/history-harley-davidson/",
+      "https://artsandculture.google.com/story/the-founders-of-harley-davidson/9wLSe_e7UuPiIA",
+      "https://ivypanda.com/essays/how-harley-davidson-affected-american-motorcycle-riding-today/",
+      "https://www.americanroad.biz/",
+      "https://www.nbcnews.com/id/wbna25643368",
+      "https://sdautomuseum.org/pages/exhibitions",
+      "https://finance.yahoo.com/news/taylor-swift-endorsed-joe-biden-160400677.html",
+      "https://www.foxbusiness.com/category/joe-biden"
+    ],
+    "gold_urls": [
+      "https://web.archive.org/web/20201017152200/https://twitter.com/USWBat/status/1317485582252187648"
+    ],
+    "retrieval_category": "retrieval_failure",
+    "cost": {
+      "steps": 6,
+      "tool_calls": 9
+    }
+  }
+]
