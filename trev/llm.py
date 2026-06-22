@@ -149,7 +149,7 @@ class LLM:
                 ]
         raise LLMError(f"{self.max_retries}회 시도 후 JSON 파싱/검증 실패: {last_err}")
 
-    @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, max=10))
+    @retry(stop=stop_after_attempt(6), wait=wait_exponential(multiplier=2, max=60), reraise=True)
     def _call(self, messages: list[dict[str, str]]) -> str:
         kwargs: dict[str, Any] = {"model": self.model, "messages": messages, "timeout": 120}
         if self.temperature is not None:
@@ -157,7 +157,7 @@ class LLM:
         resp = self.client.chat.completions.create(**kwargs)
         return resp.choices[0].message.content
 
-    @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, max=10))
+    @retry(stop=stop_after_attempt(6), wait=wait_exponential(multiplier=2, max=60), reraise=True)
     def complete_with_tools(
         self, messages: list[dict], tools: list[dict], *, tool_choice: str = "auto"
     ) -> AssistantTurn:

@@ -17,6 +17,7 @@ import argparse
 import json
 import os
 import threading
+import time
 from collections import defaultdict
 from pathlib import Path
 
@@ -34,8 +35,24 @@ INDEX_DIR = REPO / "index"
 OUT_DIR = REPO / "outputs"
 CKPT = OUT_DIR / "agentic_eval_ckpt.jsonl"
 
-# 연속 실패가 이만큼 쌓이면 크레딧 소진/장애로 보고 깔끔히 중단(부분 결과는 보존).
-MAX_CONSEC_FAILS = 5
+# 일시적 레이트리밋이 이 횟수만큼 연속되면 게이트웨이 장애로 보고 중단(부분결과 보존).
+MAX_CONSEC_TRANSIENT = 20
+# 일시적 실패(레이트리밋) 발생 시 다음 시도 전 짧은 백오프.
+TRANSIENT_BACKOFF_S = 10
+
+
+def _is_fatal(e: Exception) -> bool:
+    """크레딧/쿼터 소진·인증 실패처럼 '재시도해도 소용없는' 오류인가?
+    레이트리밋(429 rate_limit)은 일시적이라 fatal 아님 — 백오프 후 재실행으로 흡수."""
+    try:
+        from openai import AuthenticationError, PermissionDeniedError
+        if isinstance(e, (AuthenticationError, PermissionDeniedError)):
+            return True
+    except Exception:
+        pass
+    msg = str(e).lower()
+    return any(k in msg for k in ("insufficient_quota", "quota", "billing",
+                                  "exceeded your current quota", "credit"))
 
 
 def _provider(embedder, idx_cfg):
@@ -90,7 +107,8 @@ def main() -> None:
     ap.add_argument("--modes", nargs="+", default=["agentic", "agentic_unweighted"],
                     help="실행할 에이전트 조건")
     ap.add_argument("--method", choices=["dense", "bm25"], default="dense")
-    ap.add_argument("--workers", type=int, default=int(os.environ.get("WORKERS", "4")))
+    ap.add_argument("--workers", type=int, default=int(os.environ.get("WORKERS", "2")),
+                    help="동시 claim 수. 레이트리밋(429) 잦으면 1~2로 낮출 것")
     args = ap.parse_args()
 
     cfg = load_config()
@@ -109,7 +127,7 @@ def main() -> None:
 
     write_lock = threading.Lock()
     fail_lock = threading.Lock()
-    state = {"consec_fail": 0, "stop": False, "written": 0}
+    state = {"consec_transient": 0, "stop": False, "written": 0}
 
     def _append(rec: dict, run: str) -> None:
         with write_lock:
@@ -118,9 +136,30 @@ def main() -> None:
                 f.flush()
             state["written"] += 1
 
+    def _on_failure(claim, run: str, e: Exception) -> None:
+        """실패 분류: 치명적(쿼터/인증)이면 즉시 중단, 일시적(레이트리밋)이면 백오프 후 계속."""
+        if _is_fatal(e):
+            state["stop"] = True
+            print(f"\n[중단] claim {claim.claim_id} run{run} 치명적 오류 "
+                  f"{type(e).__name__}: {e} — 크레딧/쿼터 소진으로 판단. "
+                  f"여기까지 저장하고 종료(재실행하면 이어서 진행).", flush=True)
+            return
+        with fail_lock:
+            state["consec_transient"] += 1
+            n = state["consec_transient"]
+        print(f"  [일시오류] claim {claim.claim_id} run{run}: {type(e).__name__} "
+              f"(연속 {n}) — {TRANSIENT_BACKOFF_S}s 백오프 후 계속(이 claim은 재실행 시 재시도)",
+              flush=True)
+        if n >= MAX_CONSEC_TRANSIENT:
+            state["stop"] = True
+            print(f"\n[중단] 일시오류 {n}회 연속 — 게이트웨이 장애로 판단. "
+                  f"여기까지 저장하고 종료(재실행하면 이어서 진행).", flush=True)
+            return
+        time.sleep(TRANSIENT_BACKOFF_S)
+
     def process_claim(claim, run: str) -> None:
         """한 claim의 미완료 mode들을 실행하고 즉시 체크포인트에 기록.
-        LLM/크레딧 오류는 위로 전파(연속 실패 카운트로 중단 판단)."""
+        LLM 오류는 위로 전파(_on_failure가 치명/일시 분류)."""
         todo = [m for m in args.modes if (claim.claim_id, run, m) not in done]
         if not todo:
             return
@@ -137,7 +176,7 @@ def main() -> None:
             rec = predictions_to_records([claim], {mode: [out]})[0]
             _append(rec, run)
             with fail_lock:
-                state["consec_fail"] = 0  # 성공 → 연속 실패 리셋
+                state["consec_transient"] = 0  # 성공 → 연속 일시오류 리셋
             print(f"  run{run} claim {claim.claim_id} {mode:18} → "
                   f"{verdict.averitec_label.value} (tools {trace.tool_calls_used})", flush=True)
 
@@ -156,17 +195,9 @@ def main() -> None:
                     for fut in as_completed(futs):
                         try:
                             fut.result()
-                        except Exception as e:  # 크레딧 소진/장애 → 연속 실패 누적
-                            c = futs[fut]
-                            with fail_lock:
-                                state["consec_fail"] += 1
-                                n = state["consec_fail"]
-                            print(f"  [실패] claim {c.claim_id} run{run}: "
-                                  f"{type(e).__name__}: {e} (연속 {n})", flush=True)
-                            if n >= MAX_CONSEC_FAILS:
-                                state["stop"] = True
-                                print(f"\n[중단] 연속 실패 {n}회 — 크레딧 소진/장애로 판단. "
-                                      f"여기까지 저장하고 종료(재실행하면 이어서 진행).", flush=True)
+                        except Exception as e:
+                            _on_failure(futs[fut], run, e)
+                            if state["stop"]:
                                 break
             else:
                 for c in pending:
@@ -174,15 +205,8 @@ def main() -> None:
                         break
                     try:
                         process_claim(c, run)
-                        state["consec_fail"] = 0
                     except Exception as e:
-                        state["consec_fail"] += 1
-                        print(f"  [실패] claim {c.claim_id} run{run}: "
-                              f"{type(e).__name__}: {e} (연속 {state['consec_fail']})", flush=True)
-                        if state["consec_fail"] >= MAX_CONSEC_FAILS:
-                            state["stop"] = True
-                            print(f"\n[중단] 연속 실패 {state['consec_fail']}회 — 크레딧 소진/장애로 "
-                                  f"판단. 여기까지 저장하고 종료(재실행하면 이어서 진행).", flush=True)
+                        _on_failure(c, run, e)
     except KeyboardInterrupt:
         print("\n[중단] KeyboardInterrupt — 여기까지 저장하고 종료(재실행하면 이어서 진행).", flush=True)
     finally:
